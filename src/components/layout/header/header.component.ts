@@ -14,7 +14,7 @@ import { DarkModeService } from '../../../app/services/dark-mode.service';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <header>
+    <header [ngClass]="{ 'no-animation': noAnimation }">
       <nav
         class="bg-white fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:bg-gray-800 border-gray-700"
       >
@@ -33,27 +33,50 @@ import { DarkModeService } from '../../../app/services/dark-mode.service';
             <li><a href="/about">About</a></li>
             <li><a href="/blog">Blog</a></li>
             <li><a href="/portfolio">Portfolio</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li>
+              <button
+                class="flex transition-transform hover:scale-125 align-middle relative"
+                (click)="toggleDarkMode()"
+              >
+                <span
+                  class="material-icons absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                  [ngClass]="{
+                    'opacity-100 translate-y-0 rotate-0 transition-all duration-500 ease-out':
+                      darkModeService.darkModeSignal() === 'dark',
+                    'opacity-0 -translate-y-full rotate-180 transition-all duration-500 ease-out':
+                      darkModeService.darkModeSignal() !== 'dark'
+                  }"
+                  >dark_mode</span
+                >
+
+                <!-- Light mode icon -->
+                <span
+                  class="material-icons absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                  [ngClass]="{
+                    'opacity-100 translate-y-0 rotate-0 transition-all duration-500 ease-out':
+                      darkModeService.darkModeSignal() !== 'dark',
+                    'opacity-0 translate-y-full rotate-180 transition-all duration-500 ease-out':
+                      darkModeService.darkModeSignal() === 'dark'
+                  }"
+                  >light_mode</span
+                >
+              </button>
+            </li>
 
             <label for="check" class="close-menu">X</label>
           </span>
 
           <label for="check" class="open-menu mr-5">Menu</label>
-          <button
-            class="flex transition-transform hover:scale-125 align-middle"
-            (click)="toggleDarkMode()"
-          >
-            @if(darkModeService.darkModeSignal() === "dark") {
-            <span class="material-icons">dark_mode</span>
-            }@else {
-            <span class="material-icons">light_mode</span>
-            }
-          </button>
         </ul>
       </nav>
     </header>
   `,
   styles: [
     `
+      .no-animation .material-icons {
+        transition: none;
+      }
       .close-menu,
       .open-menu {
         position: absolute;
@@ -112,8 +135,8 @@ import { DarkModeService } from '../../../app/services/dark-mode.service';
         }
       }
       .logo__image {
-        height: 80px;
-        width: 80px;
+        height: 60px;
+        width: 60px;
         padding: 6px;
         border-radius: 50%;
         border: 8px solid rgb(249, 215, 47);
@@ -137,7 +160,17 @@ import { DarkModeService } from '../../../app/services/dark-mode.service';
 })
 export class HeaderComponent {
   darkModeService: DarkModeService = inject(DarkModeService);
+  noAnimation = true;
+
   toggleDarkMode() {
+    this.noAnimation = false;
+
     this.darkModeService.updateDarkMode();
+  }
+  ngOnInit() {
+    // Mark as not user-initiated to avoid animations on initial load
+    setTimeout(() => {
+      this.noAnimation = false;
+    }, 0);
   }
 }

@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
+
   imports: [RouterOutlet, HeaderComponent, FooterComponent, CommonModule],
   template: `
     <div

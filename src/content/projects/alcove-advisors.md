@@ -4,6 +4,6 @@ date: "01-02-2020"
 technology: "Squerspace"
 featuredImage: "/projects/alcove.png"
 slug: "alcove"
-
 link: "https://www.alcoveadvisors.com/"
+description: "this is very good project"
 ---

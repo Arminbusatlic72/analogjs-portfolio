@@ -4,14 +4,16 @@ import { Component } from '@angular/core';
   standalone: true,
   template: `
     <div
-      class="text-black bg-white flex flex-col items-center justify-center pt-20 dark:bg-gray-800 text-gray-100"
+      class="bg-white flex flex-col items-center justify-center pt-20 dark:bg-gray-800 text-gray-100"
     >
-      <section class="z-10 flex w-full flex-1 flex-col">
+      <section class="text-gray-600 body-font z-10 flex w-full flex-1 flex-col">
         <div class="container px-5 py-24 mx-auto">
-          <div
-            class="text-black hero-content text-primary-content dark:text-white"
-          >
-            <h2 class="text-4xl font-bold mb-4 ">About Me</h2>
+          <div class="hero-content text-primary-content dark:text-white">
+            <h2
+              class="text-4xl md:text-4xl lg:text-6xl font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-center md:text-left dark:text-gray-300"
+            >
+              About Me
+            </h2>
             <h3 class="text-2xl font-bold mb-4">Introduction</h3>
 
             <p>
@@ -40,4 +42,4 @@ import { Component } from '@angular/core';
     </div>
   `,
 })
-export default class AboutComponent {}
+export default class AboutPageComponent {}

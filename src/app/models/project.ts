@@ -5,4 +5,5 @@ export interface Project {
   featuredImage: string;
   slug: string;
   link: string;
+  description: string;
 }

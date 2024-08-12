@@ -2,7 +2,7 @@ import { MarkdownComponent, injectContent } from '@analogjs/content';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 
-import { BlogPost } from 'src/app/models/post';
+import { Project } from 'src/app/models/project';
 
 @Component({
   standalone: true,
@@ -11,7 +11,7 @@ import { BlogPost } from 'src/app/models/post';
     <div *ngIf="post$ | async as post">
       <!-- Blog post with featured image -->
       <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-600 body-font text-gray-600 body-font"
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-600 body-font"
       >
         <div class="max-w-3xl mx-auto">
           <div class="py-8 pt-20">
@@ -23,10 +23,13 @@ import { BlogPost } from 'src/app/models/post';
             <p class="text-gray-500 text-sm">
               Published on <time datetime="2022-04-05">April 5, 2022</time>
             </p>
+            <p class="text-gray-500 text-sm">
+              {{ post.attributes.description }}
+            </p>
           </div>
           <img
             class="w-full h-auto mb-8"
-            [src]="post.attributes.coverImage"
+            src="{{ post.attributes.featuredImage }}"
             alt="{{ post.attributes.title }}"
           />
 
@@ -35,7 +38,7 @@ import { BlogPost } from 'src/app/models/post';
           >
             <analog-markdown
               [content]="post.content"
-              class="markdown-content"
+              class="markdown-content text-gray-600 body-font"
             />
           </article>
         </div>
@@ -44,9 +47,15 @@ import { BlogPost } from 'src/app/models/post';
   `,
   styles: [``],
 })
-export default class BlogPostPage {
-  post$ = injectContent<BlogPost>({
+export default class ProjectPage {
+  post$ = injectContent<Project>({
     param: 'slug',
-    subdirectory: 'blog',
+    subdirectory: 'projects',
   });
+  constructor() {
+    // Subscribe to the observable to log the data
+    this.post$.subscribe((post) => {
+      console.log(post);
+    });
+  }
 }

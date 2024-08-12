@@ -9,7 +9,9 @@ export class DarkModeService {
   darkModeSignal = signal<string>(this.getInitialDarkMode());
 
   updateDarkMode() {
-    this.darkModeSignal.update((value) => (value === 'dark' ? 'null' : 'dark'));
+    this.darkModeSignal.update((value) =>
+      value === 'dark' ? 'light' : 'dark'
+    );
   }
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
@@ -26,9 +28,9 @@ export class DarkModeService {
   private getInitialDarkMode(): string {
     if (isPlatformBrowser(this.platformId)) {
       return JSON.parse(
-        window.localStorage.getItem('darkModeSignal') ?? 'null'
+        window.localStorage.getItem('darkModeSignal') ?? 'light'
       );
     }
-    return 'null';
+    return 'light';
   }
 }

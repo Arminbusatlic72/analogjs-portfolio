@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule, DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { SocialIconListComponent } from './social-icon-list.component';
 
 @Component({
@@ -15,10 +15,17 @@ import { SocialIconListComponent } from './social-icon-list.component';
         <span class="text-black dark:text-white">©</span>
         {{ date | date : 'YYYY' }} {{ name }}. All rights reserved.
       </p>
+
       <app-social-icon-list />
     </footer>
   `,
-  styles: [``],
+  styles: [
+    `
+      img {
+        display: inline-block;
+      }
+    `,
+  ],
 })
 export class FooterComponent {
   date = new Date();

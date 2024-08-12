@@ -16,7 +16,7 @@ import { ContentService } from '../../services/content.service';
           <h2
             class="text-4xl md:text-4xl lg:text-6xl font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-center md:text-left dark:text-gray-300"
           >
-            Blog posts
+            Portfolio
           </h2>
           <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">
             This blog explores tech insights and other topics that catch my
@@ -27,7 +27,7 @@ import { ContentService } from '../../services/content.service';
         <div class="flex flex-wrap">
           @for (post of posts;track post.attributes.slug) {
           <div class="w-full xl:w-1/3 md:w-1/2 p-4">
-            <a [routerLink]="['/blog/', post.attributes.slug]">
+            <a [routerLink]="['/portfolio/', post.attributes.slug]">
               <div class="border border-gray-200 p-6 rounded-lg">
                 <div
                   class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4"
@@ -61,7 +61,7 @@ import { ContentService } from '../../services/content.service';
     </section>
   `,
 })
-export default class BlogPage {
+export default class ProjectsPage {
   private contentService = inject(ContentService);
-  readonly posts = this.contentService.postsContentFn;
+  readonly posts = this.contentService.projectsContentFn;
 }

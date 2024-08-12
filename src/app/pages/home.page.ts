@@ -7,10 +7,10 @@ import { Component } from '@angular/core';
     <div
       class="min-h-screen min-w-full text-black  bg-white flex flex-col items-center justify-center pt-20 dark:bg-gray-800"
     >
-      <section class="z-10 flex w-full flex-1 flex-col">
+      <section class="text-gray-600 body-font z-10 flex w-full flex-1 flex-col">
         <div class="hero-content container px-5 py-24 mx-auto>">
           <div
-            class="max-w-md md:max-w-[80%] mx-auto text-black dark:text-white "
+            class="text-gray-600 body-font max-w-md md:max-w-[80%] mx-auto text-black dark:text-white "
           >
             <h1
               class="before:bg-primary after:bg-primary relative mb-5 w-fit text-3xl font-bold

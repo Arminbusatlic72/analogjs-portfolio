@@ -1,7 +1,7 @@
 /// <reference types="vitest" />
 
 import { defineConfig } from 'vite';
-import analog from '@analogjs/platform';
+import analog, { type PrerenderContentFile } from '@analogjs/platform';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -11,7 +11,45 @@ export default defineConfig(({ mode }) => ({
   resolve: {
     mainFields: ['module'],
   },
-  plugins: [analog()],
+  plugins: [
+    analog({
+      prerender: {
+        routes: async () => [
+          '/',
+          '/about',
+          '/contact',
+          '/portfolio',
+          {
+            contentDir: 'src/content/projects',
+            transform: (file: PrerenderContentFile) => {
+              if (file.attributes.draft) {
+                return false;
+              }
+
+              const slug = file.attributes.slug || file.name;
+              return `/portfolio/${slug}`;
+            },
+          },
+
+          '/blog',
+          {
+            contentDir: 'src/content/blog',
+            transform: (file: PrerenderContentFile) => {
+              if (file.attributes.draft) {
+                return false;
+              }
+
+              const slug = file.attributes.slug || file.name;
+              return `/blog/${slug}`;
+            },
+          },
+        ],
+        sitemap: {
+          host: 'https://analogjs.org/',
+        },
+      },
+    }),
+  ],
   test: {
     globals: true,
     environment: 'jsdom',
