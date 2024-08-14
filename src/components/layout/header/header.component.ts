@@ -36,15 +36,15 @@ import { DarkModeService } from '../../../app/services/dark-mode.service';
             <li><a href="/contact">Contact</a></li>
             <li>
               <button
-                class="h-12 w-12 rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-gray-700 relative flex items-center justify-center transition-transform"
+                class="h-8 w-8 rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-gray-700 relative flex items-center justify-center transition-transform"
                 (click)="toggleDarkMode()"
               >
                 <!-- Dark mode SVG -->
                 <svg
                   class="fill-violet-700 absolute transition-opacity duration-500 ease-out"
                   [ngClass]="{
-                    'opacity-100': darkModeService.darkModeSignal() === 'dark',
-                    'opacity-0': darkModeService.darkModeSignal() !== 'dark'
+                    'opacity-100': darkModeService.darkModeSignal() !== 'dark',
+                    'opacity-0': darkModeService.darkModeSignal() === 'dark'
                   }"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -58,8 +58,8 @@ import { DarkModeService } from '../../../app/services/dark-mode.service';
                 <svg
                   class="fill-yellow-500 absolute transition-opacity duration-500 ease-out"
                   [ngClass]="{
-                    'opacity-100': darkModeService.darkModeSignal() !== 'dark',
-                    'opacity-0': darkModeService.darkModeSignal() === 'dark'
+                    'opacity-100': darkModeService.darkModeSignal() === 'dark',
+                    'opacity-0': darkModeService.darkModeSignal() !== 'dark'
                   }"
                   fill="currentColor"
                   viewBox="0 0 20 20"
