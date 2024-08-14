@@ -287,3 +287,38 @@ a:hover {
   background-position: right center;
   animation: animation-15lk19q 2.8s linear 0s infinite normal none running;
 }
+/* For Chrome, Safari, and other WebKit browsers */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #eab308;
+  border-radius: 10px;
+  background: #6d28d9;
+}
+
+/* For Firefox */
+html {
+  scrollbar-width: thin;
+
+  scrollbar-color: #6d28d9 #fff; /* thumb color and track color */
+}
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-thumb {
+    background: #6d28d9;
+    background: #eab308;
+  }
+
+  /* For Firefox */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: #eab308 #fff; /* thumb color and track color */
+  }
+}
