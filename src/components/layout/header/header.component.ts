@@ -36,31 +36,40 @@ import { DarkModeService } from '../../../app/services/dark-mode.service';
             <li><a href="/contact">Contact</a></li>
             <li>
               <button
-                class="flex transition-transform hover:scale-125 align-middle relative"
+                class="h-12 w-12 rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-gray-700 relative flex items-center justify-center transition-transform"
                 (click)="toggleDarkMode()"
               >
-                <span
-                  class="material-icons absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                <!-- Dark mode SVG -->
+                <svg
+                  class="fill-violet-700 absolute transition-opacity duration-500 ease-out"
                   [ngClass]="{
-                    'opacity-100 translate-y-0 rotate-0 transition-all duration-500 ease-out':
-                      darkModeService.darkModeSignal() === 'dark',
-                    'opacity-0 -translate-y-full rotate-180 transition-all duration-500 ease-out':
-                      darkModeService.darkModeSignal() !== 'dark'
+                    'opacity-100': darkModeService.darkModeSignal() === 'dark',
+                    'opacity-0': darkModeService.darkModeSignal() !== 'dark'
                   }"
-                  >dark_mode</span
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
                 >
+                  <path
+                    d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+                  ></path>
+                </svg>
 
-                <!-- Light mode icon -->
-                <span
-                  class="material-icons absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                <!-- Light mode SVG -->
+                <svg
+                  class="fill-yellow-500 absolute transition-opacity duration-500 ease-out"
                   [ngClass]="{
-                    'opacity-100 translate-y-0 rotate-0 transition-all duration-500 ease-out':
-                      darkModeService.darkModeSignal() !== 'dark',
-                    'opacity-0 translate-y-full rotate-180 transition-all duration-500 ease-out':
-                      darkModeService.darkModeSignal() === 'dark'
+                    'opacity-100': darkModeService.darkModeSignal() !== 'dark',
+                    'opacity-0': darkModeService.darkModeSignal() === 'dark'
                   }"
-                  >light_mode</span
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
                 >
+                  <path
+                    d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
               </button>
             </li>
 
@@ -139,7 +148,7 @@ import { DarkModeService } from '../../../app/services/dark-mode.service';
         width: 60px;
         padding: 6px;
         border-radius: 50%;
-        border: 8px solid rgb(249, 215, 47);
+        border: 8px solid #eab308;
         transition: transform 0.3s ease, border-color 0.3s ease,
           border-width 0.3s ease, box-shadow 0.3s ease;
       }

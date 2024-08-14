@@ -8,7 +8,9 @@ import { ContentService } from '../../services/content.service';
   standalone: true,
   imports: [NgFor, RouterLink, AsyncPipe],
   template: `
-    <section class="text-gray-600 body-font">
+    <section
+      class="text-gray-600 body-font dark:text-gray-300 dark:bg-gray-900"
+    >
       <div class="container px-5 py-24 mx-auto">
         <div
           class="flex flex-wrap w-full mb-20 flex-col items-center text-center"
@@ -18,7 +20,9 @@ import { ContentService } from '../../services/content.service';
           >
             Blog posts
           </h2>
-          <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">
+          <p
+            class="lg:w-1/2 w-full leading-relaxed text-gray-500 dark:text-gray-400"
+          >
             This blog explores tech insights and other topics that catch my
             interest, offering a compilation of solutions and ideas that I hope
             will be helpful to others seeking practical guidance.
@@ -28,9 +32,11 @@ import { ContentService } from '../../services/content.service';
           @for (post of posts;track post.attributes.slug) {
           <div class="w-full xl:w-1/3 md:w-1/2 p-4">
             <a [routerLink]="['/blog/', post.attributes.slug]">
-              <div class="border border-gray-200 p-6 rounded-lg">
+              <div
+                class="border border-gray-200 p-6 rounded-lg dark:border-gray-700 bg-white dark:bg-gray-800"
+              >
                 <div
-                  class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4"
+                  class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4 dark:bg-indigo-800 dark:text-indigo-400"
                 >
                   <svg
                     fill="none"
@@ -45,10 +51,14 @@ import { ContentService } from '../../services/content.service';
                   </svg>
                 </div>
 
-                <h2 class="text-lg text-gray-900 font-medium title-font mb-2">
+                <h2
+                  class="text-lg text-gray-900 font-medium title-font mb-2 dark:text-gray-100"
+                >
                   {{ post.attributes.title }}
                 </h2>
-                <p class="post__desc leading-relaxed text-base">
+                <p
+                  class="post__desc leading-relaxed text-base dark:text-gray-300"
+                >
                   {{ post.attributes.description }}
                 </p>
               </div>

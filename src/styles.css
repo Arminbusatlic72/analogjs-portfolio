@@ -90,7 +90,7 @@ button:focus-visible {
   }
 } */
 
-.markdown-content h1 {
+/* .markdown-content h1 {
   @apply text-4xl font-extrabold text-gray-900 mb-4;
 }
 
@@ -182,3 +182,107 @@ button:focus-visible {
 a:hover {
   color: #535bf2;
 } */
+@media (max-width: 768px) {
+  .markdown-content table {
+  }
+
+  .markdown-content th,
+  .markdown-content td {
+    @apply px-0.5;
+  }
+}
+.markdown-content h1 {
+  @apply text-4xl font-extrabold text-gray-900 mb-4 dark:text-gray-100;
+}
+
+.markdown-content h2 {
+  @apply text-3xl font-semibold text-gray-800 mt-8 mb-4 dark:text-gray-200;
+}
+
+.markdown-content h3 {
+  @apply text-2xl font-medium text-gray-700 mt-6 mb-3 dark:text-gray-300;
+}
+
+.markdown-content p {
+  @apply text-base leading-relaxed text-gray-700 mb-4 dark:text-gray-400;
+}
+
+.markdown-content a {
+  @apply text-blue-600 hover:text-blue-800 hover:underline dark:text-blue-400 dark:hover:text-blue-600;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  @apply ml-6 mb-4;
+}
+
+.markdown-content ul {
+  @apply list-disc;
+}
+
+.markdown-content ol {
+  @apply list-decimal;
+}
+
+.markdown-content blockquote {
+  @apply pl-4 border-l-4 border-gray-300 italic text-gray-700 mb-6 dark:border-gray-600 dark:text-gray-300;
+}
+
+.markdown-content img {
+  max-width: 100%;
+  border-radius: 0.5rem;
+}
+
+.markdown-content table {
+  @apply min-w-full divide-y divide-gray-200 my-3 dark:divide-gray-600;
+}
+
+.markdown-content th,
+.markdown-content td {
+  @apply px-6 py-3 text-left text-sm font-medium text-gray-900 dark:text-gray-100;
+}
+
+.markdown-content thead {
+  @apply bg-gray-50 dark:bg-gray-800;
+}
+
+.markdown-content tbody tr:nth-child(odd) {
+  @apply bg-gray-100 dark:bg-gray-900;
+}
+
+.markdown-content tbody tr:nth-child(even) {
+  @apply bg-white dark:bg-gray-800;
+}
+
+.animated {
+  background-size: 2rem 2rem;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  white-space: nowrap;
+}
+.animated {
+  background-size: 2rem 2rem;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  white-space: nowrap;
+}
+@keyframes animation-15lk19q {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 2rem 4rem;
+  }
+}
+.animated:hover {
+  background-image: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.1) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.1) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-position: right center;
+  animation: animation-15lk19q 2.8s linear 0s infinite normal none running;
+}

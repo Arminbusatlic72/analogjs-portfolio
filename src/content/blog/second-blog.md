@@ -2,7 +2,7 @@
 title: "Understanding SSR, CSR, SSG, and ISR: Pros, Cons, and Use Cases"
 slug: understanding-ssr-csr-ssg-isr-pros-cons
 description: A comprehensive look at Server-Side Rendering (SSR), Client-Side Rendering (CSR), Static Site Generation (SSG), and Incremental Static Regeneration (ISR), including their pros, cons, and ideal use cases.
-coverImage: https://example.com/cover-image.jpg
+coverImage: https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80
 ---
 
 # Understanding SSR, CSR, SSG, and ISR: Pros, Cons, and Use Cases

@@ -103,7 +103,6 @@ export class DarkModeService {
 
   private getInitialDarkMode(): string {
     if (isPlatformBrowser(this.platformId)) {
-      // Retrieve and parse the JSON string stored in localStorage
       const storedMode: string | null =
         window.localStorage.getItem('darkModeSignal');
       if (storedMode) {
@@ -111,7 +110,6 @@ export class DarkModeService {
           const parsedMode = JSON.parse(storedMode);
           return parsedMode === 'dark' ? 'dark' : 'light';
         } catch (e) {
-          // If JSON.parse fails, return 'light' as a fallback
           return 'light';
         }
       } else {
