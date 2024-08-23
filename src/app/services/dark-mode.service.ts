@@ -1,39 +1,39 @@
-// // import { effect, Injectable, signal } from '@angular/core';
-// // import { isPlatformBrowser } from '@angular/common';
-// // import { Inject, PLATFORM_ID } from '@angular/core';
+// import { effect, Injectable, signal } from '@angular/core';
+// import { isPlatformBrowser } from '@angular/common';
+// import { Inject, PLATFORM_ID } from '@angular/core';
 
-// // @Injectable({
-// //   providedIn: 'root',
-// // })
-// // export class DarkModeService {
-// //   darkModeSignal = signal<string>(this.getInitialDarkMode());
+// @Injectable({
+//   providedIn: 'root',
+// })
+// export class DarkModeService {
+//   darkModeSignal = signal<string>(this.getInitialDarkMode());
 
-// //   updateDarkMode() {
-// //     this.darkModeSignal.update((value) =>
-// //       value === 'dark' ? 'light' : 'dark'
-// //     );
-// //   }
+//   updateDarkMode() {
+//     this.darkModeSignal.update((value) =>
+//       value === 'dark' ? 'light' : 'dark'
+//     );
+//   }
 
-// //   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
-// //     if (isPlatformBrowser(this.platformId)) {
-// //       effect(() => {
-// //         window.localStorage.setItem(
-// //           'darkModeSignal',
-// //           JSON.stringify(this.darkModeSignal())
-// //         );
-// //       });
-// //     }
-// //   }
+//   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+//     if (isPlatformBrowser(this.platformId)) {
+//       effect(() => {
+//         window.localStorage.setItem(
+//           'darkModeSignal',
+//           JSON.stringify(this.darkModeSignal())
+//         );
+//       });
+//     }
+//   }
 
-// //   private getInitialDarkMode(): string {
-// //     if (isPlatformBrowser(this.platformId)) {
-// //       return JSON.parse(
-// //         window.localStorage.getItem('darkModeSignal') ?? 'light'
-// //       );
-// //     }
-// //     return 'light';
-// //   }
-// // }
+//   private getInitialDarkMode(): string {
+//     if (isPlatformBrowser(this.platformId)) {
+//       return JSON.parse(
+//         window.localStorage.getItem('darkModeSignal') ?? 'light'
+//       );
+//     }
+//     return 'light';
+//   }
+// }
 
 // import { effect, Injectable, signal } from '@angular/core';
 // import { isPlatformBrowser } from '@angular/common';
@@ -92,7 +92,6 @@ export class DarkModeService {
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       effect(() => {
-        // Store the current dark mode value as a JSON string
         window.localStorage.setItem(
           'darkModeSignal',
           JSON.stringify(this.darkModeSignal())
@@ -113,10 +112,9 @@ export class DarkModeService {
           return 'light';
         }
       } else {
-        // If no value is found in localStorage, default to 'light'
         return 'light';
       }
     }
-    return 'light'; // Default mode if not running in the browser
+    return 'light';
   }
 }

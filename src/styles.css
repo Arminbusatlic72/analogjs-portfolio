@@ -251,7 +251,7 @@ a:hover {
 
   .markdown-content th,
   .markdown-content td {
-    @apply px-0.5;
+    @apply px-0;
   }
 }
 
