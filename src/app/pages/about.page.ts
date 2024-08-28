@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
         <div class="container px-5 py-24 mx-auto">
           <div class="hero-content text-primary-content dark:text-white">
             <h2
-              class="text-4xl md:text-4xl dark:text-yellow-500 lg:text-6xl font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-center md:text-left dark:text-gray-300"
+              class="text-4xl md:text-4xl text-violet-700 dark:text-yellow-500 lg:text-6xl font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-center md:text-left transition-all duration-500 ease-out transform"
             >
               About Me
             </h2>

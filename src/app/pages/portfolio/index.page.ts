@@ -68,7 +68,7 @@ import { ContentService } from '../../services/content.service';
           class="flex flex-wrap w-full mb-20 flex-col items-center text-center"
         >
           <h2
-            class="text-4xl md:text-4xl lg:text-6xl dark:text-yellow-500 font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-center md:text-left dark:text-gray-300"
+            class="text-4xl md:text-4xl lg:text-6xl text-violet-700 dark:text-yellow-500 font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-center md:text-left transition-all duration-500 ease-out transform"
           >
             Portfolio
           </h2>
