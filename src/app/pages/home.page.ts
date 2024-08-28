@@ -16,7 +16,7 @@ import { Component } from '@angular/core';
           >
             <div class="container px-5 py-24 mx-auto">
               <h1
-                class="main-heading text-4xl md:text-4xl lg:text-6xl font-bold relative"
+                class="main-heading text-4xl md:text-4xl lg:text-6xl dark:text-yellow-500 font-bold relative"
               >
                 Hello my name is Armin.
               </h1>
