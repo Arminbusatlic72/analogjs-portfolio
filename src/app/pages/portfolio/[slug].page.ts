@@ -12,12 +12,12 @@ import { Project } from 'src/app/models/project';
       <!-- Blog post with featured image -->
       <section class="text-gray-600 body-font p-5">
         <div
-          class="container px-5 py-24 mx-auto my-24 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900"
+          class="container px-5 sm:px-24 pb-24 mx-auto my-24 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900 relative z-[1000]"
         >
           <div class="max-w-3xl mx-auto">
             <div class="py-8 pt-20">
               <h2
-                class="text-4xl md:text-4xl lg:text-6xl font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-center md:text-left dark:text-gray-300"
+                class="text-4xl md:text-4xl lg:text-6xl font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-left dark:text-gray-300"
               >
                 {{ post.attributes.title }}
               </h2>

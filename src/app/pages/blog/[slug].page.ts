@@ -13,17 +13,17 @@ import { BlogPost } from 'src/app/models/post';
 
       <section class="text-gray-600 body-font p-5">
         <div
-          class="container px-5 py-24 mx-auto my-24 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900 relative z-[1000]"
+          class="container px-5 sm:px-24 pb-24 mx-auto my-24 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900 relative z-[1000]"
         >
           <div class="max-w-full sm:max-w-3xl mx-auto">
             <!-- Adjust max-width for mobile -->
             <div class="py-8">
               <h2
-                class="text-3xl sm:text-4xl md:text-4xl lg:text-6xl font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-center md:text-left dark:text-gray-300"
+                class="text-3xl sm:text-4xl md:text-4xl lg:text-6xl font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-left dark:text-gray-300"
               >
                 {{ post.attributes.title }}
               </h2>
-              <p class="text-gray-500 text-sm text-center md:text-left">
+              <p class="text-gray-500 text-sm text-left">
                 Published on <time datetime="2022-04-05">April 5, 2022</time>
               </p>
             </div>

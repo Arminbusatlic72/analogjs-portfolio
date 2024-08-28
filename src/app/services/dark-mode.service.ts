@@ -112,7 +112,7 @@ export class DarkModeService {
         try {
           // Attempt to parse the stored mode from JSON format
           const parsedMode = JSON.parse(storedMode);
-
+          console.log(parsedMode);
           // If the parsed mode is 'dark', return 'dark', otherwise return 'light'
           return parsedMode === 'dark' ? 'dark' : 'light';
         } catch (e) {
@@ -126,6 +126,6 @@ export class DarkModeService {
     }
 
     // If not running in a browser environment, return 'dark' by default
-    return 'dark';
+    // return 'dark';
   }
 }
