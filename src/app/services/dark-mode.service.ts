@@ -101,20 +101,31 @@ export class DarkModeService {
   }
 
   private getInitialDarkMode(): string {
+    // Check if the current environment is a browser (not a server)
     if (isPlatformBrowser(this.platformId)) {
+      // Retrieve the stored dark mode preference from localStorage
       const storedMode: string | null =
         window.localStorage.getItem('darkModeSignal');
+
+      // If a stored mode is found
       if (storedMode) {
         try {
+          // Attempt to parse the stored mode from JSON format
           const parsedMode = JSON.parse(storedMode);
+
+          // If the parsed mode is 'dark', return 'dark', otherwise return 'light'
           return parsedMode === 'dark' ? 'dark' : 'light';
         } catch (e) {
+          // If parsing fails (e.g., due to an error), return 'light' by default
           return 'light';
         }
       } else {
+        // If no stored mode is found, return 'light' as the default
         return 'light';
       }
     }
-    return 'light';
+
+    // If not running in a browser environment, return 'dark' by default
+    return 'dark';
   }
 }

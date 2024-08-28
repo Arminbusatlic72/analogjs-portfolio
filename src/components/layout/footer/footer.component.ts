@@ -9,7 +9,7 @@ import { SocialIconListComponent } from './social-icon-list.component';
 
   template: `
     <footer
-      class="p-2  bg-white text-center text-black border-gray-200 sm:px-8 lg:px-16 dark:bg-gray-800 border-gray-700"
+      class="relative z-[1000] p-2  bg-white text-center text-black border-gray-200 sm:px-8 lg:px-16 dark:bg-gray-800 border-gray-700"
     >
       <p class="border-t text-black  pt-10 pb-8 text-sm dark:text-white">
         <span class="text-black dark:text-white">©</span>
@@ -21,6 +21,9 @@ import { SocialIconListComponent } from './social-icon-list.component';
   `,
   styles: [
     `
+      footer {
+        z-index: 1000;
+      }
       img {
         display: inline-block;
       }

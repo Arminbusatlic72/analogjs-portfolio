@@ -10,7 +10,7 @@ import { ContentService } from '../../services/content.service';
   template: `
     <section class="text-gray-600 body-font p-5">
       <div
-        class="container px-1 py-24 mx-auto my-4 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900"
+        class="container px-1 py-24 mx-auto mb-24 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900"
       >
         <div
           class="flex flex-wrap w-full mb-20 flex-col items-center text-center"
@@ -30,7 +30,7 @@ import { ContentService } from '../../services/content.service';
         </div>
         <div class="flex flex-wrap">
           @for (post of posts;track post.attributes.slug) {
-          <div class="w-full xl:w-1/3 md:w-1/2 p-4">
+          <div class="w-full xl:w-1/3 md:w-1/2 p-4 relative z-[1000]">
             <a [routerLink]="['/blog/', post.attributes.slug]">
               <div
                 class="border border-gray-200 p-6 rounded-lg dark:border-gray-700 bg-white dark:bg-gray-800"

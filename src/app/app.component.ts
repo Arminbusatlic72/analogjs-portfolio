@@ -17,9 +17,23 @@ import { CommonModule } from '@angular/common';
     >
       <app-header></app-header>
 
-      <router-outlet></router-outlet>
+      <router-outlet> </router-outlet>
 
       <app-footer name="Armin Busatlic"></app-footer>
+      <div class="area fixed">
+        <ul class="circles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
     </div>
   `,
 })

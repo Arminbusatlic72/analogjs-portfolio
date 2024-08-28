@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   standalone: true,
   template: `
     <div
-      class="bg-white flex flex-col items-center justify-center pt-20 dark:bg-gray-800 text-gray-100"
+      class="bg-white flex flex-col items-center justify-center dark:bg-gray-800 text-gray-100"
     >
       <section class="text-gray-600 body-font z-10 flex w-full flex-1 flex-col">
         <div class="container px-5 py-24 mx-auto">

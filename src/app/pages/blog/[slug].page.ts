@@ -10,13 +10,14 @@ import { BlogPost } from 'src/app/models/post';
   template: `
     <div *ngIf="post$ | async as post">
       <!-- Blog post with featured image -->
+
       <section class="text-gray-600 body-font p-5">
         <div
-          class="container px-5 py-24 mx-auto my-24 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900"
+          class="container px-5 py-24 mx-auto my-24 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900 relative z-[1000]"
         >
           <div class="max-w-full sm:max-w-3xl mx-auto">
             <!-- Adjust max-width for mobile -->
-            <div class="py-8 pt-20">
+            <div class="py-8">
               <h2
                 class="text-3xl sm:text-4xl md:text-4xl lg:text-6xl font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-center md:text-left dark:text-gray-300"
               >
