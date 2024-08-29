@@ -1,15 +1,36 @@
 import { MarkdownComponent, injectContent } from '@analogjs/content';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 import { Project } from 'src/app/models/project';
 
 @Component({
   standalone: true,
-  imports: [MarkdownComponent, NgIf, AsyncPipe],
+  imports: [MarkdownComponent, NgIf, AsyncPipe, RouterLink],
   template: `
     <div *ngIf="post$ | async as post">
       <!-- Blog post with featured image -->
+      <section
+        class="mb-4 flex w-full flex-auto flex-row justify-between gap-4 text-gray-600 dark:text-gray-300"
+      >
+        <button
+          [routerLink]="['/portfolio', post.attributes.previousProject]"
+          [disabled]="!post.attributes.previousProject"
+          class="btn btn-accent w-28"
+          type="button"
+        >
+          Previous
+        </button>
+        <button
+          [routerLink]="['/portfolio', post.attributes.nextProject]"
+          [disabled]="!post.attributes.nextProject"
+          class="btn btn-accent w-28"
+          type="button"
+        >
+          Next
+        </button>
+      </section>
       <section class="text-gray-600 body-font p-5">
         <div
           class="container px-5 sm:px-24 pb-24 mx-auto my-24 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900 relative z-[1000]"

@@ -6,4 +6,6 @@ featuredImage: "/projects/alcove.png"
 slug: "alcove"
 link: "https://www.alcoveadvisors.com/"
 description: "this is very good project"
+previousProject: ""
+nextProject: "kojan"
 ---

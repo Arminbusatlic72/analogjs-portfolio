@@ -6,4 +6,6 @@ export interface Project {
   slug: string;
   link: string;
   description: string;
+  previousProject?: string;
+  nextProject?: string;
 }

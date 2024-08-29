@@ -6,4 +6,6 @@ featuredImage: "/projects/neologic.png"
 link: "https://neologic.rs/"
 slug: "neologic"
 description: "this is very good project"
+previousProject: "kojan"
+nextProject: "skillsdivision"
 ---

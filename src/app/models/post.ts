@@ -3,4 +3,6 @@ export interface BlogPost {
   slug: string;
   description: string;
   coverImage: string;
+  previousPost?: string;
+  nextPost?: string;
 }
