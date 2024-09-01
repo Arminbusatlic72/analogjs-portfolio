@@ -15,7 +15,52 @@ import { Component } from '@angular/core';
             class="text-gray-600 body-font max-w-md md:max-w-[80%] mx-auto text-black dark:text-white "
           >
             <div class="container px-5 pb-10 mx-auto">
-              <div class="flex flex-col-reverse lg:flex-row items-center">
+              <div class="flex flex-col-reverse lg:flex-row lg:items-center">
+                <div
+                  class="text-wrapper lg:w-1/2 w-full lg:pr-8 flex flex-col justify-center mobile-min-height"
+                >
+                  <p>Hello</p>
+                  <h1
+                    class="text-4xl md:text-4xl lg:text-6xl font-bold relative transition-all duration-500 ease-out transform"
+                  >
+                    I am
+                    <span
+                      class="main-heading text-violet-700 dark:text-yellow-500"
+                    >
+                      Armin<br />
+                      Busatlic
+                    </span>
+                  </h1>
+                  <p
+                    class="mb-5 text-lg md:text-2xl md:leading-8 lg:leading-[3rem]"
+                  >
+                    I am a Frontend Developer
+                  </p>
+                  <div class="w-full flex justify-start gap-4">
+                    <button
+                      class="animated text-white bg-violet-700 border-0 py-2 px-8 focus:outline-none hover:bg-violet-600 rounded text-lg"
+                    >
+                      Download my CV
+                    </button>
+                    <button
+                      class="animated text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-200 rounded text-lg"
+                    >
+                      Projects
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="image-wrapper lg:w-1/2 w-full lg:pl-8 mb-8 lg:mb-0 hidden lg:block"
+                >
+                  <img
+                    class="w-full h-auto"
+                    src="/arminHero.png"
+                    alt="Armin Image"
+                  />
+                </div>
+              </div>
+
+              <!-- <div class="flex flex-col-reverse lg:flex-row items-center">
                 <div class="text-wrapper lg:w-1/2 w-full lg:pr-8">
                   <p>Hello</p>
                   <h1
@@ -56,7 +101,7 @@ import { Component } from '@angular/core';
                     alt="Armin Image"
                   />
                 </div>
-              </div>
+              </div> -->
             </div>
 
             <!-- <div class="container px-5 py-24 mx-auto">

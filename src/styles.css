@@ -488,3 +488,14 @@ html {
     border-radius: 50%;
   }
 }
+footer {
+  height: 165px;
+}
+@media (max-width: 640px) {
+  /* Adjust this breakpoint as needed */
+  .mobile-min-height {
+    min-height: calc(
+      100vh - 60px
+    ); /* Replace 60px with the height of your footer */
+  }
+}
