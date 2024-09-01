@@ -62,7 +62,7 @@ import { ContentService } from '../../services/content.service';
 
     <section class="text-gray-600 body-font p-5 context">
       <div
-        class="container px-1 py-24 mx-auto my-4 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900"
+        class="container px-1 py-2 mx-auto my-4 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900"
       >
         <div
           class="flex flex-wrap w-full mb-20 flex-col items-center text-center"
