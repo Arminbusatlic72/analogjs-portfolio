@@ -495,7 +495,7 @@ footer {
   /* Adjust this breakpoint as needed */
   .mobile-min-height {
     min-height: calc(
-      100vh - 60px
+      100vh - 165px
     ); /* Replace 60px with the height of your footer */
   }
 }
