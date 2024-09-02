@@ -212,7 +212,91 @@ a:hover {
 .markdown-content ul {
   @apply list-disc;
 }
+/* .markdown-content pre {
+  font-size: 0.8rem;
+  background: #2d2d2d;
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  color: #ccc;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  hyphens: none;
+  word-wrap: break-word;
+}
+.markdown-content pre.code {
+  margin: 20px 25px;
+  border-radius: 4px;
+  border: 1px solid #292929;
+  position: relative;
+} */
+.markdown-content pre {
+  font-size: 0.8rem;
+  background: #2d2d2d;
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  color: #ccc;
+  text-align: left;
+  white-space: pre-wrap; /* Allow wrapping */
+  word-break: break-word; /* Break long words */
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  hyphens: none;
+  max-width: 100%; /* Ensure it doesn't overflow */
+  box-sizing: border-box; /* Include padding in width calculations */
+}
 
+.markdown-content pre.code {
+  margin: 20px 25px;
+  border-radius: 4px;
+  border: 1px solid #292929;
+  position: relative;
+}
+/* Syntax highlighting */
+.markdown-content pre .keyword {
+  color: #c5a5c5; /* Keywords like 'function', 'return' */
+}
+
+.markdown-content pre .string {
+  color: #8dc891; /* Strings */
+}
+
+.markdown-content pre .comment {
+  color: #7a7a7a; /* Comments */
+  font-style: italic;
+}
+
+.markdown-content pre .number {
+  color: #dcdcaa; /* Numbers */
+}
+
+.markdown-content pre .operator {
+  color: #e5e5e5; /* Operators like '=', '+' */
+}
+
+.markdown-content pre .function {
+  color: #79b6f2; /* Function names */
+}
+
+.markdown-content pre .punctuation {
+  color: #cccccc; /* Punctuation like '{', '(', ')' */
+}
+
+.markdown-content pre .variable {
+  color: #d7ba7d; /* Variables */
+}
 .markdown-content ol {
   @apply list-decimal;
 }
