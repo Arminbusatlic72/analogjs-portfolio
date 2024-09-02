@@ -491,11 +491,14 @@ html {
 footer {
   height: 165px;
 }
+header {
+  /* height: 105px; */
+}
 @media (max-width: 640px) {
   /* Adjust this breakpoint as needed */
   .mobile-min-height {
     min-height: calc(
-      100vh - 165px
+      100vh - 165px - 104px
     ); /* Replace 60px with the height of your footer */
   }
 }
