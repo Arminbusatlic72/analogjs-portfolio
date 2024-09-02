@@ -1,11 +1,4 @@
-import {
-  Component,
-  HostBinding,
-  effect,
-  signal,
-  OnInit,
-  inject,
-} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DarkModeService } from '../../../app/services/dark-mode.service';
 import { SocialIconListComponent } from '../footer/social-icon-list.component';
