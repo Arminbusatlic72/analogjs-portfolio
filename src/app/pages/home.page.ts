@@ -40,7 +40,7 @@ import { Component } from '@angular/core';
                     <button
                       class="animated text-white bg-violet-700 border-0 py-2 px-8 focus:outline-none hover:bg-violet-600 rounded text-lg"
                     >
-                      Download my CV
+                      Download CV
                     </button>
                     <button
                       class="animated text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-200 rounded text-lg"
