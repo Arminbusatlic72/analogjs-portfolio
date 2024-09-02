@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
       class="text-black bg-white flex flex-col items-center justify-center dark:bg-gray-800 text-gray-100"
     >
       <section class="text-gray-600 body-font">
-        <div class="container px-5 py-24 mx-auto">
+        <div class="container px-5 pb-24 mx-auto">
           <div class="flex flex-col text-center w-full mb-12">
             <h2
               class="text-4xl md:text-4xl lg:text-6xl text-violet-700 dark:text-yellow-500 font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-center md:text-left transition-all duration-500 ease-out transform"
