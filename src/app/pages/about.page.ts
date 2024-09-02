@@ -53,7 +53,9 @@ import { TechnologyItemComponent } from '../../components/layout/tech-item/tech-
           >
             <span class="text-yellow-500 dark:text-violet-700">#</span> skills
           </h3>
-          <div class="py-8 px-6 px-0 md:px-16 grid md:grid-cols-2 gap-16">
+          <div
+            class="py-8 px-0 lg: px-8 px-0 md:px-16 grid md:grid-cols-2 gap-16"
+          >
             <div class="leading-loose">
               <h3 class="font-bold text-xl mb-2">Coding</h3>
 
