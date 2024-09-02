@@ -53,7 +53,7 @@ import { TechnologyItemComponent } from '../../components/layout/tech-item/tech-
               projects
             </h3>
             <div
-              class="hidden md:flex flex-wrap max-h-[400px] overflow-y-auto border-gray-200"
+              class="flex flex-wrap max-h-[400px] overflow-y-auto border-gray-200"
             >
               @for (post of posts; track post.attributes.slug) {
               <div class="w-full p-2">
@@ -63,13 +63,16 @@ import { TechnologyItemComponent } from '../../components/layout/tech-item/tech-
                   >
                     <!-- Image Container -->
                     <div
-                      class="h-48 mb-4 overflow-hidden rounded-t-lg bg-gray-100 dark:bg-gray-700"
+                      class="relative h-48 mb-4 overflow-hidden rounded-t-lg bg-gray-100 dark:bg-gray-700"
                     >
                       <img
                         class="h-full w-full object-cover object-center"
                         src="{{ post.attributes.featuredImage }}"
                         alt="{{ post.attributes.title }}"
                       />
+                      <div
+                        class="absolute inset-0 bg-gradient-to-t from-white dark:from-gray-800 to-transparent opacity-80"
+                      ></div>
                     </div>
 
                     <!-- Title -->
