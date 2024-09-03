@@ -12,7 +12,7 @@ import { ContentService } from '../../services/content.service';
       <div
         class="container px-1 py-2 mx-auto my-4 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900"
       >
-        <div class="flex flex-wrap w-full mb-20 flex-col  text-left p-5">
+        <div class="flex flex-wrap w-full flex-col  text-left p-5">
           <h2
             class="text-4xl md:text-4xl lg:text-6xl text-violet-700 dark:text-yellow-500 font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-left transition-all duration-500 ease-out transform"
           >
@@ -20,7 +20,7 @@ import { ContentService } from '../../services/content.service';
             portfolio
           </h2>
           <p
-            class="lg:w-1/2 w-full leading-relaxed text-gray-500 dark:text-gray-400"
+            class="lg:w-1/2 w-full leading-relaxed text-gray-500 dark:text-gray-300"
           >
             List of my Projects
           </p>

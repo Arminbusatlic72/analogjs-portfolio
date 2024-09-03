@@ -26,7 +26,7 @@ import { TechnologyItemComponent } from '../../components/layout/tech-item/tech-
             </h2>
             <div class="px-0 md:px-16">
               <p
-                class="leading-relaxed text-gray-500 dark:text-gray-400 leading-loose"
+                class="leading-relaxed text-gray-500 leading-loose dark:text-gray-300"
               >
                 I am Armin Bušatlić and I am a self-taught developer with
                 extensive experience in front-end development, with a focus on
@@ -105,9 +105,7 @@ import { TechnologyItemComponent } from '../../components/layout/tech-item/tech-
           >
             <span class="text-yellow-500 dark:text-violet-700">#</span> skills
           </h3>
-          <div
-            class="py-8 px-0 lg: px-8 px-0 md:px-16 grid md:grid-cols-2 gap-16"
-          >
+          <div class="py-8 px-0  px-0 md:px-16 grid md:grid-cols-2 gap-16">
             <div class="leading-loose">
               <h3 class="font-bold text-xl mb-2">Coding</h3>
 

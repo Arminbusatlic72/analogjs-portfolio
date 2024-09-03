@@ -28,7 +28,7 @@ import { Component } from '@angular/core';
                       class="main-heading text-violet-700 dark:text-yellow-500"
                     >
                       Armin<br />
-                      Busatlic
+                      Bušatlić
                     </span>
                   </h1>
                   <p

@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
+
+import { ContactFormComponent } from '../../components/layout/contact-form/contact-form.component';
 @Component({
   selector: 'contact',
   standalone: true,
+  imports: [ContactFormComponent],
+
   template: `
     <div
       class="text-black bg-white flex flex-col items-center justify-center dark:bg-gray-800 text-gray-100"
@@ -10,18 +14,18 @@ import { Component } from '@angular/core';
         <div class="container px-5 pb-24 mx-auto">
           <div class="flex flex-col text-center w-full mb-12">
             <h2
-              class="text-4xl md:text-4xl lg:text-6xl text-violet-700 dark:text-yellow-500 font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-center md:text-left transition-all duration-500 ease-out transform"
+              class="text-4xl md:text-4xl lg:text-6xl text-violet-700 dark:text-yellow-500 font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-left transition-all duration-500 ease-out transform"
             >
               <span class="text-yellow-500 dark:text-violet-700">/</span>
               contact
             </h2>
-            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
-              Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
-              gentrify.
+            <p class="lg:w-2/3 leading-relaxed text-left dark:text-gray-300">
+              Thanks for taking the time to reach out. How can I help you today?
             </p>
           </div>
           <div class="lg:w-1/2 md:w-2/3 mx-auto relative z-[1000]">
-            <div class="flex flex-wrap -m-2">
+            <app-contact-form />
+            <!-- <div class="flex flex-wrap -m-2">
               <div class="p-2 w-1/2">
                 <div class="relative">
                   <label for="name" class="leading-7 text-sm text-gray-600"
@@ -67,7 +71,7 @@ import { Component } from '@angular/core';
                   Button
                 </button>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </section>
