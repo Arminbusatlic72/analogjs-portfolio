@@ -46,7 +46,6 @@ import { ContentService } from '../../services/content.service';
                   >
                     <path d="M16 18l6-6-6-6M8 6l-6 6 6 6"></path>
                   </svg>
-                  <!-- <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path> -->
                 </div>
 
                 <h2
@@ -57,7 +56,7 @@ import { ContentService } from '../../services/content.service';
                 <p
                   class="post__desc leading-relaxed text-base dark:text-gray-300"
                 >
-                  {{ post.attributes.description }}
+                  {{ post.attributes.technology }}
                 </p>
               </div>
             </a>

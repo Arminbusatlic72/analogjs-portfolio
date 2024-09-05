@@ -198,7 +198,7 @@ import { TechnologyItemComponent } from '../../components/layout/tech-item/tech-
                     <p
                       class="post__desc leading-relaxed text-base dark:text-gray-300"
                     >
-                      {{ post.attributes.description }}
+                      {{ post.attributes.technology }}
                     </p>
                   </div>
                 </a>

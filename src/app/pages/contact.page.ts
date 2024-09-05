@@ -24,7 +24,20 @@ import { ContactFormComponent } from '../../components/layout/contact-form/conta
             <p class="lg:w-2/3 leading-relaxed text-left dark:text-gray-300">
               Thanks for taking the time to reach out. How can I help you today?
             </p>
-            <div class="flex items-center lg:justify-start mt-6 pl-8">
+            <div class="flex items-center lg:justify-start mt-6">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="size-6 mr-4 text-violet-700 dark:text-yellow-500"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+
               <p>
                 I am developer based in
                 <span
@@ -39,7 +52,7 @@ import { ContactFormComponent } from '../../components/layout/contact-form/conta
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                class="w-6 h-6 mr-2 text-violet-700 dark:text-yellow-500"
+                class="w-5 h-5 mr-4 text-violet-700 dark:text-yellow-500"
               >
                 <path
                   fill-rule="evenodd"
@@ -62,7 +75,7 @@ import { ContactFormComponent } from '../../components/layout/contact-form/conta
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                class="w-6 h-6 mr-2 text-violet-700 dark:text-yellow-500"
+                class="w-5 h-5 mr-4 text-violet-700 dark:text-yellow-500"
               >
                 <path
                   d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z"
@@ -73,7 +86,7 @@ import { ContactFormComponent } from '../../components/layout/contact-form/conta
               </svg>
 
               <p class="text-lg">
-                You can contact me via contact form or you can email me on
+                You can email me on
                 <a
                   href="mailto:dzarma.busatlic&#64;gmail.com"
                   class="font-semibold hover:underline text-violet-700 dark:text-yellow-500"

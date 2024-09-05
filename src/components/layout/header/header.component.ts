@@ -85,45 +85,47 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
           </div>
           <div
             [ngClass]="{ hidden: !showMenu, flex: showMenu }"
-            class="lg:flex lg:flex-grow items-center"
+            class="w-full lg:w-auto lg:flex lg:flex-grow items-center"
           >
-            <ul class="flex flex-col lg:flex-row list-none ml-auto">
+            <ul
+              class="w-full lg:w-auto flex flex-col lg:flex-row list-none ml-auto"
+            >
               <li class="nav-item">
                 <a
-                  class="px-3 py-2 flex items-center text-sm uppercase font-bold leading-snug text-black dark:text-white hover:opacity-75 transition-colors duration-500"
+                  class="px-6 py-4 flex items-center justify-center text-center text-sm uppercase font-bold leading-snug text-black dark:text-white hover:opacity-75 transition-colors duration-500"
                   href="/"
                   >Home</a
                 >
               </li>
               <li class="nav-item">
                 <a
-                  class="px-3 py-2 flex items-center text-sm uppercase font-bold leading-snug text-black dark:text-white hover:opacity-75 transition-colors duration-500"
+                  class="px-6 py-4 flex items-center justify-center text-center text-sm uppercase font-bold leading-snug text-black dark:text-white hover:opacity-75 transition-colors duration-500"
                   href="/about"
                   >About</a
                 >
               </li>
               <li class="nav-item">
                 <a
-                  class="px-3 py-2 flex items-center text-sm uppercase font-bold leading-snug text-black dark:text-white hover:opacity-75 transition-colors duration-500"
+                  class="px-6 py-4 flex items-center justify-center text-center text-sm uppercase font-bold leading-snug text-black dark:text-white hover:opacity-75 transition-colors duration-500"
                   href="/blog"
                   >Blog</a
                 >
               </li>
               <li class="nav-item">
                 <a
-                  class="px-3 py-2 flex items-center text-sm uppercase font-bold leading-snug text-black dark:text-white hover:opacity-75 transition-colors duration-500"
+                  class="px-6 py-4 flex items-center justify-center text-center text-sm uppercase font-bold leading-snug text-black dark:text-white hover:opacity-75 transition-colors duration-500"
                   href="/portfolio"
                   >Portfolio</a
                 >
               </li>
               <li class="nav-item">
                 <a
-                  class="px-3 py-2 flex items-center text-sm uppercase font-bold leading-snug text-black dark:text-white hover:opacity-75 transition-colors duration-500"
+                  class="px-6 py-4 flex items-center justify-center text-center text-sm uppercase font-bold leading-snug text-black dark:text-white hover:opacity-75 transition-colors duration-500"
                   href="/contact"
                   >Contact</a
                 >
               </li>
-              <li class="nav-item">
+              <li class="nav-item flex items-center justify-center px-6 py-4">
                 <button
                   class="h-8 w-8 rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-gray-700 relative flex items-center justify-center transition-transform"
                   (click)="toggleDarkMode()"
