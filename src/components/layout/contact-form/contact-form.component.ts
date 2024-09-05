@@ -17,7 +17,11 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
     <input type="hidden" name="form-name" value="contact-form" />
     <div class="p-2 w-1/2">
       <div class="relative">
-        <label for="name" class="leading-7 text-sm text-gray-600">Name</label>
+        <label
+          for="name"
+          class="leading-7 text-sm text-gray-600 dark:text-gray-400"
+          >Name</label
+        >
         <input
           type="text"
           id="name"
@@ -35,7 +39,11 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
     </div>
     <div class="p-2 w-1/2">
       <div class="relative">
-        <label for="email" class="leading-7 text-sm text-gray-600">Email</label>
+        <label
+          for="email"
+          class="leading-7 text-sm text-gray-600 dark:text-gray-400"
+          >Email</label
+        >
         <input
           type="email"
           id="email"
@@ -61,7 +69,9 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
     </div>
     <div class="p-2 w-full">
       <div class="relative">
-        <label for="message" class="leading-7 text-sm text-gray-600"
+        <label
+          for="message"
+          class="leading-7 text-sm text-gray-600 dark:text-gray-400"
           >Message</label
         >
         <textarea
@@ -84,7 +94,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
     <div class="p-2 w-full">
       <button
         type="submit"
-        class="animated flex mx-auto text-white bg-violet-700 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+        class="animated flex mx-auto md:mx-0 text-white bg-violet-700 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
       >
         Button
       </button>
