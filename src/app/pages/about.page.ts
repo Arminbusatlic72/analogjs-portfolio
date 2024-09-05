@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 
 import { ContentService } from '../services/content.service';
 import { TechnologyItemComponent } from '../../components/layout/tech-item/tech-item';
+
 @Component({
   selector: 'about',
   standalone: true,
@@ -43,8 +44,119 @@ import { TechnologyItemComponent } from '../../components/layout/tech-item/tech-
             </div>
           </div>
 
-          <!-- Projects Wrapper -->
+          <!-- Skills Wrapper -->
+          <div
+            class="text-wrapper text-primary-content dark:text-white w-full lg:w-1/2"
+          >
+            <h3
+              class="text-3xl md:text-3xl text-violet-700 dark:text-yellow-500 lg:text-6xl font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 md:text-left transition-all duration-500 ease-out transform"
+            >
+              <span class="text-yellow-500 dark:text-violet-700">#</span> skills
+            </h3>
+            <div class="px-0 md:px-16">
+              <!-- Coding Section -->
+              <h3
+                class="font-bold text-xl mb-2 cursor-pointer flex items-center justify-between border border-gray-300 px-4 py-2"
+                (click)="toggleSection('coding')"
+              >
+                <span>Coding</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  class="w-5 h-5 transition-transform transform"
+                  [ngClass]="{ 'rotate-90': isCodingOpen }"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </h3>
+              <div [class.open]="isCodingOpen" class="accordion-content pl-4">
+                <app-tech-item
+                  *ngFor="let tech of technologies"
+                  [name]="tech.name"
+                  [stars]="tech.stars"
+                >
+                </app-tech-item>
+              </div>
 
+              <!-- Languages Section -->
+              <h3
+                class="font-bold text-xl mb-2 cursor-pointer flex items-center justify-between border border-gray-300 px-4 py-2"
+                (click)="toggleSection('languages')"
+              >
+                <span>Languages</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  class="w-5 h-5 transition-transform transform"
+                  [ngClass]="{ 'rotate-90': isLanguagesOpen }"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </h3>
+              <div
+                [class.open]="isLanguagesOpen"
+                class="accordion-content pl-4"
+              >
+                <app-tech-item
+                  *ngFor="let language of languages"
+                  [name]="language.name"
+                  [stars]="language.stars"
+                >
+                </app-tech-item>
+              </div>
+
+              <!-- Tools / Others Section -->
+              <h3
+                class="font-bold text-xl mb-2 cursor-pointer flex items-center justify-between border border-gray-300 px-4 py-2"
+                (click)="toggleSection('tools')"
+              >
+                <span>Tools / Others</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  class="w-5 h-5 transition-transform transform"
+                  [ngClass]="{ 'rotate-90': isToolsOpen }"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </h3>
+              <div [class.open]="isToolsOpen" class="accordion-content pl-4">
+                <app-tech-item
+                  *ngFor="let tool of tools"
+                  [name]="tool.name"
+                  [stars]="tool.stars"
+                >
+                </app-tech-item>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        class="about-section pb-10 relative dark:text-white body-font z-10 flex w-full flex-1 flex-col"
+      >
+        <div class="container px-5 mx-auto flex flex-wrap">
           <div class="projects-wrapper w-full lg:w-1/2  ">
             <h3
               class="text-3xl md:text-3xl text-violet-700 dark:text-yellow-500 lg:text-6xl font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 md:text-left transition-all duration-500 ease-out transform"
@@ -94,47 +206,9 @@ import { TechnologyItemComponent } from '../../components/layout/tech-item/tech-
               }
             </div>
           </div>
-        </div>
-      </section>
-      <section
-        class="dark:text-white body-font z-10 flex w-full flex-1 flex-col"
-      >
-        <div class="container px-5 pb-24 mx-auto">
-          <h3
-            class="text-3xl md:text-3xl text-violet-700 dark:text-yellow-500 lg:text-6xl font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 md:text-left transition-all duration-500 ease-out transform"
-          >
-            <span class="text-yellow-500 dark:text-violet-700">#</span> skills
-          </h3>
-          <div class="py-8 px-0  px-0 md:px-16 grid md:grid-cols-2 gap-16">
-            <div class="leading-loose">
-              <h3 class="font-bold text-xl mb-2">Coding</h3>
-
-              <app-tech-item
-                *ngFor="let tech of technologies"
-                [name]="tech.name"
-                [stars]="tech.stars"
-              >
-              </app-tech-item>
-            </div>
-            <div class="leading-loose">
-              <h3 class="font-bold text-xl mb-2">Languages</h3>
-
-              <app-tech-item
-                *ngFor="let language of languages"
-                [name]="language.name"
-                [stars]="language.stars"
-              >
-              </app-tech-item>
-
-              <h3 class="font-bold text-xl mb-2 mt-8">Tools / Others</h3>
-              <app-tech-item
-                *ngFor="let tool of tools"
-                [name]="tool.name"
-                [stars]="tool.stars"
-              >
-              </app-tech-item>
-            </div>
-          </div>
+          <div
+            class="text-wrapper text-primary-content dark:text-white w-full lg:w-1/2"
+          ></div>
         </div>
       </section>
     </div>
@@ -143,6 +217,19 @@ import { TechnologyItemComponent } from '../../components/layout/tech-item/tech-
 export default class AboutPageComponent {
   private contentService = inject(ContentService);
   readonly posts = this.contentService.projectsContentFn;
+  isCodingOpen = false;
+  isLanguagesOpen = false;
+  isToolsOpen = false;
+
+  toggleSection(section: string) {
+    if (section === 'coding') {
+      this.isCodingOpen = !this.isCodingOpen;
+    } else if (section === 'languages') {
+      this.isLanguagesOpen = !this.isLanguagesOpen;
+    } else if (section === 'tools') {
+      this.isToolsOpen = !this.isToolsOpen;
+    }
+  }
 
   technologies = [
     { name: 'HTML/5', stars: 4 },
