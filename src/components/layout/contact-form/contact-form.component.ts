@@ -103,7 +103,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
         Submit message
       </button>
     </div>
-    <div class="p2" data-netlify-recaptcha="true"></div>
+    <div class="p-2" data-netlify-recaptcha="true"></div>
   </form>`,
 })
 export class ContactFormComponent {
@@ -116,7 +116,6 @@ export class ContactFormComponent {
     message: ['', Validators.required],
   });
   onSubmit(): void {
-    console.log('Vozdra', this.contactForm.value, this.contactForm.invalid);
     this.isSubmitted = true;
   }
   applyValidationStyles(inputName: string) {

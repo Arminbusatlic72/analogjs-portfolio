@@ -65,15 +65,17 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
           <div
             class="w-full relative flex justify-between lg:w-auto  px-4 lg:static lg:block lg:justify-start"
           >
-            <img
-              class="logo__image"
-              ngSrc="/arminAvatar.png"
-              alt="Armin Avatar Logo"
-              width="80"
-              height="80"
-              priority
-              sizes="(max-width: 768px) 50vw, 100vw"
-            />
+            <a href="/home">
+              <img
+                class="logo__image"
+                ngSrc="/arminAvatar.png"
+                alt="Armin Avatar Logo"
+                width="80"
+                height="80"
+                priority
+                sizes="(max-width: 768px) 50vw, 100vw"
+              />
+            </a>
             <button
               class="cursor-pointer text-xl leading-none py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none text-black dark:text-white"
               type="button"
