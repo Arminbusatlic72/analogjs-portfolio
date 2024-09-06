@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { NgClass, NgIf } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 @Component({
@@ -9,10 +9,11 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
   template: `
     <form
       [formGroup]="contactForm"
-      (ngSubmit)="onSubmit()"
+      (ngSubmit)="onSubmit($event)"
       name="contact-form"
       method="POST"
       data-netlify="true"
+      data-netlify-recaptcha="true"
       class="flex flex-wrap -m-2"
     >
       <input type="hidden" name="form-name" value="contact-form" />
@@ -101,24 +102,33 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
       <div class="p-2 w-full">
         <button
           type="submit"
-          class="animated flex mx-auto md:mx-0 text-white bg-violet-700 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+          class="animated flex mx-auto mb-2 md:mx-0 text-white bg-violet-700 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
         >
           Submit message
         </button>
+        <div data-netlify-recaptcha="true"></div>
       </div>
-      <!-- <div class="p-2" data-netlify-recaptcha="true"></div> -->
     </form>
-    <form name="contact-form1" method="POST" data-netlify="true">
+    <!-- Hidden Netlify form -->
+    <form
+      #hiddenForm
+      name="contact-form1"
+      method="POST"
+      data-netlify="true"
+      style="display:none"
+    >
       <input type="hidden" name="form-name" value="contact-form1" />
-      <input type="text" name="name" placeholder="Name" required />
-      <input type="email" name="email" placeholder="Email" required />
-      <textarea name="message" placeholder="Message" required></textarea>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <textarea name="message"></textarea>
       <button type="submit">Submit</button>
     </form>
   `,
 })
 export class ContactFormComponent {
   constructor(private fb: FormBuilder) {}
+  @ViewChild('hiddenForm', { static: true })
+  hiddenForm!: ElementRef<HTMLFormElement>;
 
   isSubmitted = false;
   contactForm = this.fb.group({
@@ -126,20 +136,66 @@ export class ContactFormComponent {
     email: ['', [Validators.required, Validators.email]],
     message: ['', Validators.required],
   });
-  onSubmit(): void {
-    if (this.contactForm.valid) {
-      // Log the form values
-      this.isSubmitted = true;
-      console.log('Form submitted', this.contactForm.value);
 
-      // Serialize form values
+  // onSubmit(): void {
+  //   if (this.contactForm.valid) {
+  //     // Log the form values
+  //     this.isSubmitted = true;
+  //     console.log('Form submitted', this.contactForm.value);
+
+  //     // Get form values
+  //     const formValues = this.contactForm.value;
+
+  //     // Set values to hidden form
+  //     const hiddenForm = this.hiddenForm.nativeElement;
+  //     const formElements = hiddenForm.elements as any;
+
+  //     formElements['name'].value = formValues.name;
+  //     formElements['email'].value = formValues.email;
+  //     formElements['message'].value = formValues.message;
+
+  //     console.log('Hidden Form Name:', formElements['name'].value);
+  //     console.log('Hidden Form Email:', formElements['email'].value);
+  //     console.log('Hidden Form Message:', formElements['message'].value);
+
+  //     // Submit the hidden form
+  //     hiddenForm.submit();
+  //   } else {
+  //     console.log('Form is invalid');
+  //   }
+  // }
+
+  onSubmit(event: Event): void {
+    event.preventDefault(); // Prevent the default form submission behavior
+
+    if (this.contactForm.valid) {
+      this.isSubmitted = true;
+      console.log('Reactive form values:', this.contactForm.value);
+
+      // Get form values
       const formValues = this.contactForm.value;
 
-      // You might want to handle additional logic, such as resetting the form after submission
+      // Set values to hidden form
+      const hiddenForm = this.hiddenForm.nativeElement;
+      const formElements = hiddenForm.elements as any;
+
+      formElements['name'].value = formValues.name;
+      formElements['email'].value = formValues.email;
+      formElements['message'].value = formValues.message;
+
+      // Log the values before submission
+      console.log('Hidden Form Values:');
+      console.log('Name:', formElements['name'].value);
+      console.log('Email:', formElements['email'].value);
+      console.log('Message:', formElements['message'].value);
+
+      // Submit the hidden form
+      hiddenForm.submit(); // Uncomment this when you are ready to submit the form
     } else {
       console.log('Form is invalid');
     }
   }
+
   applyValidationStyles(inputName: string) {
     const control = this.contactForm.get(inputName);
     return {
