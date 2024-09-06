@@ -14,6 +14,8 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
     data-netlify-recaptcha="true"
     data-netlify="true"
     class="flex flex-wrap -m-2"
+    netlify
+    hidden
   >
     <input type="hidden" name="form-name" value="contact-form" />
     <div class="p-2 w-1/2">
