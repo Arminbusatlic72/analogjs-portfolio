@@ -29,7 +29,7 @@ import { ContactFormComponent } from '../../components/layout/contact-form/conta
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                class="size-6 mr-4 text-violet-700 dark:text-yellow-500"
+                class="size-5 mr-4 text-violet-700 dark:text-yellow-500"
               >
                 <path
                   fill-rule="evenodd"
@@ -38,7 +38,7 @@ import { ContactFormComponent } from '../../components/layout/contact-form/conta
                 />
               </svg>
 
-              <p>
+              <p class="text-lg">
                 I am developer based in
                 <span
                   class="text-lg font-semibold text-violet-700 dark:text-yellow-500"

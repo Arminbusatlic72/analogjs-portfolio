@@ -11,13 +11,9 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
     (ngSubmit)="onSubmit()"
     name="contact-form"
     method="POST"
-    data-netlify-recaptcha="true"
     data-netlify="true"
-    data-netlify-honeypot="bot-field"
     class="flex flex-wrap -m-2"
-    netlify
   >
-    <input type="hidden" name="bot-field" />
     <input type="hidden" name="form-name" value="contact-form" />
     <div class="p-2 w-1/2">
       <div class="relative">
@@ -103,7 +99,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
         Submit message
       </button>
     </div>
-    <div class="p-2" data-netlify-recaptcha="true"></div>
+    <!-- <div class="p-2" data-netlify-recaptcha="true"></div> -->
   </form>`,
 })
 export class ContactFormComponent {
@@ -116,6 +112,7 @@ export class ContactFormComponent {
     message: ['', Validators.required],
   });
   onSubmit(): void {
+    console.log('evoga vrijednosti iz forme', this.contactForm.value);
     this.isSubmitted = true;
   }
   applyValidationStyles(inputName: string) {
