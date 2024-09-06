@@ -11,6 +11,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
     (ngSubmit)="onSubmit()"
     name="contact-form"
     method="POST"
+    data-netlify-recaptcha="true"
     data-netlify="true"
     class="flex flex-wrap -m-2"
   >
@@ -96,11 +97,11 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
         type="submit"
         class="animated flex mx-auto md:mx-0 text-white bg-violet-700 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
       >
-        Button
+        Submit message
       </button>
     </div>
+    <div data-netlify-recaptcha="true"></div>
   </form>`,
-  styles: [``],
 })
 export class ContactFormComponent {
   constructor(private fb: FormBuilder) {}

@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'home',
   standalone: true,
+  imports: [NgOptimizedImage],
   template: `
     <div
       class="min-w-full text-black  bg-white flex flex-col items-center justify-center dark:bg-gray-800"
@@ -54,8 +56,11 @@ import { Component } from '@angular/core';
                 >
                   <img
                     class="w-full h-auto"
-                    src="/arminHero.png"
+                    ngSrc="/arminHero.png"
                     alt="Armin Image"
+                    priority
+                    width="400"
+                    height="500"
                   />
                 </div>
               </div>

@@ -1,5 +1,10 @@
 import { MarkdownComponent, injectContent } from '@analogjs/content';
-import { AsyncPipe, NgIf } from '@angular/common';
+import {
+  AsyncPipe,
+  NgIf,
+  NgOptimizedImage,
+  IMAGE_CONFIG,
+} from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
@@ -7,7 +12,15 @@ import { Project } from 'src/app/models/project';
 
 @Component({
   standalone: true,
-  imports: [MarkdownComponent, NgIf, AsyncPipe, RouterLink],
+  imports: [MarkdownComponent, NgIf, AsyncPipe, RouterLink, NgOptimizedImage],
+  providers: [
+    {
+      provide: IMAGE_CONFIG,
+      useValue: {
+        breakpoints: [16, 48, 96, 128, 384, 640, 750, 828, 1080, 1200, 1920],
+      },
+    },
+  ],
   template: `
     <div *ngIf="post$ | async as post">
       <!-- Blog post with featured image -->
@@ -85,13 +98,23 @@ import { Project } from 'src/app/models/project';
 
             <img
               class="w-full h-auto mb-8"
-              src="{{ post.attributes.projectImage }}"
+              [ngSrc]="post.attributes.projectImage"
               alt="{{ post.attributes.title }}"
+              loading="lazy"
+              width="1000"
+              height="460"
+              sizes="(max-width: 640px) 100vw, 50vw"
             />
+
             <img
+              *ngIf="post.attributes.projectImageSec"
               class="w-full h-auto mb-8"
-              src="{{ post.attributes.projectImageSec }}"
+              [ngSrc]="post.attributes.projectImageSec"
               alt="{{ post.attributes.title }}"
+              loading="lazy"
+              width="1000"
+              height="460"
+              sizes="(max-width: 640px) 100vw, 50vw"
             />
 
             <article
@@ -113,10 +136,4 @@ export default class ProjectPage {
     param: 'slug',
     subdirectory: 'projects',
   });
-  constructor() {
-    // Subscribe to the observable to log the data
-    this.post$.subscribe((post) => {
-      console.log(post);
-    });
-  }
 }

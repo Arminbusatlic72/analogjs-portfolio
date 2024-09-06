@@ -1,12 +1,20 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, IMAGE_CONFIG, NgOptimizedImage } from '@angular/common';
 import { DarkModeService } from '../../../app/services/dark-mode.service';
 import { SocialIconListComponent } from '../footer/social-icon-list.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, SocialIconListComponent],
+  imports: [CommonModule, NgOptimizedImage, SocialIconListComponent],
+  providers: [
+    {
+      provide: IMAGE_CONFIG,
+      useValue: {
+        breakpoints: [16, 48, 96, 128, 384, 640, 750, 828, 1080, 1200, 1920],
+      },
+    },
+  ],
   template: `
     <header class="bg-white relative z-[1000] dark:bg-gray-800 text-gray-100">
       <div class="media-header">
@@ -57,13 +65,15 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
           <div
             class="w-full relative flex justify-between lg:w-auto  px-4 lg:static lg:block lg:justify-start"
           >
-            <a class="logo" href="/">
-              <img
-                class="logo__image"
-                src="/arminAvatar.png"
-                alt="Logo Image"
-              />
-            </a>
+            <img
+              class="logo__image"
+              ngSrc="/arminAvatar.png"
+              alt="Armin Avatar Logo"
+              width="80"
+              height="80"
+              priority
+              sizes="(max-width: 768px) 50vw, 100vw"
+            />
             <button
               class="cursor-pointer text-xl leading-none py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none text-black dark:text-white"
               type="button"
