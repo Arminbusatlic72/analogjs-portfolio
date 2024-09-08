@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnChanges, OnInit } from '@angular/core';
 import { CommonModule, IMAGE_CONFIG, NgOptimizedImage } from '@angular/common';
 import { DarkModeService } from '../../../app/services/dark-mode.service';
 import { SocialIconListComponent } from '../footer/social-icon-list.component';
@@ -146,10 +146,8 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
                   <svg
                     class="fill-violet-700 absolute transition-all duration-500 ease-out transform"
                     [ngClass]="{
-                      'opacity-100 rotate-0 scale-1':
-                        darkModeService.darkModeSignal() !== 'dark',
-                      'opacity-0 rotate-180 scale-0':
-                        darkModeService.darkModeSignal() === 'dark'
+                      'opacity-100 rotate-0 scale-1': !isDarkMode,
+                      'opacity-0 rotate-180 scale-0': isDarkMode
                     }"
                     fill="currentColor"
                     viewBox="0 0 20 20"
@@ -163,10 +161,8 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
                   <svg
                     class="fill-yellow-500 absolute transition-all duration-500 ease-out transform"
                     [ngClass]="{
-                      'opacity-100 rotate-0 scale-1':
-                        darkModeService.darkModeSignal() === 'dark',
-                      'opacity-0 -rotate-180 scale-0':
-                        darkModeService.darkModeSignal() !== 'dark'
+                      'opacity-100 rotate-0 scale-1': isDarkMode,
+                      'opacity-0 -rotate-180 scale-0': !isDarkMode
                     }"
                     fill="currentColor"
                     viewBox="0 0 20 20"
@@ -204,10 +200,6 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
         }
       }
 
-      .no-animation .material-icons {
-        transition: none;
-      }
-
       .logo__image {
         height: 80px;
         width: 80px;
@@ -243,23 +235,21 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
     `,
   ],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   darkModeService: DarkModeService = inject(DarkModeService);
-  noAnimation = true;
+  isDarkMode = false;
   showMenu = false;
   toggleNavbar() {
     this.showMenu = !this.showMenu;
   }
 
   toggleDarkMode() {
-    this.noAnimation = false;
-
+    this.isDarkMode = !this.isDarkMode;
     this.darkModeService.updateDarkMode();
+    console.log(this.darkModeService.darkModeSignal());
+    console.log('iz odavde', this.isDarkMode);
   }
   ngOnInit() {
-    // Mark as not user-initiated to avoid animations on initial load
-    setTimeout(() => {
-      this.noAnimation = false;
-    }, 0);
+    this.isDarkMode = this.darkModeService.darkModeSignal() === 'dark';
   }
 }

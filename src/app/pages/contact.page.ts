@@ -99,7 +99,7 @@ import { ContactFormComponent } from '../../components/layout/contact-form/conta
           <div
             class="lg:w-1/2 md:w-2/3 relative z-[1000] text-primary-content dark:text-white w-full lg:w-1/2"
           >
-            <div class="px-10 mt-18 md:pt-32">
+            <div class="px-5 md:px-10 mt-18 md:pt-32">
               <app-contact-form></app-contact-form>
             </div>
           </div>

@@ -3,6 +3,20 @@
 import { defineConfig } from 'vite';
 import analog, { type PrerenderContentFile } from '@analogjs/platform';
 
+const generateContentRoutes = (pathPrefix: string, contentDir: string) => {
+  return {
+    contentDir,
+    transform: (file: PrerenderContentFile) => {
+      if (file.attributes['draft']) {
+        return false;
+      }
+
+      const slug = file.attributes['slug'] || file.name;
+      return `/${pathPrefix}/${slug}`;
+    },
+  };
+};
+
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   build: {
@@ -20,30 +34,8 @@ export default defineConfig(({ mode }) => ({
           '/contact',
           '/portfolio',
           '/blog',
-          {
-            contentDir: 'src/content/projects',
-            transform: (file: PrerenderContentFile) => {
-              if (file.attributes['draft']) {
-                return false;
-              }
-
-              const slug = file.attributes['slug'] || file.name;
-              return `/portfolio/${slug}`;
-            },
-          },
-
-          '/blog',
-          {
-            contentDir: 'src/content/blog',
-            transform: (file: PrerenderContentFile) => {
-              if (file.attributes.draft) {
-                return false;
-              }
-
-              const slug = file.attributes.slug || file.name;
-              return `/blog/${slug}`;
-            },
-          },
+          generateContentRoutes('portfolio', 'src/content/projects'),
+          generateContentRoutes('blog', 'src/content/blog'),
         ],
         sitemap: {
           host: 'https://analogjs.org/',

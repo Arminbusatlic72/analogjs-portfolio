@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
   imports: [RouterOutlet, HeaderComponent, FooterComponent, CommonModule],
   template: `
     <div
-      class="bg-slate-200 dark:bg-slate-700"
+      class="bg-slate-200 dark:bg-slate-700 armin"
       [ngClass]="darkModeService.darkModeSignal()"
     >
       <app-header></app-header>
