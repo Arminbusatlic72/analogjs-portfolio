@@ -54,14 +54,20 @@ import { NgOptimizedImage } from '@angular/common';
                 <div
                   class="image-wrapper lg:w-1/2 w-full lg:pl-8 mb-8 lg:mb-0 hidden lg:block"
                 >
-                  <img
-                    class="w-full h-auto"
-                    ngSrc="/arminHero.png"
-                    alt="Armin Image"
-                    priority
-                    width="400"
-                    height="500"
-                  />
+                  <picture>
+                    <source
+                      srcset="/arminHeroPortfolio.webp"
+                      type="image/webp"
+                    />
+                    <img
+                      class="w-full h-auto"
+                      ngSrc="/arminHeroPortfolio.png"
+                      alt="Armin Image"
+                      priority
+                      width="400"
+                      height="500"
+                    />
+                  </picture>
                 </div>
               </div>
 
