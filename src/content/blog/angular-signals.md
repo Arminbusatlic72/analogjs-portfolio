@@ -3,8 +3,8 @@ title: "Exploring Angular Signals: A New Approach to State Management"
 slug: exploring-angular-signals
 description: An in-depth look at Angular signals, their advantages, when they became available, and how they differ from other state management solutions.
 coverImage: "https://miro.medium.com/v2/resize:fit:1198/1*q1XAzZg4xyw4qVUDGHO06A.png"
-previousPost: ""
-nextPost: "nextjs-vs-gatsby"
+previousPost: "nextjs-vs-gatsby"
+nextPost: ""
 ---
 
 # Exploring Angular Signals: A New Approach to State Management

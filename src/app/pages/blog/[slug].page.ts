@@ -23,7 +23,6 @@ import { BlogPost } from 'src/app/models/post';
   ],
   template: `
     <div *ngIf="post$ | async as post">
-      <!-- Blog post with featured image -->
       <section
         class="mb-4 flex w-full flex-auto flex-row justify-between gap-4 text-gray-600 dark:text-gray-300"
       >
@@ -50,7 +49,6 @@ import { BlogPost } from 'src/app/models/post';
           class="container px-5 sm:px-24 pb-24 mx-auto my-24 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900 relative z-[1000]"
         >
           <div class="max-w-full sm:max-w-3xl mx-auto">
-            <!-- Adjust max-width for mobile -->
             <div class="py-8">
               <h2
                 class="text-3xl sm:text-4xl md:text-4xl lg:text-6xl font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-left dark:text-gray-300"
@@ -93,10 +91,8 @@ export default class BlogPostPage {
   });
 
   constructor() {
-    // Subscribe to the observable to log the data
     this.post$.subscribe((post) => {
       console.log(post);
-      console.log(post.attributes.nextPost);
     });
   }
 }

@@ -85,7 +85,69 @@ import { TechnologyItemComponent } from '../../components/layout/tech-item/tech-
                 </app-tech-item>
               </div>
 
-              <!-- Languages Section -->
+              <!-- Platforms Section -->
+              <h3
+                class="font-bold text-xl mb-2 cursor-pointer flex items-center justify-between border border-gray-300 px-4 py-2"
+                (click)="toggleSection('platforms')"
+              >
+                <span>Platforms</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  class="w-5 h-5 transition-transform transform"
+                  [ngClass]="{ 'rotate-90': isPlatformsOpen }"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </h3>
+              <div
+                [class.open]="isPlatformsOpen"
+                class="accordion-content pl-4"
+              >
+                <app-tech-item
+                  *ngFor="let platform of platforms"
+                  [name]="platform.name"
+                  [stars]="platform.stars"
+                >
+                </app-tech-item>
+              </div>
+
+              <h3
+                class="font-bold text-xl mb-2 cursor-pointer flex items-center justify-between border border-gray-300 px-4 py-2"
+                (click)="toggleSection('tools')"
+              >
+                <span>Tools / Others</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  class="w-5 h-5 transition-transform transform"
+                  [ngClass]="{ 'rotate-90': isToolsOpen }"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </h3>
+              <div [class.open]="isToolsOpen" class="accordion-content pl-4">
+                <app-tech-item
+                  *ngFor="let tool of tools"
+                  [name]="tool.name"
+                  [stars]="tool.stars"
+                >
+                </app-tech-item>
+              </div>
               <h3
                 class="font-bold text-xl mb-2 cursor-pointer flex items-center justify-between border border-gray-300 px-4 py-2"
                 (click)="toggleSection('languages')"
@@ -118,37 +180,6 @@ import { TechnologyItemComponent } from '../../components/layout/tech-item/tech-
                 >
                 </app-tech-item>
               </div>
-
-              <!-- Tools / Others Section -->
-              <h3
-                class="font-bold text-xl mb-2 cursor-pointer flex items-center justify-between border border-gray-300 px-4 py-2"
-                (click)="toggleSection('tools')"
-              >
-                <span>Tools / Others</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="2"
-                  stroke="currentColor"
-                  class="w-5 h-5 transition-transform transform"
-                  [ngClass]="{ 'rotate-90': isToolsOpen }"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </h3>
-              <div [class.open]="isToolsOpen" class="accordion-content pl-4">
-                <app-tech-item
-                  *ngFor="let tool of tools"
-                  [name]="tool.name"
-                  [stars]="tool.stars"
-                >
-                </app-tech-item>
-              </div>
             </div>
           </div>
         </div>
@@ -173,7 +204,6 @@ import { TechnologyItemComponent } from '../../components/layout/tech-item/tech-
                   <div
                     class="border border-gray-200 p-6 rounded-lg dark:border-gray-700 bg-white dark:bg-gray-800"
                   >
-                    <!-- Image Container -->
                     <div
                       class="relative h-48 mb-4 overflow-hidden rounded-t-lg bg-gray-100 dark:bg-gray-700"
                     >
@@ -187,14 +217,12 @@ import { TechnologyItemComponent } from '../../components/layout/tech-item/tech-
                       ></div>
                     </div>
 
-                    <!-- Title -->
                     <h2
                       class="text-lg text-gray-900 font-medium title-font mb-2 dark:text-gray-100"
                     >
                       {{ post.attributes.title }}
                     </h2>
 
-                    <!-- Description -->
                     <p
                       class="post__desc leading-relaxed text-base dark:text-gray-300"
                     >
@@ -218,6 +246,7 @@ export default class AboutPageComponent {
   private contentService = inject(ContentService);
   readonly posts = this.contentService.projectsContentFn;
   isCodingOpen = false;
+  isPlatformsOpen = false;
   isLanguagesOpen = false;
   isToolsOpen = false;
 
@@ -228,13 +257,30 @@ export default class AboutPageComponent {
       this.isLanguagesOpen = !this.isLanguagesOpen;
     } else if (section === 'tools') {
       this.isToolsOpen = !this.isToolsOpen;
+    } else if (section === 'platforms') {
+      this.isPlatformsOpen = !this.isPlatformsOpen;
     }
   }
 
   technologies = [
-    { name: 'HTML/5', stars: 4 },
-    { name: 'css/3', stars: 4 },
-    // Add more technology items here
+    { name: 'HTML/5', stars: 5 },
+    { name: 'css/3', stars: 5 },
+    { name: 'SASS, Less', stars: 5 },
+    { name: 'BEM', stars: 5 },
+    { name: 'Bootstrap, React Bootstrap', stars: 5 },
+    { name: 'Tailwind css, ', stars: 5 },
+    { name: 'Styled component', stars: 5 },
+    { name: 'Javascript', stars: 4 },
+    { name: 'Typescript', stars: 4 },
+    { name: 'JQuery', stars: 4 },
+    { name: 'Angular', stars: 3 },
+    { name: 'Spartacus', stars: 3 },
+    { name: 'AnalogJS', stars: 3 },
+    { name: 'ReactJS', stars: 3 },
+    { name: 'GatsbyJS', stars: 3 },
+    { name: 'NextJS', stars: 3 },
+    { name: 'RxJS', stars: 3 },
+    { name: 'NgRX', stars: 3 },
   ];
   languages = [
     { name: 'Bosnian (mother tounghe)', stars: 4 },
@@ -250,5 +296,13 @@ export default class AboutPageComponent {
     { name: 'SEO', stars: 5 },
 
     // Add more technology items here
+  ];
+  platforms = [
+    { name: 'Hybris', stars: 4 },
+    { name: 'WordPress', stars: 4 },
+    { name: 'Strapi', stars: 3 },
+    { name: 'Prismic', stars: 3 },
+    { name: 'Contentful', stars: 3 },
+    // Add more platforms here
   ];
 }

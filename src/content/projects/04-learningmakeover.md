@@ -12,6 +12,6 @@ slug: "learningmakeover"
 description: Creating a JAMstack application with dual language support using WordPress as a headless CMS, GraphQL, and Gatsby JS. Implemented "pixel-perfect" responsive design from Figma. Adapted WordPress by creating custom post types and using the ACF plugin. Utilized GraphQL to access data and Gatsby JS to generate a static website. Website isdDeployed to Netlify and use build hook to refresh content when updating on Wordpress.
 tools: "Visual studio code, Figma, Html5, CSS3, Gatsby JS, React JS, GraphQL, SCSS, PHP, Wordpress, Netlify, Cpanel
 "
-previousProject: "alcove"
-nextProject: "skillsdivision"
+previousProject: "ewentive"
+nextProject: "kabinet"
 ---

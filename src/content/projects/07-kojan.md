@@ -6,6 +6,6 @@ featuredImage: "/projects/kojan.png"
 link: "https://www.kojan.rs/"
 slug: "kojan"
 description: "this is very good project"
-previousProject: "alcove"
-nextProject: "neologic"
+previousProject: "atfl"
+nextProject: "skillsdivision"
 ---

@@ -12,5 +12,5 @@ description: "Creating a JAMstack dual-language application using WordPress as a
 tools: "Visual studio code, Figma, Html5, CSS3, Gatsby JS, React JS, GraphQL, SCSS, PHP, Wordpress, Netlify, Cpanel
 "
 previousProject: "alcove"
-nextProject: ""
+nextProject: "stribbo"
 ---

@@ -23,26 +23,29 @@ import { Project } from 'src/app/models/project';
   ],
   template: `
     <div *ngIf="post$ | async as post">
-      <!-- Blog post with featured image -->
       <section
         class="mb-4 flex w-full flex-auto flex-row justify-between gap-4 text-gray-600 dark:text-gray-300"
       >
-        <button
-          [routerLink]="['/portfolio', post.attributes.previousProject]"
-          [disabled]="!post.attributes.previousProject"
-          class="btn btn-accent w-28"
-          type="button"
-        >
-          Previous
-        </button>
-        <button
-          [routerLink]="['/portfolio', post.attributes.nextProject]"
-          [disabled]="!post.attributes.nextProject"
-          class="btn btn-accent w-28"
-          type="button"
-        >
-          Next
-        </button>
+        <div class="flex-1">
+          <button
+            *ngIf="post.attributes.nextProject"
+            [routerLink]="['/portfolio', post.attributes.nextProject]"
+            class="btn btn-accent w-28"
+            type="button"
+          >
+            Next
+          </button>
+          <div class="flex-1 text-right">
+            <button
+              *ngIf="post.attributes.previousProject"
+              [routerLink]="['/portfolio', post.attributes.previousProject]"
+              class="btn btn-accent w-28"
+              type="button"
+            >
+              Previous
+            </button>
+          </div>
+        </div>
       </section>
       <section class="text-gray-600 body-font p-5">
         <div

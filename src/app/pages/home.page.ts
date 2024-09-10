@@ -39,16 +39,18 @@ import { NgOptimizedImage } from '@angular/common';
                     I am a Frontend Developer
                   </p>
                   <div class="w-full flex justify-start gap-4">
-                    <button
+                    <a
+                      href="/pdf/ArminBusatlicCV.pdf"
                       class="animated text-white bg-violet-700 border-0 py-2 px-8 focus:outline-none hover:bg-violet-600 rounded text-lg"
                     >
                       Download CV
-                    </button>
-                    <button
+                    </a>
+                    <a
+                      href="/portfolio"
                       class="animated text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-200 rounded text-lg"
                     >
                       Projects
-                    </button>
+                    </a>
                   </div>
                 </div>
                 <div

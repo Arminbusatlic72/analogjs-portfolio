@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { AsyncPipe, NgFor } from '@angular/common';
+import { NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 import { ContentService } from '../../services/content.service';
 
 @Component({
   standalone: true,
-  imports: [NgFor, RouterLink, AsyncPipe],
+  imports: [NgFor, RouterLink],
   template: `
     <section class="text-gray-600 body-font p-5">
       <div

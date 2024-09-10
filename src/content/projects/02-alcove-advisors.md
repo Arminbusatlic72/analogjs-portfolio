@@ -10,6 +10,6 @@ link: "https://www.alcoveadvisors.com/"
 description: "Project is done by designing and implementing 'Squerspace theme' to match need of company presentation"
 tools: " Figma, Html5, CSS3, JS
 "
-previousProject: "neologic"
-nextProject: "kojan"
+previousProject: "kabinet"
+nextProject: "neologic"
 ---
