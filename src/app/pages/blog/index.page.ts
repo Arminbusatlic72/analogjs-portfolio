@@ -51,12 +51,12 @@ import { ContentService } from '../../services/content.service';
                 </div>
 
                 <h2
-                  class="text-lg text-gray-900 font-medium title-font mb-2 dark:text-gray-100"
+                  class="two-lines text-lg text-gray-900 font-medium title-font mb-2 dark:text-gray-100"
                 >
                   {{ post.attributes.title }}
                 </h2>
                 <p
-                  class="post__desc leading-relaxed text-base dark:text-gray-300"
+                  class="tree-lines leading-relaxed text-base dark:text-gray-300"
                 >
                   {{ post.attributes.description }}
                 </p>
