@@ -4,6 +4,7 @@ import {
   NgIf,
   NgOptimizedImage,
   IMAGE_CONFIG,
+  DatePipe,
 } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
@@ -12,7 +13,14 @@ import { Project } from 'src/app/models/project';
 
 @Component({
   standalone: true,
-  imports: [MarkdownComponent, NgIf, AsyncPipe, RouterLink, NgOptimizedImage],
+  imports: [
+    MarkdownComponent,
+    DatePipe,
+    NgIf,
+    AsyncPipe,
+    RouterLink,
+    NgOptimizedImage,
+  ],
   providers: [
     {
       provide: IMAGE_CONFIG,
@@ -66,9 +74,15 @@ import { Project } from 'src/app/models/project';
                 <strong>Tech stack:</strong>
                 {{ post.attributes.tools }}
               </p>
+
               <p class="text-sm">
-                Release day <time datetime="2022-04-05">April 5, 2022</time>
+                <strong>Release day:</strong>
+                <time
+                  [attr.datetime]="post.attributes.date | date : 'yyyy-MM-dd'"
+                  >{{ post.attributes.date | date : 'MMMM d, yyyy' }}</time
+                >
               </p>
+
               <div class="flex items-center space-x-4 mt-5">
                 <a
                   href="{{ post.attributes.link }}"

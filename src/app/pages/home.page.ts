@@ -21,7 +21,7 @@ import { NgOptimizedImage } from '@angular/common';
                 <div
                   class="text-wrapper lg:w-1/2 w-full lg:pr-8 flex flex-col justify-center mobile-min-height"
                 >
-                  <p>Hello</p>
+                  <p>Hello,</p>
                   <h1
                     class="text-4xl md:text-4xl lg:text-6xl font-bold relative transition-all duration-500 ease-out transform"
                   >
