@@ -26,30 +26,34 @@ import { BlogPost } from 'src/app/models/post';
       <section
         class="mb-4 flex w-full flex-auto flex-row justify-between gap-4 text-gray-600 dark:text-gray-300"
       >
-        <button
-          [routerLink]="['/blog', post.attributes.previousPost]"
-          [disabled]="!post.attributes.previousPost"
-          class="btn btn-accent w-28"
-          type="button"
-        >
-          Previous
-        </button>
-        <button
-          [routerLink]="['/blog', post.attributes.nextPost]"
-          [disabled]="!post.attributes.nextPost"
-          class="btn btn-accent w-28"
-          type="button"
-        >
-          Next
-        </button>
+        <div class="flex justify-between w-full items-center">
+          <button
+            *ngIf="post.attributes.nextPost"
+            [routerLink]="['/blog', post.attributes.nextPost]"
+            class="btn btn-accent w-28"
+            type="button"
+          >
+            Next
+          </button>
+          <div class="flex-1 text-right">
+            <button
+              *ngIf="post.attributes.previousPost"
+              [routerLink]="['/blog', post.attributes.previousPost]"
+              class="btn btn-accent w-28"
+              type="button"
+            >
+              Previous
+            </button>
+          </div>
+        </div>
       </section>
 
       <section class="text-gray-600 body-font p-5">
         <div
-          class="container px-5 sm:px-24 pb-24 mx-auto my-24 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900 relative z-[1000]"
+          class="container px-5 sm:px-24 pb-24 mx-auto  rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900 relative z-[1000]"
         >
           <div class="max-w-full sm:max-w-3xl mx-auto">
-            <div class="py-8">
+            <div class="py-4">
               <h2
                 class="text-3xl sm:text-4xl md:text-4xl lg:text-6xl font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-left dark:text-gray-300"
               >

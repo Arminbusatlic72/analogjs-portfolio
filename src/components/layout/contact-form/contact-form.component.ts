@@ -137,45 +137,14 @@ export class ContactFormComponent {
     message: ['', Validators.required],
   });
 
-  // onSubmit(): void {
-  //   if (this.contactForm.valid) {
-  //     // Log the form values
-  //     this.isSubmitted = true;
-  //     console.log('Form submitted', this.contactForm.value);
-
-  //     // Get form values
-  //     const formValues = this.contactForm.value;
-
-  //     // Set values to hidden form
-  //     const hiddenForm = this.hiddenForm.nativeElement;
-  //     const formElements = hiddenForm.elements as any;
-
-  //     formElements['name'].value = formValues.name;
-  //     formElements['email'].value = formValues.email;
-  //     formElements['message'].value = formValues.message;
-
-  //     console.log('Hidden Form Name:', formElements['name'].value);
-  //     console.log('Hidden Form Email:', formElements['email'].value);
-  //     console.log('Hidden Form Message:', formElements['message'].value);
-
-  //     // Submit the hidden form
-  //     hiddenForm.submit();
-  //   } else {
-  //     console.log('Form is invalid');
-  //   }
-  // }
-
   onSubmit(event: Event): void {
-    event.preventDefault(); // Prevent the default form submission behavior
+    event.preventDefault();
 
     if (this.contactForm.valid) {
       this.isSubmitted = true;
-      console.log('Reactive form values:', this.contactForm.value);
 
-      // Get form values
       const formValues = this.contactForm.value;
 
-      // Set values to hidden form
       const hiddenForm = this.hiddenForm.nativeElement;
       const formElements = hiddenForm.elements as any;
 
@@ -183,16 +152,7 @@ export class ContactFormComponent {
       formElements['email'].value = formValues.email;
       formElements['message'].value = formValues.message;
 
-      // Log the values before submission
-      console.log('Hidden Form Values:');
-      console.log('Name:', formElements['name'].value);
-      console.log('Email:', formElements['email'].value);
-      console.log('Message:', formElements['message'].value);
-
-      // Submit the hidden form
-      hiddenForm.submit(); // Uncomment this when you are ready to submit the form
-    } else {
-      console.log('Form is invalid');
+      hiddenForm.submit();
     }
   }
 

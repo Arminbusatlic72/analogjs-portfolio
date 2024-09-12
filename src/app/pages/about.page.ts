@@ -273,18 +273,18 @@ export default class AboutPageComponent {
     { name: 'Javascript', stars: 4 },
     { name: 'Typescript', stars: 4 },
     { name: 'JQuery', stars: 4 },
-    { name: 'Angular', stars: 3 },
+    { name: 'Angular', stars: 4 },
     { name: 'Spartacus', stars: 3 },
-    { name: 'AnalogJS', stars: 3 },
+    { name: 'AnalogJS', stars: 4 },
     { name: 'ReactJS', stars: 3 },
-    { name: 'GatsbyJS', stars: 3 },
+    { name: 'GatsbyJS', stars: 4 },
     { name: 'NextJS', stars: 3 },
     { name: 'RxJS', stars: 3 },
-    { name: 'NgRX', stars: 3 },
+    { name: 'NgRX', stars: 2 },
   ];
   languages = [
-    { name: 'Bosnian (mother tounghe)', stars: 4 },
-    { name: 'English (daily use)', stars: 4 },
+    { name: 'Bosnian (mother tounghe)', stars: 5 },
+    { name: 'English (daily use)', stars: 5 },
     // Add more technology items here
   ];
   tools = [

@@ -34,7 +34,7 @@ import { Project } from 'src/app/models/project';
       <section
         class="mb-4 flex w-full flex-auto flex-row justify-between gap-4 text-gray-600 dark:text-gray-300"
       >
-        <div class="flex-1">
+        <div class="flex justify-between w-full items-center">
           <button
             *ngIf="post.attributes.nextProject"
             [routerLink]="['/portfolio', post.attributes.nextProject]"
@@ -57,10 +57,10 @@ import { Project } from 'src/app/models/project';
       </section>
       <section class="text-gray-600 body-font p-5">
         <div
-          class="container px-5 sm:px-24 pb-24 mx-auto my-24 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900 relative z-[1000]"
+          class="container px-5 sm:px-24 pb-24 mx-auto  rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900 relative z-[1000]"
         >
           <div class="max-w-3xl mx-auto">
-            <div class="py-8 pt-20">
+            <div class="py-4">
               <h2
                 class="text-4xl md:text-4xl lg:text-6xl font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-left dark:text-gray-300"
               >
