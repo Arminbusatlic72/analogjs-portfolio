@@ -13,20 +13,18 @@ import { ContentService } from '../../services/content.service';
       <div
         class="container px-1 py-2 mx-auto my-4 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900"
       >
-        <!-- Portfolio Heading -->
         <div class="flex flex-wrap w-full flex-col  text-left p-5">
           <h2
             class="text-4xl md:text-4xl lg:text-6xl text-violet-700 dark:text-yellow-500 font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-left transition-all duration-500 ease-out transform"
           >
-            <span class="text-yellow-500 dark:text-violet-700">/</span>
-            portfolio
+            <span class="text-yellow-500 dark:text-violet-700">/</span>portfolio
           </h2>
           <p
             class="lg:w-1/2 w-full leading-relaxed text-gray-500 dark:text-gray-300"
           >
             List of my Projects
           </p>
-          <!-- Tool Filter Dropdown -->
+
           <div class="mb-4">
             <label for="tool-select" class="block mb-2"
               >Filter Projects by tech stack used:</label
@@ -35,7 +33,7 @@ import { ContentService } from '../../services/content.service';
               id="tool-select"
               [(ngModel)]="selectedTool"
               (change)="filterProjects()"
-              class="p-2 border rounded bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out ng-untouched ng-pristine ng-invalid"
+              class="p-1 border rounded bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out ng-untouched ng-pristine ng-invalid"
             >
               <option value="">All Tools</option>
               <option *ngFor="let tool of availableTools" [value]="tool">
@@ -45,8 +43,7 @@ import { ContentService } from '../../services/content.service';
           </div>
         </div>
 
-        <!-- Display Filtered Projects -->
-        <div class="flex flex-wrap md:min-w-[900px] lg:min-w-[1280px]">
+        <div class="flex flex-wrap md:min-w-[900px] lg:min-w-[1250px]">
           <div
             *ngFor="let post of filteredPosts"
             class="w-full xl:w-1/3 md:w-1/2 p-4 relative z-[1000]"

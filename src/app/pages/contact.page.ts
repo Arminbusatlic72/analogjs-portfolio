@@ -18,8 +18,7 @@ import { ContactFormComponent } from '../../components/layout/contact-form/conta
             <h2
               class="text-4xl md:text-4xl lg:text-6xl text-violet-700 dark:text-yellow-500 font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-left transition-all duration-500 ease-out transform"
             >
-              <span class="text-yellow-500 dark:text-violet-700">/</span>
-              contact
+              <span class="text-yellow-500 dark:text-violet-700">/</span>contact
             </h2>
             <p class="lg:w-2/3 leading-relaxed text-left dark:text-gray-300">
               Thanks for taking the time to reach out. How can I help you today?

@@ -1,6 +1,8 @@
 ---
 title: "Kabinet brewery official website"
-date: "01-02-2020"
+timePeriod: "Nov 2021 ‑ Jan 2022"
+
+date: "01-28-2022"
 technology: "Wordpress, Woocomerce"
 featuredImage: "/projects/kabinet.png"
 projectImage: "/projects/kabinet/kabinet1.png"
@@ -14,11 +16,9 @@ Website is hosted on shared hosting
 Conversion of designs to a Wordpress site.
 Migration of the site to a production environment.
 Payment integration with Banca Intesa payment card.
-Performance optimization
-
-"
-tools: " Figma, visual studio code, Html5, CSS3, Wordpress, Woocomerce,
-"
+Performance optimization."
+tools: " Figma, Visual Studio Code, Html5, CSS3, Wordpress, Woocomerce"
+company: Grumpy dev
 previousProject: "learningmakeover"
 nextProject: "alcove"
 ---

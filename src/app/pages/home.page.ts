@@ -6,7 +6,7 @@ import { NgOptimizedImage } from '@angular/common';
   standalone: true,
   imports: [NgOptimizedImage],
   template: `
-    <div
+    <main
       class="min-w-full text-black  bg-white flex flex-col items-center justify-center dark:bg-gray-800"
     >
       <section
@@ -21,9 +21,9 @@ import { NgOptimizedImage } from '@angular/common';
                 <div
                   class="text-wrapper lg:w-1/2 w-full lg:pr-8 flex flex-col justify-center mobile-min-height"
                 >
-                  <p>Hello,</p>
+                  <p class="text-violet-700 dark:text-yellow-500">Hello!</p>
                   <h1
-                    class="text-4xl md:text-4xl lg:text-6xl font-bold relative transition-all duration-500 ease-out transform"
+                    class="animated-heading text-4xl md:text-4xl lg:text-6xl font-bold relative transition-all duration-500 ease-out transform"
                   >
                     I am
                     <span
@@ -36,7 +36,7 @@ import { NgOptimizedImage } from '@angular/common';
                   <p
                     class="mb-5 text-lg md:text-2xl md:leading-8 lg:leading-[3rem]"
                   >
-                    I am a Frontend Developer
+                    a Frontend Developer
                   </p>
                   <div class="w-full flex justify-start gap-4">
                     <a
@@ -54,114 +54,26 @@ import { NgOptimizedImage } from '@angular/common';
                   </div>
                 </div>
                 <div
-                  class="image-wrapper lg:w-1/2 w-full lg:pl-8 mb-8 lg:mb-0 hidden lg:block"
+                  class="lg:w-1/2 w-full lg:pl-8 mb-8 lg:mb-0 hidden lg:block"
                 >
                   <picture>
-                    <source
-                      srcset="/arminHeroPortfolio.webp"
-                      type="image/webp"
-                    />
+                    <source srcset="/arminHeroNew (1).webp" type="image/webp" />
                     <img
-                      class="w-full h-auto"
-                      ngSrc="/arminHeroPortfolio.png"
+                      class="w-full h-auto animated-heading"
+                      ngSrc="/arminHeroNew (1).png"
                       alt="Armin Image"
-                      priority
+                      height="300"
                       width="400"
-                      height="500"
+                      priority
                     />
                   </picture>
                 </div>
               </div>
-
-              <!-- <div class="flex flex-col-reverse lg:flex-row items-center">
-                <div class="text-wrapper lg:w-1/2 w-full lg:pr-8">
-                  <p>Hello</p>
-                  <h1
-                    class="text-4xl md:text-4xl lg:text-6xl font-bold relative transition-all duration-500 ease-out transform"
-                  >
-                    I am
-                    <span
-                      class="main-heading text-violet-700 dark:text-yellow-500"
-                    >
-                      Armin<br />
-                      Busatlic
-                    </span>
-                  </h1>
-                  <p
-                    class="mb-5 text-lg md:text-2xl md:leading-8 lg:leading-[3rem]"
-                  >
-                    I am a Frontend Developer
-                  </p>
-                  <div
-                    class="w-full flex justify-center sm:justify-start gap-4"
-                  >
-                    <button
-                      class="animated text-white bg-violet-700 border-0 py-2 px-8 focus:outline-none hover:bg-violet-600 rounded text-lg"
-                    >
-                      Download my CV
-                    </button>
-                    <button
-                      class="animated text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-200 rounded text-lg"
-                    >
-                      Projects
-                    </button>
-                  </div>
-                </div>
-                <div class="image-wrapper lg:w-1/2 w-full lg:pl-8 mb-8 lg:mb-0">
-                  <img
-                    class="w-full h-auto"
-                    src="/arminHero.png"
-                    alt="Armin Image"
-                  />
-                </div>
-              </div> -->
             </div>
-
-            <!-- <div class="container px-5 py-24 mx-auto">
-              <div class="text-wrapper">
-                <p>Hello</p>
-                <h1
-                  class="text-4xl md:text-4xl lg:text-6xl  font-bold relative transition-all duration-500 ease-out transform"
-                >
-                  I am
-                  <span
-                    class="main-heading text-violet-700 dark:text-yellow-500"
-                    >Armin<br />
-                    Busatlic</span
-                  >
-                </h1>
-                <p
-                  class="mb-5 text-lg md:text-2xl md:leading-8 lg:leading-[3rem]"
-                >
-                  A am Frontend Developer
-                </p>
-              </div>
-              <div class="image-wrapper">
-                <img
-                  class="w-full h-auto mb-8"
-                  src="/arminHero.jpg"
-                  alt="Armin Image"
-                />
-              </div>
-              <div class="w-full flex justify-center sm:justify-start gap-4">
-                <button
-                  class="animated text-white bg-violet-700 border-0 py-2 px-8 focus:outline-none hover:bg-violet-600 rounded text-lg"
-                >
-                  Download my CV
-                </button>
-                <button
-                  class="animated text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-200 rounded text-lg"
-                >
-                  Projects
-                </button>
-              </div>
-            </div> -->
           </div>
         </div>
       </section>
-    </div>
+    </main>
   `,
 })
-export default class HomeComponent {
-  title = 'portfolio';
-}
+export default class HomeComponent {}

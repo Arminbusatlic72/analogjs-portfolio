@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
   imports: [RouterOutlet, HeaderComponent, FooterComponent, CommonModule],
   template: `
     <div
-      class="bg-slate-200 dark:bg-slate-700 armin"
+      class="bg-white dark:bg-gray-800"
       [ngClass]="darkModeService.darkModeSignal()"
     >
       <app-header></app-header>
@@ -20,7 +20,7 @@ import { CommonModule } from '@angular/common';
       <router-outlet> </router-outlet>
 
       <app-footer name="Armin Busatlic"></app-footer>
-      <div class="area fixed">
+      <div class="area fixed bg-white dark:bg-gray-800">
         <ul class="circles">
           <li></li>
           <li></li>

@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule, NgFor, AsyncPipe } from '@angular/common';
+import { CommonModule, NgOptimizedImage, AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 import { ContentService } from '../services/content.service';
@@ -8,7 +8,13 @@ import { TechnologyItemComponent } from '../../components/layout/tech-item/tech-
 @Component({
   selector: 'about',
   standalone: true,
-  imports: [CommonModule, TechnologyItemComponent, RouterLink, AsyncPipe],
+  imports: [
+    NgOptimizedImage,
+    CommonModule,
+    TechnologyItemComponent,
+    RouterLink,
+    AsyncPipe,
+  ],
   template: `
     <div
       class="text-gray-600 bg-white flex flex-col items-center justify-center dark:bg-gray-800 text-gray-100"
@@ -22,39 +28,36 @@ import { TechnologyItemComponent } from '../../components/layout/tech-item/tech-
             <h2
               class="text-4xl md:text-4xl lg:text-6xl text-violet-700 dark:text-yellow-500 font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12  text-left transition-all duration-500 ease-out transform"
             >
-              <span class="text-yellow-500 dark:text-violet-700">/</span> about
+              <span class="text-yellow-500 dark:text-violet-700">/</span>about
               me
             </h2>
             <div class="px-0 md:px-16">
               <p
                 class="leading-relaxed text-gray-500 leading-loose dark:text-gray-300"
               >
-                I am Armin Bušatlić and I am a self-taught developer with
-                extensive experience in front-end development, with a focus on
-                Angular and JavaScript.<br />
-                Over the past two years, he has honed his skills in designing
-                and implementing frontend solutions for enterprise-scale
-                projects based on SAP CX (Hybris B2C & B2B) and CRM platforms
-                like Emarsys.
-                <br />
-                I am passionate about learning new technologies and continually
-                expanding his expertise in the ever-evolving world of front-end
+                I'm Armin Bušatlić, a front-end developer with over 4 years of
+                experience creating user-friendly interfaces using HTML, CSS,
+                and JavaScript. My focus over the past two years has been on
+                Angular and JavaScript, developing and maintaining UI features
+                for a B2B multinational e-commerce project on the SAP Commerce
+                Cloud-based Spartacus storefront.<br />
+                I'm always eager to learn new technologies and continually
+                expand my skills in the fast-evolving world of front-end
                 development.
+                <br />
               </p>
             </div>
           </div>
 
-          <!-- Skills Wrapper -->
           <div
             class="text-wrapper text-primary-content dark:text-white w-full lg:w-1/2"
           >
             <h3
               class="text-3xl md:text-3xl text-violet-700 dark:text-yellow-500 lg:text-6xl font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 md:text-left transition-all duration-500 ease-out transform"
             >
-              <span class="text-yellow-500 dark:text-violet-700">#</span> skills
+              <span class="text-yellow-500 dark:text-violet-700">#</span>skills
             </h3>
             <div class="px-0 md:px-16">
-              <!-- Coding Section -->
               <h3
                 class="font-bold text-xl mb-2 cursor-pointer flex items-center justify-between border border-gray-300 px-4 py-2"
                 (click)="toggleSection('coding')"
@@ -85,7 +88,6 @@ import { TechnologyItemComponent } from '../../components/layout/tech-item/tech-
                 </app-tech-item>
               </div>
 
-              <!-- Platforms Section -->
               <h3
                 class="font-bold text-xl mb-2 cursor-pointer flex items-center justify-between border border-gray-300 px-4 py-2"
                 (click)="toggleSection('platforms')"
@@ -192,8 +194,8 @@ import { TechnologyItemComponent } from '../../components/layout/tech-item/tech-
             <h3
               class="text-3xl md:text-3xl text-violet-700 dark:text-yellow-500 lg:text-6xl font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 md:text-left transition-all duration-500 ease-out transform"
             >
-              <span class="text-yellow-500 dark:text-violet-700">#</span>
-              projects
+              <span class="text-yellow-500 dark:text-violet-700">#</span
+              >projects
             </h3>
             <div
               class="flex flex-wrap max-h-[400px] overflow-y-auto border-gray-200"
@@ -209,8 +211,10 @@ import { TechnologyItemComponent } from '../../components/layout/tech-item/tech-
                     >
                       <img
                         class="h-full w-full object-cover object-center"
-                        src="{{ post.attributes.featuredImage }}"
+                        [ngSrc]="post.attributes.featuredImage"
                         alt="{{ post.attributes.title }}"
+                        width="400"
+                        height="260"
                       />
                       <div
                         class="absolute inset-0 bg-gradient-to-t from-white dark:from-gray-800 to-transparent opacity-80"
@@ -268,7 +272,7 @@ export default class AboutPageComponent {
     { name: 'SASS, Less', stars: 5 },
     { name: 'BEM', stars: 5 },
     { name: 'Bootstrap, React Bootstrap', stars: 5 },
-    { name: 'Tailwind css, ', stars: 5 },
+    { name: 'Tailwind css', stars: 5 },
     { name: 'Styled component', stars: 5 },
     { name: 'Javascript', stars: 4 },
     { name: 'Typescript', stars: 4 },

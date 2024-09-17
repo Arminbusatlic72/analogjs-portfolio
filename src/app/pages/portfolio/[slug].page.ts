@@ -1,4 +1,5 @@
 import { MarkdownComponent, injectContent } from '@analogjs/content';
+import { RouteMeta } from '@analogjs/router';
 import {
   AsyncPipe,
   NgIf,
@@ -10,7 +11,15 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { Project } from 'src/app/models/project';
+import {
+  projectTitleResolver,
+  projectMetaResolver,
+} from '../../resolvers/resolver';
 
+export const routeMeta: RouteMeta = {
+  title: projectTitleResolver,
+  meta: projectMetaResolver,
+};
 @Component({
   standalone: true,
   imports: [
@@ -67,24 +76,33 @@ import { Project } from 'src/app/models/project';
                 {{ post.attributes.title }}
               </h2>
 
-              <p class="text-md">
+              <p class="text-md mb-4">
                 {{ post.attributes.description }}
+              </p>
+              <p class="text-md">
+                <strong>Company:</strong>
+                {{ post.attributes.company }}
               </p>
               <p class="text-md">
                 <strong>Tech stack:</strong>
                 {{ post.attributes.tools }}
               </p>
-
-              <p class="text-sm">
+              <p class="text-md">
+                <strong>Project Duration:</strong>
+                {{ post.attributes.timePeriod }}
+              </p>
+              <p *ngIf="post.attributes.date" class="text-md">
                 <strong>Release day:</strong>
                 <time
                   [attr.datetime]="post.attributes.date | date : 'yyyy-MM-dd'"
-                  >{{ post.attributes.date | date : 'MMMM d, yyyy' }}</time
+                >
+                  {{ post.attributes.date | date : 'MMMM d, yyyy' }}</time
                 >
               </p>
 
               <div class="flex items-center space-x-4 mt-5">
                 <a
+                  *ngIf="post.attributes.link"
                   href="{{ post.attributes.link }}"
                   target="_blank"
                   class="animated inline-block mb-4 text-white bg-violet-700 border-0 py-2 px-8 focus:outline-none hover:bg-violet-600 rounded text-lg"

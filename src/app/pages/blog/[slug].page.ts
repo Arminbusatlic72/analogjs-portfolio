@@ -1,4 +1,6 @@
 import { MarkdownComponent, injectContent } from '@analogjs/content';
+import { RouteMeta } from '@analogjs/router';
+
 import {
   AsyncPipe,
   NgIf,
@@ -9,6 +11,12 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { BlogPost } from 'src/app/models/post';
+import { blogTitleResolver, blogMetaResolver } from '../../resolvers/resolver';
+
+export const routeMeta: RouteMeta = {
+  title: blogTitleResolver,
+  meta: blogMetaResolver,
+};
 
 @Component({
   standalone: true,
@@ -22,7 +30,7 @@ import { BlogPost } from 'src/app/models/post';
     },
   ],
   template: `
-    <div *ngIf="post$ | async as post">
+    <article *ngIf="post$ | async as post">
       <section
         class="mb-4 flex w-full flex-auto flex-row justify-between gap-4 text-gray-600 dark:text-gray-300"
       >
@@ -85,7 +93,7 @@ import { BlogPost } from 'src/app/models/post';
           </div>
         </div>
       </section>
-    </div>
+    </article>
   `,
 })
 export default class BlogPostPage {

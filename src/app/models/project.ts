@@ -1,7 +1,9 @@
 export interface Project {
   title: string;
   date: string;
+  timePeriod: string;
   technology: string;
+  company: string;
   featuredImage: string;
   projectImage: string;
   projectImageSec?: string;

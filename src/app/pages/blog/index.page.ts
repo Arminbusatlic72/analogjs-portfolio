@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { NgFor, NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 import { ContentService } from '../../services/content.service';
 
 @Component({
   standalone: true,
-  imports: [NgFor, RouterLink],
+  imports: [NgFor, RouterLink, NgOptimizedImage],
   template: `
     <section class="text-gray-600 body-font p-5">
       <div
@@ -16,7 +16,7 @@ import { ContentService } from '../../services/content.service';
           <h2
             class="text-4xl md:text-4xl lg:text-6xl text-violet-700 dark:text-yellow-500 font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-left transition-all duration-500 ease-out transform"
           >
-            <span class="text-yellow-500 dark:text-violet-700">/</span> blog
+            <span class="text-yellow-500 dark:text-violet-700">/</span>blog
             posts
           </h2>
           <p
@@ -32,22 +32,60 @@ import { ContentService } from '../../services/content.service';
           <div class="w-full xl:w-1/3 md:w-1/2 p-4 relative z-[1000]">
             <a [routerLink]="['/blog/', post.attributes.slug]">
               <div
+                class="border border-gray-200 rounded-lg dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden"
+              >
+                <!-- Full-width cover image -->
+                <figure class="relative h-64 mb-4 overflow-hidden">
+                  <img
+                    class="h-full w-full object-cover object-center"
+                    [ngSrc]="post.attributes.coverImage"
+                    alt="{{ post.attributes.title }}"
+                    width="500"
+                    height="210"
+                  />
+                </figure>
+
+                <!-- Content area -->
+                <div class="p-6">
+                  <h2
+                    class="two-lines text-lg text-gray-900 font-medium title-font mb-2 dark:text-gray-100"
+                  >
+                    {{ post.attributes.title }}
+                  </h2>
+                  <p
+                    class="three-lines leading-relaxed text-base dark:text-gray-300"
+                  >
+                    {{ post.attributes.description }}
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          }
+        </div>
+
+        <!-- <div class="flex flex-wrap">
+          @for (post of posts;track post.attributes.slug) {
+          <div class="w-full xl:w-1/3 md:w-1/2 p-4 relative z-[1000]">
+            <a [routerLink]="['/blog/', post.attributes.slug]">
+              <div
                 class="border border-gray-200 p-6 rounded-lg dark:border-gray-700 bg-white dark:bg-gray-800"
               >
                 <div
-                  class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4 dark:bg-indigo-800 dark:text-indigo-400"
+                  class="w-full h-auto inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4 dark:bg-indigo-800 dark:text-indigo-400"
                 >
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    class="w-6 h-6"
-                    viewBox="0 0 24 24"
+                  <div
+                    class="relative h-48 mb-4 overflow-hidden rounded-t-lg bg-gray-100 dark:bg-gray-700"
                   >
-                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                  </svg>
+                    <img
+                      class="h-full w-full object-cover object-center"
+                      src="{{ post.attributes.coverImage }}"
+                      alt="{{ post.attributes.title }}"
+                    />
+                    <div
+                      class="absolute inset-0 bg-gradient-to-t from-white dark:from-gray-800 to-transparent opacity-80"
+                    ></div>
+                  </div>
                 </div>
 
                 <h2
@@ -65,7 +103,7 @@ import { ContentService } from '../../services/content.service';
           </div>
 
           }
-        </div>
+        </div> -->
       </div>
     </section>
   `,

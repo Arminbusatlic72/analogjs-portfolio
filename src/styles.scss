@@ -207,11 +207,7 @@
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
   white-space: nowrap;
 }
-.animated {
-  background-size: 2rem 2rem;
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
-  white-space: nowrap;
-}
+
 @keyframes animation-15lk19q {
   0% {
     background-position: 0 0;
@@ -234,29 +230,28 @@
   background-position: right center;
   animation: animation-15lk19q 2.8s linear 0s infinite normal none running;
 }
-/* For Chrome, Safari, and other WebKit browsers */
-::-webkit-scrollbar {
-  width: 12px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgb(31, 41, 55);
-  border-radius: 10px;
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-
-::-webkit-scrollbar-thumb {
-  background: #eab308;
-  border-radius: 10px;
-  background: #6d28d9;
-}
 
 /* For Firefox */
 html {
   box-sizing: border-box;
   scrollbar-width: thin;
-
   scrollbar-color: #6d28d9 rgb(31, 41, 55); /* thumb color and track color */
+  /* For Chrome, Safari, and other WebKit browsers */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgb(31, 41, 55);
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #eab308;
+    border-radius: 10px;
+    background: #6d28d9;
+  }
 }
 @media (prefers-color-scheme: dark) {
   ::-webkit-scrollbar-thumb {
@@ -270,7 +265,7 @@ html {
   /* For Firefox */
   html {
     scrollbar-width: thin;
-    scrollbar-color: #eab308 #fff; /* thumb color and track color */
+    scrollbar-color: #eab308 #fff;
   }
 }
 .two-lines {
@@ -281,7 +276,7 @@ html {
   text-overflow: ellipsis;
   white-space: normal;
 }
-.tree-lines {
+.three-lines {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -290,14 +285,10 @@ html {
   white-space: normal;
 }
 .area {
-  background: #4e54c8;
-  background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
   width: 100%;
-  /* height: 100vh; */
 }
 
 .circles {
-  /* position: absolute; */
   top: 0;
   left: 0;
   width: 100%;
@@ -411,11 +402,8 @@ header {
   /* height: 105px; */
 }
 @media (max-width: 1020px) {
-  /* Adjust this breakpoint as needed */
   .mobile-min-height {
-    min-height: calc(
-      100vh - 165px - 104px
-    ); /* Replace 60px with the height of your footer */
+    min-height: calc(100vh - 165px - 104px);
   }
 }
 
@@ -440,7 +428,7 @@ dt {
   text-align: right;
 }
 .accordion-content.open {
-  max-height: 3000px; /* Adjust this value based on your content size */
+  max-height: 3000px;
   opacity: 1;
 }
 .accordion-icon {
@@ -449,7 +437,7 @@ dt {
 }
 
 .accordion-icon.open {
-  transform: rotate(90deg); /* Rotate when section is open */
+  transform: rotate(90deg);
 }
 .menu-enter {
   opacity: 0;
@@ -471,4 +459,16 @@ dt {
 .menu-exit-active {
   opacity: 0;
   transform: translateY(-20px);
+}
+.animated-heading span {
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
