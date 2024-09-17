@@ -398,13 +398,9 @@ html {
 footer {
   height: 165px;
 }
-header {
-  /* height: 105px; */
-}
-@media (max-width: 1020px) {
-  .mobile-min-height {
-    min-height: calc(100vh - 165px - 104px);
-  }
+
+.mobile-min-height {
+  min-height: calc(100vh - 165px - 130px);
 }
 
 dl {

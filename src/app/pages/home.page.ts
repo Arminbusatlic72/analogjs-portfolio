@@ -56,7 +56,7 @@ import { NgOptimizedImage } from '@angular/common';
                 <div
                   class="lg:w-1/2 w-full lg:pl-8 mb-8 lg:mb-0 hidden lg:block"
                 >
-                  <picture>
+                  <!-- <picture>
                     <source srcset="/arminHeroNew (1).webp" type="image/webp" />
                     <img
                       class="w-full h-auto animated-heading"
@@ -66,7 +66,7 @@ import { NgOptimizedImage } from '@angular/common';
                       width="400"
                       priority
                     />
-                  </picture>
+                  </picture> -->
                 </div>
               </div>
             </div>
