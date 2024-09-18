@@ -19,18 +19,17 @@ import { NgOptimizedImage } from '@angular/common';
             <div class="container px-5 pb-10 mx-auto">
               <div class="flex flex-col-reverse lg:flex-row lg:items-center">
                 <div
-                  class="text-wrapper lg:w-1/2 w-full lg:pr-8 flex flex-col justify-center mobile-min-height"
+                  class="max-w-[100%] lg:max-w-[70%] w-full lg:pr-8 flex flex-col justify-center mobile-min-height"
                 >
                   <p class="text-violet-700 dark:text-yellow-500">Hello!</p>
                   <h1
-                    class="animated-heading text-4xl md:text-4xl lg:text-6xl font-bold relative transition-all duration-500 ease-out transform"
+                    class="animated-heading text-4xl md:text-4xl lg:text-8xl font-bold relative transition-all duration-500 ease-out transform"
                   >
                     I am
                     <span
                       class="main-heading text-violet-700 dark:text-yellow-500"
                     >
-                      Armin<br />
-                      Bušatlić
+                      Armin Bušatlić
                     </span>
                   </h1>
                   <p
@@ -52,21 +51,6 @@ import { NgOptimizedImage } from '@angular/common';
                       Projects
                     </a>
                   </div>
-                </div>
-                <div
-                  class="lg:w-1/2 w-full lg:pl-8 mb-8 lg:mb-0 hidden lg:block"
-                >
-                  <!-- <picture>
-                    <source srcset="/arminHeroNew (1).webp" type="image/webp" />
-                    <img
-                      class="w-full h-auto animated-heading"
-                      ngSrc="/arminHeroNew (1).png"
-                      alt="Armin Image"
-                      height="300"
-                      width="400"
-                      priority
-                    />
-                  </picture> -->
                 </div>
               </div>
             </div>
