@@ -108,7 +108,7 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
               <li class="nav-item">
                 <a
                   class="px-6 py-4 flex items-center justify-center text-center text-sm uppercase font-bold leading-snug text-black dark:text-white hover:opacity-75 transition-colors duration-500"
-                  href="/"
+                  href="/home"
                   >Home</a
                 >
               </li>
