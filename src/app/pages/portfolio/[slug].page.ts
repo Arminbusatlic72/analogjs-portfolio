@@ -7,14 +7,15 @@ import {
   IMAGE_CONFIG,
   DatePipe,
 } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { RouterLink, ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Project } from 'src/app/models/project';
 import {
   projectTitleResolver,
   projectMetaResolver,
 } from '../../resolvers/resolver';
+import { ContentService } from '../../services/content.service';
 
 export const routeMeta: RouteMeta = {
   title: projectTitleResolver,
@@ -43,16 +44,8 @@ export const routeMeta: RouteMeta = {
       <section
         class="mb-4 flex w-full flex-auto flex-row justify-between gap-4 text-gray-600 dark:text-gray-300"
       >
-        <div class="flex justify-between w-full items-center">
-          <button
-            *ngIf="post.attributes.nextProject"
-            [routerLink]="['/portfolio', post.attributes.nextProject]"
-            class="btn btn-accent w-28"
-            type="button"
-          >
-            Next
-          </button>
-          <div class="flex-1 text-right">
+        <div class="flex items-center justify-between w-full">
+          <div class="w-28">
             <button
               *ngIf="post.attributes.previousProject"
               [routerLink]="['/portfolio', post.attributes.previousProject]"
@@ -60,6 +53,26 @@ export const routeMeta: RouteMeta = {
               type="button"
             >
               Previous
+            </button>
+          </div>
+
+          <div class="flex-1 text-center">
+            <p
+              class="text-lg text-black dark:text-white"
+              aria-label="Project position"
+            >
+              <strong> {{ projectPosition }} of {{ totalProjects }} </strong>
+            </p>
+          </div>
+
+          <div class="w-28 text-right">
+            <button
+              *ngIf="post.attributes.nextProject"
+              [routerLink]="['/portfolio', post.attributes.nextProject]"
+              class="btn btn-accent w-28"
+              type="button"
+            >
+              Next
             </button>
           </div>
         </div>
@@ -135,7 +148,7 @@ export const routeMeta: RouteMeta = {
               class="w-full h-auto mb-8"
               [ngSrc]="post.attributes.projectImage"
               alt="{{ post.attributes.title }}"
-              loading="lazy"
+              priority
               width="1000"
               height="460"
               sizes="(max-width: 640px) 100vw, 50vw"
@@ -146,7 +159,7 @@ export const routeMeta: RouteMeta = {
               class="w-full h-auto mb-8"
               [ngSrc]="post.attributes.projectImageSec"
               alt="{{ post.attributes.title }}"
-              loading="lazy"
+              priority
               width="1000"
               height="460"
               sizes="(max-width: 640px) 100vw, 50vw"
@@ -166,9 +179,94 @@ export const routeMeta: RouteMeta = {
     </div>
   `,
 })
-export default class ProjectPage {
+// export default class ProjectPage {
+//   private contentService = inject(ContentService);
+
+//   readonly posts = this.contentService.projectsContentFn;
+
+//   post$ = injectContent<Project>({
+//     param: 'slug',
+//     subdirectory: 'projects',
+//   });
+//   projectPosition: number | null = null; // Position of the current project
+//   totalProjects: number | null = null; // Total number of projects
+
+//   constructor(private route: ActivatedRoute) {
+//     this.calculateProjectPosition();
+//   }
+//   calculateProjectPosition() {
+//     const projects = this.posts; // Assume this is an array of ContentFile<Project>
+//     console.log(projects);
+//     // Get the current project slug from the route
+//     const currentSlug = this.route.snapshot.paramMap.get('slug');
+
+//     console.log(currentSlug);
+//     // If we have projects and a current slug
+//     if (projects && currentSlug) {
+//       // Find the total number of projects
+//       this.totalProjects = projects.length;
+
+//       // Find the index of the current project by its slug
+//       const currentIndex = projects.findIndex(
+//         (project) => project.attributes.slug === currentSlug
+//       );
+
+//       if (currentIndex !== -1) {
+//         // Update the current project position (1-based index)
+//         this.projectPosition = currentIndex + 1;
+//       }
+//     }
+//   }
+// }
+export default class ProjectPage implements OnInit, OnDestroy {
+  private contentService = inject(ContentService);
+  readonly posts = this.contentService.projectsContentFn;
+
   post$ = injectContent<Project>({
     param: 'slug',
     subdirectory: 'projects',
   });
+
+  projectPosition: number | null = null; // Position of the current project
+  totalProjects: number | null = null; // Total number of projects
+  private routeSubscription!: Subscription;
+
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    // Subscribe to route changes
+    this.routeSubscription = this.route.params.subscribe(() => {
+      this.calculateProjectPosition();
+    });
+  }
+
+  calculateProjectPosition() {
+    const projects = this.posts; // Assume this is an array of ContentFile<Project>
+
+    // Get the current project slug from the route
+    const currentSlug = this.route.snapshot.paramMap.get('slug');
+
+    // If we have projects and a current slug
+    if (projects && currentSlug) {
+      // Find the total number of projects
+      this.totalProjects = projects.length;
+
+      // Find the index of the current project by its slug
+      const currentIndex = projects.findIndex(
+        (project) => project.attributes.slug === currentSlug
+      );
+
+      if (currentIndex !== -1) {
+        // Update the current project position (1-based index)
+        this.projectPosition = currentIndex + 1;
+      }
+    }
+  }
+
+  ngOnDestroy(): void {
+    // Unsubscribe from route changes to avoid memory leaks
+    if (this.routeSubscription) {
+      this.routeSubscription.unsubscribe();
+    }
+  }
 }
