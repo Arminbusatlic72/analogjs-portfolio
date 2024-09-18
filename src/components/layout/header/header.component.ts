@@ -184,59 +184,6 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
       </nav>
     </header>
   `,
-  styles: [
-    `
-      .media-header {
-        position: fixed;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        left: 18px;
-        gap: 8px;
-        top: 0px;
-      }
-
-      @media (max-width: 768px) {
-        .media-header {
-          display: none;
-        }
-      }
-
-      .logo__image {
-        height: 80px;
-        width: 80px;
-        padding: 6px;
-        border-radius: 50%;
-        border: 8px solid #eab308;
-        transition: transform 0.3s ease, border-color 0.3s ease,
-          border-width 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .logo__image:hover {
-        transform: scale(1.1); /* Scale up the logo */
-        border-color: rgb(255, 223, 0); /* Change border color on hover */
-        border-width: 12px; /* Increase border width on hover */
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
-      }
-
-      .logo__image:focus {
-        outline: 2px solid rgba(249, 215, 47, 0.5);
-        outline-offset: 4px;
-      }
-      .transition-transform {
-        transition: transform 0.3s ease;
-      }
-
-      .transition-opacity {
-        transition: opacity 0.5s ease;
-      }
-
-      .transform-gpu {
-        transform: translate3d(0, 0, 0);
-      }
-    `,
-  ],
 })
 export class HeaderComponent implements OnInit {
   darkModeService: DarkModeService = inject(DarkModeService);
