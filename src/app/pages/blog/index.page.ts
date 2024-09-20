@@ -23,8 +23,8 @@ import { ContentService } from '../../services/content.service';
             class="lg:w-1/2 w-full leading-relaxed text-gray-500 dark:text-gray-300 leading-loose"
           >
             This blog explores tech insights and other topics that catch my
-            interest, offering a compilation of solutions and ideas that<br />
-            I hope will be helpful to others <br />seeking practical guidance.
+            interest, offering a compilation of solutions and ideas that, I hope
+            will be helpful to others seeking practical guidance.
           </p>
         </div>
         <div class="flex flex-wrap">
@@ -32,10 +32,10 @@ import { ContentService } from '../../services/content.service';
           <div class="w-full xl:w-1/3 md:w-1/2 p-4 relative z-[1000]">
             <a [routerLink]="['/blog/', post.attributes.slug]">
               <div
-                class="border border-gray-200 rounded-lg dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden"
+                class="animated-border rounded-lg dark:bg-white dark:bg-gray-800 overflow-hidden"
               >
                 <!-- Full-width cover image -->
-                <figure class="relative h-64 mb-4 overflow-hidden">
+                <figure class="relative h-64 overflow-hidden">
                   <img
                     class="h-full w-full object-cover object-center"
                     [ngSrc]="post.attributes.coverImage"

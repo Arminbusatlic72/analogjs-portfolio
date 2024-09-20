@@ -9,14 +9,7 @@ projectImage: "/projects/kabinet/kabinet1.png"
 projectImageSec: "/projects/kabinet/kabinet2.png"
 slug: "kabinet"
 link: "https://kabinet.rs/"
-description: "Creation of the official web shop of the firm using Wordpress and Woocommerce plugin.
-Creation of a multi‑language web store using the WPML plugin.
-Optimizing web performance by using image optimization and caching plug‑ins.
-Website is hosted on shared hosting
-Conversion of designs to a Wordpress site.
-Migration of the site to a production environment.
-Payment integration with Banca Intesa payment card.
-Performance optimization."
+description: "Development of the official web shop for a leading craft brewery in the region using WordPress and WooCommerce. Migrated the site to WooCommerce from a previous platform, ensuring SEO links were preserved through proper redirects. The store features over 150 products and supports multiple languages with the WPML plugin. Optimized web performance through image compression and caching plugins, and migrated the site to a production environment. Integrated payment processing with Banca Intesa. The website is hosted on shared hosting, and the design was fully converted into a WordPress site. I continue to update and maintain the site, adding new features upon request."
 tools: " Figma, Visual Studio Code, Html5, CSS3, Wordpress, Woocomerce"
 company: Grumpy dev
 previousProject: "learningmakeover"
