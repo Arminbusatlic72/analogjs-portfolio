@@ -30,11 +30,11 @@ import { ContentService } from '../../services/content.service';
         <div class="flex flex-wrap">
           @for (post of posts;track post.attributes.slug) {
           <div class="w-full xl:w-1/3 md:w-1/2 p-4 relative z-[1000]">
-            <a [routerLink]="['/blog/', post.attributes.slug]">
-              <div
-                class="animated-border rounded-lg dark:bg-white dark:bg-gray-800 overflow-hidden"
-              >
-                <!-- Full-width cover image -->
+            <div
+              class="animated-border rounded-lg dark:bg-white dark:bg-gray-800 overflow-hidden"
+            >
+              <!-- Full-width cover image -->
+              <a [routerLink]="['/blog/', post.attributes.slug]">
                 <figure class="relative h-64 overflow-hidden">
                   <img
                     class="h-full w-full object-cover object-center"
@@ -44,22 +44,42 @@ import { ContentService } from '../../services/content.service';
                     height="210"
                   />
                 </figure>
+              </a>
 
-                <!-- Content area -->
-                <div class="p-6">
-                  <h2
-                    class="two-lines text-lg text-gray-900 font-medium title-font mb-2 dark:text-gray-100"
+              <!-- Content area -->
+              <div class="p-3">
+                <h2
+                  class="two-lines text-lg text-gray-900 font-medium title-font mb-2 dark:text-gray-100"
+                >
+                  {{ post.attributes.title }}
+                </h2>
+                <p
+                  class="three-lines mb-2 leading-relaxed text-base dark:text-gray-300"
+                >
+                  {{ post.attributes.description }}
+                </p>
+                <a
+                  [routerLink]="['/blog/', post.attributes.slug]"
+                  class="flex justify-end items-center text-sm font-medium text-violet-700 dark:text-yellow-500"
+                >
+                  Read more
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    class="w-4 h-4 ml-1"
                   >
-                    {{ post.attributes.title }}
-                  </h2>
-                  <p
-                    class="three-lines leading-relaxed text-base dark:text-gray-300"
-                  >
-                    {{ post.attributes.description }}
-                  </p>
-                </div>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </a>
               </div>
-            </a>
+            </div>
           </div>
           }
         </div>

@@ -575,7 +575,7 @@ dt {
   /* unpause the animation on hover */
   &:hover {
     animation-play-state: running;
-    transform: scale(1.05); // Slight scale on hover
+
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15), 0 0 20px rgba(255, 255, 255, 0.3);
   }
   .dark & {
