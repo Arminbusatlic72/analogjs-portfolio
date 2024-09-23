@@ -1,4 +1,4 @@
-/// <reference types="vitest" />
+// <reference types="vitest" />
 
 import { defineConfig } from 'vite';
 import analog, { type PrerenderContentFile } from '@analogjs/platform';
