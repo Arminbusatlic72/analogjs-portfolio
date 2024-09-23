@@ -403,8 +403,8 @@ html {
   }
 }
 .logo__image {
-  height: 80px;
-  width: 80px;
+  height: 65px;
+  width: 65px;
   padding: 6px;
   border-radius: 50%;
   border: 8px solid #eab308;
@@ -448,11 +448,11 @@ html {
 }
 
 footer {
-  height: 165px;
+  height: 140px;
 }
 
 .mobile-min-height {
-  min-height: calc(100vh - 165px - 130px);
+  min-height: calc(100vh - 140px - 130px);
 }
 
 dl {
