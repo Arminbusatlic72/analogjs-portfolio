@@ -9,16 +9,15 @@ import { ContentService } from '../../services/content.service';
   imports: [NgFor, RouterLink, NgOptimizedImage],
   template: `
     <section class="text-gray-600 body-font p-5">
+      <h2
+        class="text-4xl md:text-4xl lg:text-6xl text-violet-700 dark:text-yellow-500 font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-left transition-all duration-500 ease-out transform"
+      >
+        <span class="text-yellow-500 dark:text-violet-700">/</span>blog
+      </h2>
       <div
         class="container px-1 py-2 mx-auto mb-24 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900"
       >
         <div class="flex flex-wrap w-full  flex-col  text-left p-5">
-          <h2
-            class="text-4xl md:text-4xl lg:text-6xl text-violet-700 dark:text-yellow-500 font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-left transition-all duration-500 ease-out transform"
-          >
-            <span class="text-yellow-500 dark:text-violet-700">/</span>blog
-            posts
-          </h2>
           <p
             class="lg:w-1/2 w-full leading-relaxed text-gray-500 dark:text-gray-300 leading-loose"
           >

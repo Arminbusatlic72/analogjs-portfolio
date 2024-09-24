@@ -1,10 +1,10 @@
 import { injectContentFiles } from '@analogjs/content';
 import { MetaTag } from '@analogjs/router';
+
 import { ActivatedRouteSnapshot, ResolveFn } from '@angular/router';
 import { Project } from 'src/app/models/project';
 import { BlogPost } from 'src/app/models/post';
 
-// Extract content metadata for the current blog post
 function injectActiveBlogMetadata(route: ActivatedRouteSnapshot): BlogPost {
   const file = injectContentFiles<BlogPost>().find((contentFile) => {
     return contentFile.slug === route.params['slug'];
@@ -13,7 +13,6 @@ function injectActiveBlogMetadata(route: ActivatedRouteSnapshot): BlogPost {
   return file!.attributes;
 }
 
-// Resolver to set the blog post title
 export const blogTitleResolver: ResolveFn<string> = (route) =>
   injectActiveBlogMetadata(route).title;
 

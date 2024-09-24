@@ -20,7 +20,7 @@ import { ContentService } from '../../services/content.service';
       >
         <div class="flex flex-wrap w-full flex-col  text-left p-5">
           <h3
-            class="text-4xl md:text-4xl lg:text-6xl text-violet-700 dark:text-yellow-500 font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-left transition-all duration-500 ease-out transform"
+            class="text-2xl md:text-3xl lg:text-4xl text-violet-700 dark:text-yellow-500 font-bold tracking-tighter leading-tight md:leading-none md:text-left transition-all duration-500 ease-out transform"
           >
             <span class="text-yellow-500 dark:text-violet-700">#</span>client
             projects

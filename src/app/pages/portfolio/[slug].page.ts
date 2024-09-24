@@ -44,7 +44,44 @@ export const routeMeta: RouteMeta = {
       <section
         class="mb-4 flex w-full flex-auto flex-row justify-between gap-4 text-gray-600 dark:text-gray-300"
       >
-        <div class="flex items-center justify-between w-full">
+        <div class="flex items-center justify-between w-full px-6">
+          <div class="w-28 text-left">
+            <button
+              *ngIf="post.attributes.previousProject"
+              [routerLink]="['/portfolio', post.attributes.previousProject]"
+              class="btn btn-accent w-28 flex items-center justify-start"
+              type="button"
+            >
+              &#8592;
+              <!-- Left arrow -->
+              <span class="ml-2 arrow-left">Previous</span>
+            </button>
+          </div>
+
+          <div class="flex-1 text-center">
+            <p
+              class="text-lg text-black dark:text-white"
+              aria-label="Project position"
+            >
+              <strong> {{ projectPosition }} of {{ totalProjects }} </strong>
+            </p>
+          </div>
+
+          <div class="w-28 text-left">
+            <button
+              *ngIf="post.attributes.nextProject"
+              [routerLink]="['/portfolio', post.attributes.nextProject]"
+              class="btn btn-accent w-28 flex items-center justify-end"
+              type="button"
+            >
+              <span class="mr-2 arrow-right">Next</span>
+              &#8594;
+              <!-- Right arrow -->
+            </button>
+          </div>
+        </div>
+
+        <!-- <div class="flex items-center justify-between w-full">
           <div class="w-28">
             <button
               *ngIf="post.attributes.previousProject"
@@ -52,6 +89,7 @@ export const routeMeta: RouteMeta = {
               class="btn btn-accent w-28"
               type="button"
             >
+
               Previous
             </button>
           </div>
@@ -73,9 +111,10 @@ export const routeMeta: RouteMeta = {
               type="button"
             >
               Next
+
             </button>
           </div>
-        </div>
+        </div> -->
       </section>
       <section class="text-gray-600 body-font p-5">
         <div

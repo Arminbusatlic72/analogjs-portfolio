@@ -29,7 +29,6 @@ import { TechnologyItemComponent } from '../../components/layout/tech-item/tech-
               class="text-4xl md:text-4xl lg:text-6xl text-violet-700 dark:text-yellow-500 font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12  text-left transition-all duration-500 ease-out transform"
             >
               <span class="text-yellow-500 dark:text-violet-700">/</span>about
-              me
             </h2>
             <div class="px-0 md:px-16">
               <p
@@ -53,7 +52,7 @@ import { TechnologyItemComponent } from '../../components/layout/tech-item/tech-
             class="text-wrapper text-primary-content dark:text-white w-full lg:w-1/2"
           >
             <h3
-              class="text-3xl md:text-3xl text-violet-700 dark:text-yellow-500 lg:text-6xl font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 md:text-left transition-all duration-500 ease-out transform"
+              class="text-2xl md:text-3xl text-violet-700 dark:text-yellow-500 lg:text-4xl font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 md:text-left transition-all duration-500 ease-out transform"
             >
               <span class="text-yellow-500 dark:text-violet-700">#</span>skills
             </h3>
@@ -192,7 +191,7 @@ import { TechnologyItemComponent } from '../../components/layout/tech-item/tech-
         <div class="container px-5 mx-auto flex flex-wrap">
           <div class="projects-wrapper w-full lg:w-1/2  ">
             <h3
-              class="text-3xl md:text-3xl text-violet-700 dark:text-yellow-500 lg:text-6xl font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 md:text-left transition-all duration-500 ease-out transform"
+              class="text-2xl md:text-3xl text-violet-700 dark:text-yellow-500 lg:text-4xl font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 md:text-left transition-all duration-500 ease-out transform"
             >
               <span class="text-yellow-500 dark:text-violet-700">#</span
               >projects

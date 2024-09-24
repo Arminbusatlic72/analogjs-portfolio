@@ -16,8 +16,7 @@ Conversion of the design in the customized CMS system.
 Done compatible testing and fixing issues for all major browsers.
 developed device responsive code targeting all major devices."
 
-tools: "Visual Studio Code, Figma, Html5, CSS3, Gatsby.js, React.js, GraphQL, SCSS, PHP, Wordpress, Netlify, Cpanel
-"
+tools: "Visual Studio Code, Figma, Html5, CSS3, Gatsby.js, React.js, GraphQL, SCSS, PHP, Wordpress, Netlify, Cpanel"
 company: Grumpy dev
 
 previousProject: "skillsdivision"

@@ -62,9 +62,7 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
         <div
           class="container px-4 mx-auto flex flex-wrap items-center justify-between"
         >
-          <div
-            class="w-full relative flex justify-between lg:w-auto  px-4 lg:static lg:block lg:justify-start"
-          >
+          <div class="w-full relative flex justify-between lg:w-auto">
             <a href="/home">
               <picture>
                 <source srcset="/arminAvatarSmall.webp" type="image/webp" />
@@ -79,24 +77,65 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
                 />
               </picture>
             </a>
-            <button
-              class="cursor-pointer text-xl leading-none py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none text-black dark:text-white"
-              type="button"
-              (click)="toggleNavbar()"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="size-8"
+            <div class="flex justify-center items-center lg:ml-6 mt-4 lg:mt-0">
+              <!-- Dark Mode Toggle -->
+              <button
+                class="h-8 w-8 rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-gray-700 relative flex items-center justify-center transition-transform"
+                (click)="toggleDarkMode()"
               >
-                <path
-                  fill-rule="evenodd"
-                  d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm8.25 5.25a.75.75 0 0 1 .75-.75h8.25a.75.75 0 0 1 0 1.5H12a.75.75 0 0 1-.75-.75Z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </button>
+                <!-- Dark mode SVG -->
+                <svg
+                  class="fill-violet-700 absolute transition-all duration-500 ease-out transform"
+                  [ngClass]="{
+                    'opacity-100 rotate-0 scale-1': !isDarkMode,
+                    'opacity-0 rotate-180 scale-0': isDarkMode
+                  }"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+                  ></path>
+                </svg>
+
+                <!-- Light mode SVG -->
+                <svg
+                  class="fill-yellow-500 absolute transition-all duration-500 ease-out transform"
+                  [ngClass]="{
+                    'opacity-100 rotate-0 scale-1': isDarkMode,
+                    'opacity-0 -rotate-180 scale-0': !isDarkMode
+                  }"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </button>
+
+              <!-- Mobile Hamburger Button -->
+              <button
+                class="cursor-pointer text-xl leading-none py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none text-black dark:text-white ml-4"
+                type="button"
+                (click)="toggleNavbar()"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="size-8"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm8.25 5.25a.75.75 0 0 1 .75-.75h8.25a.75.75 0 0 1 0 1.5H12a.75.75 0 0 1-.75-.75Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
           <div
             [ngClass]="{ hidden: !showMenu, flex: showMenu }"
@@ -140,44 +179,6 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
                   >Contact</a
                 >
               </li>
-              <li class="nav-item flex items-center justify-center px-6 py-4">
-                <button
-                  class="h-8 w-8 rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-gray-700 relative flex items-center justify-center transition-transform"
-                  (click)="toggleDarkMode()"
-                >
-                  <!-- Dark mode SVG -->
-                  <svg
-                    class="fill-violet-700 absolute transition-all duration-500 ease-out transform"
-                    [ngClass]="{
-                      'opacity-100 rotate-0 scale-1': !isDarkMode,
-                      'opacity-0 rotate-180 scale-0': isDarkMode
-                    }"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
-                    ></path>
-                  </svg>
-
-                  <!-- Light mode SVG -->
-                  <svg
-                    class="fill-yellow-500 absolute transition-all duration-500 ease-out transform"
-                    [ngClass]="{
-                      'opacity-100 rotate-0 scale-1': isDarkMode,
-                      'opacity-0 -rotate-180 scale-0': !isDarkMode
-                    }"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </button>
-              </li>
             </ul>
           </div>
         </div>
@@ -196,8 +197,8 @@ export class HeaderComponent implements OnInit {
   toggleDarkMode() {
     this.isDarkMode = !this.isDarkMode;
     this.darkModeService.updateDarkMode();
-    console.log(this.darkModeService.darkModeSignal());
-    console.log('iz odavde', this.isDarkMode);
+    // console.log(this.darkModeService.darkModeSignal());
+    // console.log('iz odavde', this.isDarkMode);
   }
   ngOnInit() {
     this.isDarkMode = this.darkModeService.darkModeSignal() === 'dark';
