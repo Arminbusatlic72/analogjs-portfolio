@@ -27,8 +27,10 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     analog({
+      static: true,
       prerender: {
         routes: async () => [
+          '/',
           '/home',
           '/about',
           '/contact',
@@ -38,7 +40,7 @@ export default defineConfig(({ mode }) => ({
           generateContentRoutes('blog', 'src/content/blog'),
         ],
         sitemap: {
-          host: 'https://analogjs.org/',
+          host: 'https://arminbusatlic.com/',
         },
       },
     }),
