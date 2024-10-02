@@ -21,14 +21,7 @@ export const routeMeta: RouteMeta = {
 
 @Component({
   standalone: true,
-  imports: [
-    MarkdownComponent,
-    NgIf,
-    AsyncPipe,
-    RouterLink,
-    NgOptimizedImage,
-    LikeDislikeComponent,
-  ],
+  imports: [MarkdownComponent, NgIf, AsyncPipe, RouterLink, NgOptimizedImage],
   providers: [
     {
       provide: IMAGE_CONFIG,
