@@ -29,7 +29,6 @@ export default defineConfig(({ mode }) => ({
     analog({
       prerender: {
         routes: async () => [
-          '/',
           '/home',
           '/about',
           '/contact',
