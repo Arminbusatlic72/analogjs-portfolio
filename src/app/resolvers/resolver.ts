@@ -16,7 +16,6 @@ function injectActiveBlogMetadata(route: ActivatedRouteSnapshot): BlogPost {
 export const blogTitleResolver: ResolveFn<string> = (route) =>
   injectActiveBlogMetadata(route).title;
 
-// Resolver to set dynamic meta tags for the blog post
 export const blogMetaResolver: ResolveFn<MetaTag[]> = (route) => {
   const blogMetadata = injectActiveBlogMetadata(route);
 

@@ -15,6 +15,6 @@ Maintenance and Performance optimization.
 Continuous development."
 tools: " Figma, Html5, CSS3, JS, Wordpress WP Bakery Page builder"
 company: Grumpy dev
-previousProject: "neologic"
+previousProject: neologic
 nextProject: ""
 ---

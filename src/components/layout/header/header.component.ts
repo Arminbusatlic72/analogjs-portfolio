@@ -22,6 +22,7 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
 
         <div class="flex flex-col space-y-2 items-center">
           <a
+            title="Visit my GitHub profile"
             href="https://github.com/Arminbusatlic72"
             target="_blank"
             class="hover:text-blue-700 dark:hover:text-blue-300"
@@ -38,6 +39,7 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
             </svg>
           </a>
           <a
+            title="Visit my Linkedin profile"
             href="https://www.linkedin.com/in/armin-busatlic/"
             target="_blank"
             class="hover:text-blue-700 dark:hover:text-blue-300"
@@ -72,8 +74,8 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
                   alt="Armin Avatar Logo"
                   width="80"
                   height="80"
-                  priority
                   sizes="(max-width: 768px) 50vw, 100vw"
+                  loading="eager"
                 />
               </picture>
             </a>
@@ -82,6 +84,7 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
               <button
                 class="h-8 w-8 rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-gray-700 relative flex items-center justify-center transition-transform"
                 (click)="toggleDarkMode()"
+                aria-label="Toggle dark mode"
               >
                 <!-- Dark mode SVG -->
                 <svg
@@ -121,6 +124,7 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
                 class="cursor-pointer text-xl leading-none py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none text-black dark:text-white ml-4"
                 type="button"
                 (click)="toggleNavbar()"
+                aria-label="Toggle menu"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -197,8 +201,6 @@ export class HeaderComponent implements OnInit {
   toggleDarkMode() {
     this.isDarkMode = !this.isDarkMode;
     this.darkModeService.updateDarkMode();
-    // console.log(this.darkModeService.darkModeSignal());
-    // console.log('iz odavde', this.isDarkMode);
   }
   ngOnInit() {
     this.isDarkMode = this.darkModeService.darkModeSignal() === 'dark';

@@ -41,6 +41,16 @@ export default defineConfig(({ mode }) => ({
           host: 'https://analogjs.org/',
         },
       },
+      nitro: {
+        externals: {
+          external: [],
+        },
+        preset: 'netlify',
+        output: {
+          serverDir: '{{ rootDir }}/.netlify/functions-internal',
+          publicDir: '../../dist/analog/public',
+        },
+      },
     }),
   ],
   test: {

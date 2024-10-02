@@ -59,6 +59,7 @@ import { CommonModule } from '@angular/common';
   template: `
     <div class="flex space-x-4 justify-center">
       <a
+        title="Visit my GitHub profile"
         href="https://github.com/Arminbusatlic72"
         target="_blank"
         class="hover:text-blue-700 dark:hover:text-blue-300"
@@ -75,6 +76,7 @@ import { CommonModule } from '@angular/common';
         </svg>
       </a>
       <a
+        title="Visit my Linkedin profile"
         href="https://www.linkedin.com/in/armin-busatlic/"
         target="_blank"
         class="hover:text-blue-700 dark:hover:text-blue-300"

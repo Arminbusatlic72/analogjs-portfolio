@@ -1,5 +1,6 @@
 import { MarkdownComponent, injectContent } from '@analogjs/content';
 import { RouteMeta } from '@analogjs/router';
+// import { LikeDislikeComponent } from '../../../components/like-dislike/like-dislike.component';
 
 import {
   AsyncPipe,
@@ -20,7 +21,14 @@ export const routeMeta: RouteMeta = {
 
 @Component({
   standalone: true,
-  imports: [MarkdownComponent, NgIf, AsyncPipe, RouterLink, NgOptimizedImage],
+  imports: [
+    MarkdownComponent,
+    NgIf,
+    AsyncPipe,
+    RouterLink,
+    NgOptimizedImage,
+    LikeDislikeComponent,
+  ],
   providers: [
     {
       provide: IMAGE_CONFIG,
@@ -101,10 +109,4 @@ export default class BlogPostPage {
     param: 'slug',
     subdirectory: 'blog',
   });
-
-  constructor() {
-    this.post$.subscribe((post) => {
-      console.log(post);
-    });
-  }
 }

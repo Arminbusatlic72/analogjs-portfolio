@@ -14,6 +14,6 @@ slug: "neologic"
 description: "Creating a JAMstack dual-language application using WordPress as a Headless CMS, GraphQL, and GatsbyJS. 'Pixel-perfect' implementation of responsive designs from Figma. WordPress adaptation by creating custom post types and using the ACF plugin. Utilizing GraphQL to access data and GatsbyJS to generate a static website. Deployed on Netlify."
 tools: "Visual Studio Code, Figma, Html5, CSS3, Gatsby.js, React.js, GraphQL, SCSS, PHP, Wordpress, Netlify, Cpanel"
 company: Grumpy dev
-previousProject: "alcove"
-nextProject: "stribbo"
+previousProject: alcove
+nextProject: stribbo
 ---

@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
+import { RouteMeta } from '@analogjs/router';
 
 import { ContactFormComponent } from '../../components/layout/contact-form/contact-form.component';
+export const routeMeta: RouteMeta = {
+  title: 'Armin Busatlic - Contact',
+};
 @Component({
   selector: 'contact',
   standalone: true,

@@ -8,11 +8,11 @@ featuredImage: "/projects/kojan.png"
 projectImage: "/projects/kojan/kojan1.png"
 
 link: "https://www.kojan.rs/"
-slug: "kojan"
+slug: kojan
 description: "Customization of Wordpress theme using HTML5, CSS, JS, and WP Bakery Page builder. Project is migrated to Next.js"
 tools: "Figma, Html5, CSS3, JS, Wordpress WP Bakery Page builder, Next.js, React.js"
 company: Grumpy dev
 
-previousProject: "atfl"
-nextProject: "skillsdivision"
+previousProject: atfl
+nextProject: skillsdivision
 ---

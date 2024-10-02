@@ -1,9 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule, NgOptimizedImage, AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { RouteMeta } from '@analogjs/router';
 
 import { ContentService } from '../services/content.service';
 import { TechnologyItemComponent } from '../../components/layout/tech-item/tech-item';
+export const routeMeta: RouteMeta = {
+  title: 'Armin Busatlic - About',
+};
 
 @Component({
   selector: 'about',

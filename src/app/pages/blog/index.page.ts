@@ -15,7 +15,7 @@ import { ContentService } from '../../services/content.service';
         <span class="text-yellow-500 dark:text-violet-700">/</span>blog
       </h2>
       <div
-        class="container px-1 py-2 mx-auto mb-24 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900"
+        class="container px-1 py-2 mx-auto mb-24 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900 relative z-[1000]"
       >
         <div class="flex flex-wrap w-full  flex-col  text-left p-5">
           <p
@@ -28,7 +28,7 @@ import { ContentService } from '../../services/content.service';
         </div>
         <div class="flex flex-wrap">
           @for (post of posts;track post.attributes.slug) {
-          <div class="w-full xl:w-1/3 md:w-1/2 p-4 relative z-[1000]">
+          <div class="w-full xl:w-1/3 md:w-1/2 p-4">
             <div
               class="animated-border rounded-lg dark:bg-white dark:bg-gray-800 overflow-hidden"
             >

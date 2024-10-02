@@ -16,7 +16,7 @@ import { ContentService } from '../../services/content.service';
         <span class="text-yellow-500 dark:text-violet-700">/</span>portfolio
       </h2>
       <div
-        class="container px-1 py-2 mx-auto my-4 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900"
+        class="container px-1 py-2 mx-auto my-4 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900 relative z-[1000]"
       >
         <div class="flex flex-wrap w-full flex-col  text-left p-5">
           <h3
@@ -53,7 +53,7 @@ import { ContentService } from '../../services/content.service';
         <div class="flex flex-wrap  lg:w-[900px] xl:w-[1250px]">
           <div
             *ngFor="let post of filteredPosts"
-            class="w-full xl:w-1/3 md:w-1/2 p-4 relative z-[1000]"
+            class="w-full xl:w-1/3 md:w-1/2 p-4"
           >
             <a [routerLink]="['/portfolio/', post.attributes.slug]">
               <div

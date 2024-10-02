@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
+import { RouteMeta } from '@analogjs/router';
+export const routeMeta: RouteMeta = {
+  title: 'Armin Busatlic - Home',
+};
 
 @Component({
   selector: 'home',
