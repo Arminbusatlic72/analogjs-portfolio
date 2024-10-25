@@ -82,47 +82,6 @@ import { ContentService } from '../../services/content.service';
           </div>
           }
         </div>
-
-        <!-- <div class="flex flex-wrap">
-          @for (post of posts;track post.attributes.slug) {
-          <div class="w-full xl:w-1/3 md:w-1/2 p-4 relative z-[1000]">
-            <a [routerLink]="['/blog/', post.attributes.slug]">
-              <div
-                class="border border-gray-200 p-6 rounded-lg dark:border-gray-700 bg-white dark:bg-gray-800"
-              >
-                <div
-                  class="w-full h-auto inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4 dark:bg-indigo-800 dark:text-indigo-400"
-                >
-                  <div
-                    class="relative h-48 mb-4 overflow-hidden rounded-t-lg bg-gray-100 dark:bg-gray-700"
-                  >
-                    <img
-                      class="h-full w-full object-cover object-center"
-                      src="{{ post.attributes.coverImage }}"
-                      alt="{{ post.attributes.title }}"
-                    />
-                    <div
-                      class="absolute inset-0 bg-gradient-to-t from-white dark:from-gray-800 to-transparent opacity-80"
-                    ></div>
-                  </div>
-                </div>
-
-                <h2
-                  class="two-lines text-lg text-gray-900 font-medium title-font mb-2 dark:text-gray-100"
-                >
-                  {{ post.attributes.title }}
-                </h2>
-                <p
-                  class="tree-lines leading-relaxed text-base dark:text-gray-300"
-                >
-                  {{ post.attributes.description }}
-                </p>
-              </div>
-            </a>
-          </div>
-
-          }
-        </div> -->
       </div>
     </section>
   `,
