@@ -207,10 +207,11 @@ export const routeMeta: RouteMeta = {
               <div class="w-full p-2">
                 <a [routerLink]="['/portfolio/', post.attributes.slug]">
                   <div
-                    class="border border-gray-200 p-6 rounded-lg dark:border-gray-700 bg-white dark:bg-gray-800"
+                    class="flex flex-col md:flex-row border border-gray-200 p-2 rounded-lg dark:border-gray-700 bg-white dark:bg-gray-800 gap-6"
                   >
+                    <!-- Image -->
                     <div
-                      class="relative h-48 mb-4 overflow-hidden rounded-t-lg bg-gray-100 dark:bg-gray-700"
+                      class="w-full md:w-1/3 h-48 md:h-auto md:aspect-[4/3] overflow-hidden bg-gray-100 dark:bg-gray-700"
                     >
                       <img
                         class="h-full w-full object-cover object-center"
@@ -219,22 +220,21 @@ export const routeMeta: RouteMeta = {
                         width="400"
                         height="260"
                       />
-                      <div
-                        class="absolute inset-0 bg-gradient-to-t from-white dark:from-gray-800 to-transparent opacity-80"
-                      ></div>
                     </div>
 
-                    <h2
-                      class="text-lg text-gray-900 font-medium title-font mb-2 dark:text-gray-100"
-                    >
-                      {{ post.attributes.title }}
-                    </h2>
-
-                    <p
-                      class="post__desc leading-relaxed text-base dark:text-gray-300"
-                    >
-                      {{ post.attributes.technology }}
-                    </p>
+                    <!-- Text -->
+                    <div class="flex flex-col justify-center w-full md:w-2/3">
+                      <h2
+                        class="text-lg text-gray-900 font-medium title-font mb-2 dark:text-gray-100"
+                      >
+                        {{ post.attributes.title }}
+                      </h2>
+                      <p
+                        class="post__desc leading-relaxed text-base dark:text-gray-300"
+                      >
+                        {{ post.attributes.technology }}
+                      </p>
+                    </div>
                   </div>
                 </a>
               </div>

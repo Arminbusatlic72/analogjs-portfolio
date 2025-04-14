@@ -10,7 +10,22 @@
   font-weight: 400;
   font-family: "Space Grotesk", sans-serif;
 }
+/* Base styles for all modes */
+html {
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #eab308 rgb(31, 41, 55); /* Firefox thumb and track */
+}
 
+/* Chrome, Safari, etc. */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #eab308;
+  border-radius: 10px;
+}
 .markdown-content h1 {
   @apply text-4xl font-extrabold text-gray-900 mb-4 dark:text-gray-100;
 }
@@ -230,43 +245,8 @@
   animation: animation-15lk19q 2.8s linear 0s infinite normal none running;
 }
 
-/* For Firefox */
-html {
-  box-sizing: border-box;
-  scrollbar-width: thin;
-  scrollbar-color: #6d28d9 rgb(31, 41, 55); /* thumb color and track color */
-  /* For Chrome, Safari, and other WebKit browsers */
-  ::-webkit-scrollbar {
-    width: 12px;
-  }
+/* Dark mode styles */
 
-  ::-webkit-scrollbar-track {
-    background: rgb(31, 41, 55);
-    border-radius: 10px;
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #eab308;
-    border-radius: 10px;
-    background: #6d28d9;
-  }
-}
-@media (prefers-color-scheme: dark) {
-  ::-webkit-scrollbar-thumb {
-    background: #eab308;
-  }
-  ::-webkit-scrollbar-track {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  }
-  /* For Firefox */
-  html {
-    scrollbar-width: thin;
-    scrollbar-color: #eab308 #fff;
-  }
-}
 .two-lines {
   display: -webkit-box;
   -webkit-line-clamp: 2;
