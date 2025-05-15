@@ -6,7 +6,7 @@ import { RouteMeta } from '@analogjs/router';
 import { ContentService } from '../services/content.service';
 import { TechnologyItemComponent } from '../../components/layout/tech-item/tech-item';
 export const routeMeta: RouteMeta = {
-  title: 'Armin Busatlic - About',
+  title: 'About | Armin Busatlic Portfolio',
 };
 
 @Component({

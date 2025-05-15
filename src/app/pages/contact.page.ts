@@ -3,7 +3,7 @@ import { RouteMeta } from '@analogjs/router';
 
 import { ContactFormComponent } from '../../components/layout/contact-form/contact-form.component';
 export const routeMeta: RouteMeta = {
-  title: 'Armin Busatlic - Contact',
+  title: 'Contact | Armin Busatlic Portfolio',
 };
 @Component({
   selector: 'contact',
