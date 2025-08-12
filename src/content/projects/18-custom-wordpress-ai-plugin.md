@@ -4,9 +4,8 @@ title: "Custom WordPress AI Plugin - Contract Analyzer"
 timePeriod: "July 2025"
 technology: "WordPress, PHP, JavaScript, OpenAI API, Python"
 
-featuredImage: "/projects/contract-analyzer.png"
+featuredImage: "/projects/contract-analyzer-front.png"
 projectImage: "/projects/contract-analyzer/contract-analyzer.png"
-# projectImageSec: "/projects/contract-analyzer/contract-analyzer2.png"
 
 slug: contract-analyzer
 link: "https://contractreader.us/contract-analyzer-2/"
