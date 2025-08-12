@@ -12,6 +12,6 @@ description: "Kue is a software development company based in England, and I was 
 tools: "Visual Studio Code, Figma, Html5, CSS3, Next.js, React.js,  SCSS, Bootstrap"
 company: Grumpy dev
 
-previousProject:
+previousProject: contract-analyzer
 nextProject: paulaschoice
 ---
