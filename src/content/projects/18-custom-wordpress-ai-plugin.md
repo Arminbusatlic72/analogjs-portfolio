@@ -16,6 +16,6 @@ tools: "Visual Studio Code, WordPress, PHP, JavaScript, Python, OpenAI API, Git"
 
 company: Grumpy Dev
 
-previousProject:
+previousProject: kriz-winery-next-sanity
 nextProject: kue-tech
 ---
