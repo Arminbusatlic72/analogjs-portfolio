@@ -13,6 +13,6 @@ description: "Customization of Wordpress theme using HTML5, CSS3, JS, and WP Bak
 tools: Figma, Html5, CSS3, JS, Wordpress WP Bakery Page builder
 
 company: Grumpy dev
-previousProject: vladimirmaletic
-nextProject: kojan
+previousProject: kojan
+nextProject: vladimirmaletic
 ---

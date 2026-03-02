@@ -12,6 +12,6 @@ description: "I developed responsive email templates using a fluid hybrid coding
 tools: "Emarsys"
 company: Elision
 
-previousProject: master-finish
-nextProject: waterbear
+previousProject: waterbear
+nextProject: master-finish
 ---

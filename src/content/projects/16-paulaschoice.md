@@ -12,6 +12,6 @@ description: "I developed marketing and transactional emails, reusable email blo
 tools: "Emarsys"
 company: Elision
 
-previousProject: kue-tech
-nextProject: master-finish
+previousProject: master-finish
+nextProject: kue-tech
 ---

@@ -13,6 +13,6 @@ description: Worked on a B2B e-commerce project based on the SAP Spartacus Angul
 tools: "Visual Studio Code, Figma, Html5, CSS3, JS, JSP, Hybris CMS, Angular, Spartacus"
 company: Elision
 
-previousProject: waterbear
-nextProject: basiqdental
+previousProject: basiqdental
+nextProject: waterbear
 ---

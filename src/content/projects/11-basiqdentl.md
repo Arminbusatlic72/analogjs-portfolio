@@ -14,6 +14,6 @@ description: Collaborated closely with clients to develop customized themes tail
 tools: Visual Studio Code, Figma, Html5, CSS3, JS, JSP, Hybris CMS, Angular, Spartacus
 company: Elision
 
-previousProject: royalswinkels
-nextProject: dsm-envalior
+previousProject: dsm-envalior
+nextProject: royalswinkels
 ---

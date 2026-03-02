@@ -13,6 +13,6 @@ tools: Visual Studio Code, Figma, Html5, CSS3, JS, JSP, SAP Accelerator, Hybris 
 
 company: Elision
 
-previousProject: basiqdental
-nextProject: vladimirmaletic
+previousProject: vladimirmaletic
+nextProject: basiqdental
 ---

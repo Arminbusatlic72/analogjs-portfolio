@@ -13,6 +13,6 @@ tools: Figma, Html5, CSS3, JS, Wordpress WP Bakery Page builder
 
 company: Grumpy dev
 
-previousProject: dsm-envalior
-nextProject: atfl
+previousProject: atfl
+nextProject: dsm-envalior
 ---

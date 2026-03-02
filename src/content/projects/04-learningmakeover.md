@@ -15,6 +15,6 @@ description: Creating a JAMstack application with dual language support using Wo
 tools: Visual Studio Code, Figma, Html5, CSS3, Gatsby.js, React.js, GraphQL, SCSS, PHP, Wordpress, Netlify, Cpanel
 company: Grumpy dev
 
-previousProject: ewentive
-nextProject: kabinet
+previousProject: kabinet
+nextProject: ewentive
 ---
