@@ -75,7 +75,7 @@ export const routeMeta: RouteMeta = {
 
             <img
               class="w-full h-auto mb-8"
-              [ngSrc]="post.attributes.coverImage"
+              [ngSrc]="post.attributes.coverImage || '/blog/default-image.png'"
               alt="{{ post.attributes.title }}"
               loading="lazy"
               width="1000"

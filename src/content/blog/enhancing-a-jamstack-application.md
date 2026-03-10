@@ -3,8 +3,8 @@ title: "Enhancing a JAMstack Application: Next/Previous Navigation and Dynamic O
 slug: enhancing-a-jamstack-application
 description: In this guide, we explore adding robust navigation and custom ordering to a Gatsby-fronted, WordPress-backed JAMstack app. From configuring page navigation in Gatsby templates to tweaking build commands for optimal caching on Netlify, we’ve got you covered.
 coverImage: /blog/wpgatsby.webp
-previousPost: "nextjs-vs-gatsby"
-nextPost: ""
+previousPost: "building-a-saas-subscription-system"
+nextPost: "nextjs-vs-gatsby"
 ---
 
 # Angular Signals: Enhancing a JAMstack Application: Next/Previous Navigation and Dynamic Ordering for WordPress Custom Post Types in Gatsby

@@ -3,7 +3,7 @@ title: "Exploring Angular Signals: A New Approach to State Management"
 slug: exploring-angular-signals
 description: An in-depth look at Angular signals, their advantages, when they became available, and how they differ from other state management solutions.
 coverImage: "https://miro.medium.com/v2/resize:fit:1198/1*q1XAzZg4xyw4qVUDGHO06A.png"
-previousPost: "nextjs-vs-gatsby"
+previousPost: "building-a-saas-subscription-system"
 nextPost: ""
 ---
 
@@ -113,7 +113,7 @@ const initialState = 0;
 // Create a reducer
 const counterReducer = createReducer(
   initialState,
-  on(increment, (state) => state + 1)
+  on(increment, (state) => state + 1),
 );
 
 // Usage in a component

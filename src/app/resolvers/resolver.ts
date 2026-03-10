@@ -10,15 +10,41 @@ function injectActiveBlogMetadata(route: ActivatedRouteSnapshot): BlogPost {
     return contentFile.slug === route.params['slug'];
   });
 
-  return file!.attributes;
+  return file!;
 }
 
 export const blogTitleResolver: ResolveFn<string> = (route) =>
-  injectActiveBlogMetadata(route).title;
+  {
+    const blogMetadata = injectActiveBlogMetadata(route);
+    return blogMetadata ? blogMetadata.title : 'Blog Post';
+  }
 
 export const blogMetaResolver: ResolveFn<MetaTag[]> = (route) => {
   const blogMetadata = injectActiveBlogMetadata(route);
-
+  if (!blogMetadata) {
+    return [
+      {
+        name: 'description',
+        content: 'Default description',
+      },
+      {
+        name: 'author',
+        content: 'Armin Busatlic',
+      },
+      {
+        property: 'og:title',
+        content: 'Blog Post',
+      },
+      {
+        property: 'og:description',
+        content: 'Some catchy description',
+      },
+      {
+        property: 'og:image',
+        content: 'https://somepage.com/defaultimage.png',
+      },
+    ];
+  }
   return [
     {
       name: 'description',
@@ -49,7 +75,7 @@ function injectActiveProjectMetadata(route: ActivatedRouteSnapshot): Project {
     return contentFile.slug === route.params['slug'];
   });
 
-  return file!.attributes;
+  return file!;
 }
 
 export const projectTitleResolver: ResolveFn<string> = (route) =>
