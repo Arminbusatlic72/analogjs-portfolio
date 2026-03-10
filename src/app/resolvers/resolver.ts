@@ -10,7 +10,7 @@ function injectActiveBlogMetadata(route: ActivatedRouteSnapshot): BlogPost {
     return contentFile.slug === route.params['slug'];
   });
 
-  return file!;
+  return file!.attributes;
 }
 
 export const blogTitleResolver: ResolveFn<string> = (route) => {
@@ -74,7 +74,7 @@ function injectActiveProjectMetadata(route: ActivatedRouteSnapshot): Project {
     return contentFile.slug === route.params['slug'];
   });
 
-  return file!;
+  return file!.attributes;
 }
 
 export const projectTitleResolver: ResolveFn<string> = (route) =>
