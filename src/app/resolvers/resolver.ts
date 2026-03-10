@@ -13,11 +13,10 @@ function injectActiveBlogMetadata(route: ActivatedRouteSnapshot): BlogPost {
   return file!;
 }
 
-export const blogTitleResolver: ResolveFn<string> = (route) =>
-  {
-    const blogMetadata = injectActiveBlogMetadata(route);
-    return blogMetadata ? blogMetadata.title : 'Blog Post';
-  }
+export const blogTitleResolver: ResolveFn<string> = (route) => {
+  const blogMetadata = injectActiveBlogMetadata(route);
+  return blogMetadata ? blogMetadata.title : 'Blog Post';
+};
 
 export const blogMetaResolver: ResolveFn<MetaTag[]> = (route) => {
   const blogMetadata = injectActiveBlogMetadata(route);
