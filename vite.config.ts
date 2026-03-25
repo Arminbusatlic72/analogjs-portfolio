@@ -2,7 +2,7 @@
 
 import { defineConfig } from 'vite';
 import analog, { type PrerenderContentFile } from '@analogjs/platform';
-
+import * as path from 'path';
 const generateContentRoutes = (pathPrefix: string, contentDir: string) => {
   return {
     contentDir,
@@ -24,10 +24,14 @@ export default defineConfig(({ mode }) => ({
   },
   resolve: {
     mainFields: ['module'],
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
   },
   plugins: [
     analog({
       static: true,
+      content: { highlighter: 'prism' },
       prerender: {
         routes: async () => [
           '/',

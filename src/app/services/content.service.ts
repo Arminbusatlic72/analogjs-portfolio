@@ -10,12 +10,12 @@ import { BlogPost } from '../models/post';
 export class ContentService {
   readonly projectsContentFn = prioritizeProject(
     injectContentFiles<Project>((contentFile) =>
-      contentFile.filename.includes('/src/content/projects/'),
+      contentFile.filename.includes('src/content/projects/'),
     ),
     'dna-sandbox',
   );
   readonly postsContentFn = injectContentFiles<BlogPost>((contentFile) =>
-    contentFile.filename.includes('/src/content/blog/'),
+    contentFile.filename.includes('src/content/blog/'),
   );
 }
 

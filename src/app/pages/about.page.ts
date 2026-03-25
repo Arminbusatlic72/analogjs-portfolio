@@ -82,13 +82,11 @@ export const routeMeta: RouteMeta = {
                   />
                 </svg>
               </h3>
-              <div [class.open]="isCodingOpen" class="accordion-content pl-4">
-                <app-tech-item
-                  *ngFor="let tech of technologies"
-                  [name]="tech.name"
-                  [stars]="tech.stars"
-                >
-                </app-tech-item>
+                <div [class.open]="isCodingOpen" class="accordion-content pl-4">
+                  @for (tech of technologies; track tech.name) {
+                  <app-tech-item [name]="tech.name" [stars]="tech.stars">
+                  </app-tech-item>
+                }
               </div>
 
               <h3
@@ -112,16 +110,16 @@ export const routeMeta: RouteMeta = {
                   />
                 </svg>
               </h3>
-              <div
-                [class.open]="isPlatformsOpen"
-                class="accordion-content pl-4"
-              >
-                <app-tech-item
-                  *ngFor="let platform of platforms"
-                  [name]="platform.name"
-                  [stars]="platform.stars"
+                <div
+                  [class.open]="isPlatformsOpen"
+                  class="accordion-content pl-4"
                 >
-                </app-tech-item>
+                  @for (platform of platforms; track platform.name) {
+                  <app-tech-item
+                    [name]="platform.name"
+                    [stars]="platform.stars"
+                  ></app-tech-item>
+                }
               </div>
 
               <h3
@@ -146,12 +144,10 @@ export const routeMeta: RouteMeta = {
                 </svg>
               </h3>
               <div [class.open]="isToolsOpen" class="accordion-content pl-4">
-                <app-tech-item
-                  *ngFor="let tool of tools"
-                  [name]="tool.name"
-                  [stars]="tool.stars"
-                >
-                </app-tech-item>
+                @for (tool of tools; track tool.name) {
+                  <app-tech-item [name]="tool.name" [stars]="tool.stars">
+                  </app-tech-item>
+                }
               </div>
               <h3
                 class="font-bold text-xl mb-2 cursor-pointer flex items-center justify-between border border-gray-300 px-4 py-2"
@@ -174,16 +170,16 @@ export const routeMeta: RouteMeta = {
                   />
                 </svg>
               </h3>
-              <div
-                [class.open]="isLanguagesOpen"
-                class="accordion-content pl-4"
-              >
-                <app-tech-item
-                  *ngFor="let language of languages"
-                  [name]="language.name"
-                  [stars]="language.stars"
+                <div
+                  [class.open]="isLanguagesOpen"
+                  class="accordion-content pl-4"
                 >
-                </app-tech-item>
+                  @for (language of languages; track language.name) {
+                  <app-tech-item
+                    [name]="language.name"
+                    [stars]="language.stars"
+                  ></app-tech-item>
+                }
               </div>
             </div>
           </div>

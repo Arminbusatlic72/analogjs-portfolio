@@ -5,7 +5,6 @@ import {
   inject,
   signal,
 } from '@angular/core';
-import { NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
@@ -14,7 +13,7 @@ import { ContentService } from '../../services/content.service';
 @Component({
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgFor, RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule],
   template: `
     <section class="text-gray-600 body-font p-5 context">
       <h2
@@ -50,9 +49,9 @@ import { ContentService } from '../../services/content.service';
               class="p-1 border rounded bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out ng-untouched ng-pristine ng-invalid"
             >
               <option value="All">All Tools</option>
-              <option *ngFor="let tool of availableTools" [value]="tool">
-                {{ tool }}
-              </option>
+              @for (tool of availableTools; track tool) {
+                <option [value]="tool">{{ tool }}</option>
+              }
             </select>
           </div>
         </div>
@@ -126,51 +125,54 @@ import { ContentService } from '../../services/content.service';
               class="p-1 border rounded bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out ng-untouched ng-pristine ng-invalid"
             >
               <option value="">All Tools</option>
-              <option *ngFor="let tool of availableTools" [value]="tool">
-                {{ tool }}
-              </option>
+              @for (tool of availableTools; track tool) {
+                <option [value]="tool">
+                  {{ tool }}
+                </option>
+              }
             </select>
           </div>
         </div>
 
         <div class="flex flex-wrap md:min-w-[900px] lg:min-w-[1250px]">
-          <div
-            *ngFor="let post of filteredPosts"
-            class="w-full xl:w-1/3 md:w-1/2 p-4 relative z-[1000]"
-          >
-            <a [routerLink]="['/portfolio/', post.attributes.slug]">
-              <div
-                class="animated-border p-6 rounded-lg dark:bg-white dark:bg-gray-800"
-              >
+            @for (post of filteredPosts; track post.attributes.slug) {
+            <div
+              class="w-full xl:w-1/3 md:w-1/2 p-4 relative z-[1000]"
+            >
+              <a [routerLink]="['/portfolio/', post.attributes.slug]">
                 <div
-                  class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-violet-100 text-violet-700 mb-4 dark:bg-violet-700 dark:text-violet-400"
+                  class="animated-border p-6 rounded-lg dark:bg-white dark:bg-gray-800"
                 >
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    class="w-6 h-6"
-                    viewBox="0 0 24 24"
+                  <div
+                    class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-violet-100 text-violet-700 mb-4 dark:bg-violet-700 dark:text-violet-400"
                   >
-                    <path d="M16 18l6-6-6-6M8 6l-6 6 6 6"></path>
-                  </svg>
-                </div>
+                    <svg
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      class="w-6 h-6"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M16 18l6-6-6-6M8 6l-6 6 6 6"></path>
+                    </svg>
+                  </div>
 
-                <h2
-                  class="two-lines text-lg text-gray-900 font-medium title-font mb-2 dark:text-gray-100"
-                >
-                  {{ post.attributes.title }}
-                </h2>
-                <p
-                  class="tree-lines leading-relaxed text-base dark:text-gray-300"
-                >
-                  {{ post.attributes.technology }}
-                </p>
-              </div>
-            </a>
-          </div>
+                  <h2
+                    class="two-lines text-lg text-gray-900 font-medium title-font mb-2 dark:text-gray-100"
+                  >
+                    {{ post.attributes.title }}
+                  </h2>
+                  <p
+                    class="tree-lines leading-relaxed text-base dark:text-gray-300"
+                  >
+                    {{ post.attributes.technology }}
+                  </p>
+                </div>
+              </a>
+            </div>
+          }
         </div>
       </div>
     </section> -->

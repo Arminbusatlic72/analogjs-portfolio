@@ -6,7 +6,7 @@ import {
   IMAGE_CONFIG,
   DatePipe,
 } from '@angular/common';
-import { Component, DestroyRef, inject } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { RouterLink, ActivatedRoute } from '@angular/router';
 import { Project } from 'src/app/models/project';
 import {
@@ -228,8 +228,9 @@ export const routeMeta: RouteMeta = {
 //     }
 //   }
 // }
-export default class ProjectPage {
+export default class ProjectPage implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
+  private readonly route = inject(ActivatedRoute);
   private contentService = inject(ContentService);
   readonly posts = this.contentService.projectsContentFn;
 
@@ -241,7 +242,7 @@ export default class ProjectPage {
   projectPosition: number | null = null; // Position of the current project
   totalProjects: number | null = null; // Total number of projects
 
-  constructor(private route: ActivatedRoute) {
+  ngOnInit(): void {
     this.route.params
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(() => this.calculateProjectPosition());
