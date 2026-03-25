@@ -1,4 +1,10 @@
-import { Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
 import { NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -7,6 +13,7 @@ import { ContentService } from '../../services/content.service';
 
 @Component({
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgFor, RouterLink, FormsModule],
   template: `
     <section class="text-gray-600 body-font p-5 context">
@@ -38,11 +45,11 @@ import { ContentService } from '../../services/content.service';
             >
             <select
               id="tool-select"
-              [(ngModel)]="selectedTool"
-              (change)="filterProjects()"
+              [ngModel]="selectedTool()"
+              (ngModelChange)="filterProjects($event)"
               class="p-1 border rounded bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out ng-untouched ng-pristine ng-invalid"
             >
-              <option value="">All Tools</option>
+              <option value="All">All Tools</option>
               <option *ngFor="let tool of availableTools" [value]="tool">
                 {{ tool }}
               </option>
@@ -51,43 +58,42 @@ import { ContentService } from '../../services/content.service';
         </div>
 
         <div class="flex flex-wrap  lg:w-[900px] xl:w-[1250px]">
-          <div
-            *ngFor="let post of filteredPosts"
-            class="w-full xl:w-1/3 md:w-1/2 p-4"
-          >
-            <a [routerLink]="['/portfolio/', post.attributes.slug]">
-              <div
-                class="animated-border p-6 rounded-lg dark:bg-white dark:bg-gray-800"
-              >
+          @for (post of filteredPosts(); track post.attributes.slug) {
+            <div class="w-full xl:w-1/3 md:w-1/2 p-4">
+              <a [routerLink]="['/portfolio/', post.attributes.slug]">
                 <div
-                  class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-violet-100 text-violet-700 mb-4 dark:bg-violet-700 dark:text-violet-400"
+                  class="animated-border p-6 rounded-lg dark:bg-white dark:bg-gray-800"
                 >
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    class="w-6 h-6"
-                    viewBox="0 0 24 24"
+                  <div
+                    class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-violet-100 text-violet-700 mb-4 dark:bg-violet-700 dark:text-violet-400"
                   >
-                    <path d="M16 18l6-6-6-6M8 6l-6 6 6 6"></path>
-                  </svg>
-                </div>
+                    <svg
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      class="w-6 h-6"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M16 18l6-6-6-6M8 6l-6 6 6 6"></path>
+                    </svg>
+                  </div>
 
-                <h2
-                  class="two-lines text-lg text-gray-900 font-medium title-font mb-2 dark:text-gray-100"
-                >
-                  {{ post.attributes.title }}
-                </h2>
-                <p
-                  class="tree-lines leading-relaxed text-base dark:text-gray-300"
-                >
-                  {{ post.attributes.technology }}
-                </p>
-              </div>
-            </a>
-          </div>
+                  <h2
+                    class="two-lines text-lg text-gray-900 font-medium title-font mb-2 dark:text-gray-100"
+                  >
+                    {{ post.attributes.title }}
+                  </h2>
+                  <p
+                    class="tree-lines leading-relaxed text-base dark:text-gray-300"
+                  >
+                    {{ post.attributes.technology }}
+                  </p>
+                </div>
+              </a>
+            </div>
+          }
         </div>
       </div>
     </section>
@@ -96,8 +102,6 @@ import { ContentService } from '../../services/content.service';
         class="container px-1 py-2 mx-auto my-4 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900"
       >
         <div class="flex flex-wrap w-full flex-col  text-left p-5">
-          <h3
-            class="text-4xl md:text-4xl lg:text-6xl text-violet-700 dark:text-yellow-500 font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-left transition-all duration-500 ease-out transform"
           >
             <span class="text-yellow-500 dark:text-violet-700">#</span>open
             source projects
@@ -176,13 +180,23 @@ export default class ProjectsPage {
   private contentService = inject(ContentService);
   readonly posts = this.contentService.projectsContentFn;
 
-  selectedTool: string = '';
+  readonly selectedTool = signal<string>('All');
   availableTools: string[] = [];
-  filteredPosts = this.posts;
+  readonly filteredPosts = computed(() => {
+    const tool = this.selectedTool();
+    if (tool === 'All') {
+      return this.posts;
+    }
+    return this.posts.filter((project) => {
+      const tools = project.attributes.tools
+        ?.split(',')
+        .map((toolName) => toolName.trim());
+      return tools?.includes(tool);
+    });
+  });
 
   constructor() {
     this.initAvailableTools();
-    this.filterProjects();
   }
 
   initAvailableTools() {
@@ -197,19 +211,7 @@ export default class ProjectsPage {
     this.availableTools = Array.from(toolsSet);
   }
 
-  filterProjects() {
-    if (this.selectedTool === '') {
-      this.filteredPosts = this.posts;
-    } else {
-      this.filteredPosts = this.posts.filter((project) => {
-        if (project.attributes.tools) {
-          const tools = project.attributes.tools
-            .split(',')
-            .map((tool) => tool.trim());
-          return tools.includes(this.selectedTool);
-        }
-        return false;
-      });
-    }
+  filterProjects(tool: string): void {
+    this.selectedTool.set(tool);
   }
 }
