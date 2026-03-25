@@ -2,12 +2,7 @@ import { MarkdownComponent, injectContent } from '@analogjs/content';
 import { RouteMeta } from '@analogjs/router';
 // import { LikeDislikeComponent } from '../../../components/like-dislike/like-dislike.component';
 
-import {
-  AsyncPipe,
-  NgOptimizedImage,
-  IMAGE_CONFIG,
-  CommonModule,
-} from '@angular/common';
+import { AsyncPipe, NgOptimizedImage, IMAGE_CONFIG, CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 

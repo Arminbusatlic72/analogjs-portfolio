@@ -50,12 +50,12 @@
 // export class SocialIconListComponent {}
 
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-social-icon-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   template: `
     <div class="flex space-x-4 justify-center">
       <a

@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { NgFor, NgOptimizedImage } from '@angular/common';
+import { NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 import { ContentService } from '../../services/content.service';
 
 @Component({
   standalone: true,
-  imports: [NgFor, RouterLink, NgOptimizedImage],
+  imports: [RouterLink, NgOptimizedImage],
   template: `
     <section class="text-gray-600 body-font p-5">
       <h2
