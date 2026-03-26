@@ -44,14 +44,16 @@ export const routeMeta: RouteMeta = {
     @let post = post$ | async;
     @if (post) {
       <section
-        class="mb-4 flex w-full flex-auto flex-row justify-between gap-4 text-gray-600 dark:text-gray-300"
+        class="mb-6 flex w-full flex-auto flex-col gap-3 text-gray-600 dark:text-gray-300"
       >
-        <div class="flex items-center justify-between w-full px-6">
-          <div class="w-28 text-left">
+        <div
+          class="container px-4 py-2 mx-auto flex flex-col gap-3 sm:flex-row sm:items-center"
+        >
+          <div class="w-full sm:w-auto text-left">
             @if (navigation().previous) {
               <button
                 [routerLink]="['/blog', normalizeSlug(navigation().previous)]"
-                class="btn btn-accent w-28 flex items-center justify-start"
+                class="btn btn-accent w-full sm:w-32 flex items-center justify-center sm:justify-start"
                 type="button"
               >
                 &#8592;
@@ -66,11 +68,11 @@ export const routeMeta: RouteMeta = {
             </p>
           </div>
 
-          <div class="w-28 text-left">
+          <div class="w-full sm:w-auto text-right">
             @if (navigation().next) {
               <button
                 [routerLink]="['/blog', normalizeSlug(navigation().next)]"
-                class="btn btn-accent w-28 flex items-center justify-end"
+                class="btn btn-accent w-full sm:w-32 flex items-center justify-center sm:justify-end"
                 type="button"
               >
                 <span class="mr-2 arrow-right">Next</span>
@@ -80,10 +82,9 @@ export const routeMeta: RouteMeta = {
           </div>
         </div>
       </section>
-
       <section class="text-gray-600 body-font p-5">
         <div
-          class="container px-5 sm:px-24 pb-24 mx-auto rounded-2xl bg-slate-100 shadow-violet-950 border border-gray-200 dark:text-gray-300 dark:bg-gray-900 relative z-[1000]"
+          class="container px-5 sm:px-24 pb-24 mx-auto rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900 relative z-[1000]"
         >
           <div class="max-w-3xl mx-auto">
             <div class="py-4">
@@ -108,7 +109,7 @@ export const routeMeta: RouteMeta = {
             </div>
 
             <img
-              class="w-full h-auto mb-8"
+              class="w-full h-auto mb-8 rounded-2xl"
               [ngSrc]="post.attributes.coverImage || '/blog/default-image.png'"
               alt="{{ post.attributes.title }}"
               loading="lazy"
@@ -118,7 +119,7 @@ export const routeMeta: RouteMeta = {
             />
 
             <article
-              class="prose prose-sm sm:prose lg:prose-lg xl:prose-xl mx-auto"
+              class="prose prose-sm sm:prose lg:prose-lg xl:prose-xl mx-auto max-w-none"
             >
               <analog-markdown
                 [content]="post.content"

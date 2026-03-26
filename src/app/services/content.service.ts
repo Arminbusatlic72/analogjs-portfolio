@@ -1,4 +1,4 @@
-import { computed, effect, Injectable, signal } from '@angular/core';
+import { computed, Injectable } from '@angular/core';
 import { ContentFile } from '@analogjs/content';
 import { contentFilesResource } from '@analogjs/content/resources';
 
@@ -16,7 +16,9 @@ export class ContentService {
     (contentFile) => contentFile.filename.includes('src/content/blog/'),
   );
 
-  private readonly postsContentSignal = signal<ContentFile<BlogPost>[]>([]);
+  private readonly postsContent = computed<ContentFile<BlogPost>[]>(
+    () => this.postsContentResource.value() ?? [],
+  );
 
   readonly allProjects = computed(() =>
     [...(this.projectsContentResource.value() ?? [])].sort(
@@ -24,16 +26,10 @@ export class ContentService {
     ),
   );
   readonly projectsContentFn = this.allProjects;
-  readonly postsContentFn = this.postsContentSignal.asReadonly();
-
-  constructor() {
-    effect(() => {
-      this.postsContentSignal.set(this.postsContentResource.value() ?? []);
-    });
-  }
+  readonly postsContentFn = this.postsContent;
 
   getBlogNeighbors(slug: string) {
-    return this.findNeighbors(this.postsContentSignal(), slug);
+    return this.findNeighbors(this.postsContentFn(), slug);
   }
 
   getProjectNeighbors(slug: string) {
