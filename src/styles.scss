@@ -1,3 +1,35 @@
+.markdown-content pre,
+.markdown-content code {
+  white-space: pre-wrap;
+  word-break: break-all;
+  overflow-x: hidden;
+}
+
+.markdown-content pre {
+  background: #18181b;
+  color: #facc15;
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.markdown-content code {
+  background: #27272a;
+  color: #facc15;
+  padding: 0.15em 0.4em;
+  border-radius: 0.3em;
+  font-size: 0.97em;
+}
+.markdown-content pre {
+  overflow-x: auto;
+  word-break: break-word;
+  -webkit-overflow-scrolling: touch;
+}
+
+.markdown-content code {
+  word-break: break-word;
+}
 /* Tailwind directives  */
 @tailwind base;
 @tailwind components;
@@ -139,6 +171,7 @@ html.dark .project-card:hover {
 .markdown-content img {
   max-width: 100%;
   border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .markdown-content table {
