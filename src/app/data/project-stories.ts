@@ -1,6 +1,6 @@
 export const projectStories: Record<string, string> = {
   'dna-sandbox':
-    "Scenario DNA research studio pairs streaming multi-model chat with curated genomic sources by wiring Next.js 16, React 19, and TypeScript to the Vercel AI SDK, Convex, Clerk, and Stripe instrumentation stack.",
+    'Scenario DNA research studio pairs streaming multi-model chat with curated genomic sources by wiring Next.js 16, React 19, and TypeScript to the Vercel AI SDK, Convex, Clerk, and Stripe instrumentation stack.',
   stribbo:
     "Stribbo's WordPress storefront was rebuilt from design to live migration, then tuned for performance and ongoing maintenance.",
   neologic:
@@ -10,15 +10,14 @@ export const projectStories: Record<string, string> = {
   kabinet:
     "Kabinet Brewery's WooCommerce shop now runs on WordPress with 150+ SKUs, multilingual WPML redirects, caching, and secure payment handling to keep the craft beer catalog open.",
   learningmakeover:
-    "Learning Makeover tapped WordPress as a headless CMS, GraphQL, and Gatsby to push dual-language marketing content to Netlify while keeping analytics and consent hooks in sync.",
+    'Learning Makeover tapped WordPress as a headless CMS, GraphQL, and Gatsby to push dual-language marketing content to Netlify while keeping analytics and consent hooks in sync.',
   ewentive:
     "Ewentive's JAMstack build with Prismic and Gatsby translates the bespoke design into a responsive, cross-browser marketing experience.",
   skillsdivision:
     "Skills Division's WordPress theme was extended with HTML5, CSS3, JavaScript, and WP Bakery tweaks to match the brand's ambition.",
   kojan:
     "Kojan's WordPress presence came alive through HTML/CSS/JS customizations inside WP Bakery before the product migrated over to Next.js.",
-  atfl:
-    "ATFL's site remixes a WordPress theme with WP Bakery, HTML5, CSS3, and JS while migrating the navigation and multilingual redirects to guard search rankings.",
+  atfl: "ATFL's site remixes a WordPress theme with WP Bakery, HTML5, CSS3, and JS while migrating the navigation and multilingual redirects to guard search rankings.",
   vladimirmaletic:
     "Vladimir Maletic's portfolio leans on WordPress, WP Bakery, and localized styling so the narrative stays consistent in both languages.",
   'dsm-envalior':
@@ -34,7 +33,7 @@ export const projectStories: Record<string, string> = {
   'master-finish':
     "Master Finish's brochure site combines Pug/Jade, SCSS, Webpack, Vanilla JS, and PHP Mailer to deliver a modern layout with a working contact form.",
   paulaschoice:
-    "PaulasChoice relies on Emarsys-driven marketing and transactional emails with reusable blocks, countdown timers, and dark-mode styles for campaign launches.",
+    'PaulasChoice relies on Emarsys-driven marketing and transactional emails with reusable blocks, countdown timers, and dark-mode styles for campaign launches.',
   'kue-tech':
     "Kue Tech's Next.js rebuild lifts the Figma designs into responsive, performant pages with dynamic features and SEO-conscious structure.",
   'contract-analyzer':

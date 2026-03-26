@@ -7,7 +7,6 @@ featuredImage: "/projects/royalswinkels.png"
 projectImage: "/projects/royalswinkels/royalswinkels1.png"
 projectImageSec: "/projects/royalswinkels/royalswinkels2.png"
 
-
 slug: royalswinkels
 order: 7
 link: "https://royalswinkels.com/en"

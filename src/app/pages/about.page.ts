@@ -208,9 +208,7 @@ export const routeMeta: RouteMeta = {
                       normalizeSlug(post.attributes.slug),
                     ]"
                   >
-                    <div
-                      class="project-card flex flex-col md:flex-row gap-6"
-                    >
+                    <div class="project-card flex flex-col md:flex-row gap-6">
                       <!-- Image -->
                       <div
                         class="w-full md:w-1/3 h-48 md:h-auto md:aspect-[4/3] overflow-hidden bg-gray-100 dark:bg-gray-700"

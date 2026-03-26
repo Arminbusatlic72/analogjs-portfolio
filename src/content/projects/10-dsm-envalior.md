@@ -6,8 +6,6 @@ featuredImage: "/projects/dsm-envalior.png"
 projectImage: "/projects/dsm-envalior/dsm-envalior1.png"
 projectImageSec: "/projects/dsm-envalior/dsm-envalior2.png"
 
-
-
 slug: dsm-envalior
 order: 8
 link: "https://myorders.envalior.com/login"

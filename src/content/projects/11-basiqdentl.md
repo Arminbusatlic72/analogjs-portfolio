@@ -8,7 +8,6 @@ featuredImage: "/projects/basiqdental.png"
 projectImage: "/projects/basiqdental/basiqdental1.png"
 projectImageSec: "/projects/basiqdental/basiqdental2.png"
 
-
 slug: "basiqdental"
 order: 6
 link: "https://www.basiqdental.nl/en_NL/"

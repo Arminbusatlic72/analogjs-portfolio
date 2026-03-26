@@ -84,7 +84,7 @@ export const routeMeta: RouteMeta = {
       </section>
       <section class="text-gray-600 body-font p-4">
         <div
-          class="w-full max-w-3xl mx-auto px-4 sm:px-8 pb-24 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900 relative z-[1000]"
+          class="w-full px-5 max-w-3xl mx-auto pb-24 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900 relative z-[1000]"
         >
           <div>
             <div class="py-4">
