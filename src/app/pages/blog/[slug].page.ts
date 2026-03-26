@@ -119,11 +119,11 @@ export const routeMeta: RouteMeta = {
             />
 
             <article
-              class="prose prose-sm sm:prose lg:prose-lg xl:prose-xl mx-auto max-w-none"
+              class="prose prose-sm sm:prose lg:prose-lg xl:prose-xl mx-auto"
             >
               <analog-markdown
                 [content]="post.content"
-                class="markdown-content"
+                class="markdown-content text-gray-600 body-font"
               />
             </article>
           </div>
