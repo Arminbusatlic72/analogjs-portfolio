@@ -15,7 +15,14 @@ if (import.meta.env.PROD) {
 }
 
 export function bootstrap(context?: BootstrapContext) {
-  return bootstrapApplication(AppComponent, {...config, providers: [provideZoneChangeDetection(), ...config.providers]}, context);
+  return bootstrapApplication(
+    AppComponent,
+    {
+      ...config,
+      providers: [provideZoneChangeDetection(), ...config.providers],
+    },
+    context,
+  );
 }
 
 export default async function render(

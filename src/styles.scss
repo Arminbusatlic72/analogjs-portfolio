@@ -250,7 +250,9 @@ html {
 }
 
 html[data-dark-mode-animated="true"] .dark-mode-toggle svg {
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
 html.dark .dark-mode-toggle .dark-icon {
@@ -487,13 +489,19 @@ html.light .dark-mode-toggle .light-icon {
   padding: 6px;
   border-radius: 50%;
   border: 8px solid #eab308;
-  transition: transform 0.4s ease, border-color 0.4s ease,
-    border-width 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    border-color 0.4s ease,
+    border-width 0.4s ease,
+    box-shadow 0.4s ease,
+    filter 0.4s ease;
   &:hover {
     transform: scale(1.2) rotate(5deg);
     border-color: rgb(255, 223, 0);
     border-width: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25), 0 0 10px rgba(234, 179, 8, 0.5);
+    box-shadow:
+      0 10px 20px rgba(0, 0, 0, 0.25),
+      0 0 10px rgba(234, 179, 8, 0.5);
     filter: brightness(1.1) contrast(1.2);
   }
   &:focus {
@@ -546,7 +554,9 @@ dt {
   overflow: hidden;
   max-height: 0;
   opacity: 0;
-  transition: max-height 0.5s ease, opacity 0.5s ease;
+  transition:
+    max-height 0.5s ease,
+    opacity 0.5s ease;
 }
 .flex-1 {
   flex: 1;
@@ -634,14 +644,15 @@ dt {
    * @see https://evilmartians.com/chronicles/oklch-in-css-why-quit-rgb-hsl
    */
   background:
-      /* Background colors don’t work with `background-origin`, so use a gradient. */ linear-gradient(
+      /* Background colors don’t work with `background-origin`, so use a gradient. */
+    linear-gradient(
         to bottom,
         oklch(100% 3.5594404384177905e-8 106.37411429114086),
         oklch(100% 3.5594404384177905e-8 106.37411429114086)
       )
       padding-box,
     /* ends at inner border edges */
-      conic-gradient(
+    conic-gradient(
         from var(--bg-angle),
         oklch(95% 0 0) 0%,
         oklch(95% 0 0 / 0.3) 100%
@@ -650,15 +661,20 @@ dt {
 
   /* a clear border lets the background gradient shine through */
   border: 1px solid transparent;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
   /* unpause the animation on hover */
   &:hover {
     animation-play-state: running;
 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15), 0 0 20px rgba(255, 255, 255, 0.3);
+    box-shadow:
+      0 0 10px rgba(0, 0, 0, 0.15),
+      0 0 20px rgba(255, 255, 255, 0.3);
   }
   .dark & {
-    background: linear-gradient(
+    background:
+      linear-gradient(
           to bottom,
           oklch(27.81% 0.03 256.85),
           oklch(27.81% 0.03 256.85)

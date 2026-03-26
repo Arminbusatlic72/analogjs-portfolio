@@ -1,13 +1,62 @@
-import { Component, inject } from '@angular/core';
-import { DatePipe, NgOptimizedImage } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
+import { DatePipe, NgOptimizedImage, CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 import { ContentService } from '../../services/content.service';
 import { normalizeSlug } from '../../utils/slug';
 
+const BLOG_PAGE_SIZE = 6;
+const BLOG_LOAD_MORE_STYLES = `
+  .card-placeholder {
+    width: 100%;
+    height: 320px;
+    border-radius: 1rem;
+    background: var(--placeholder-bg, #f0f0f0);
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .load-more-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .load-more-btn {
+    padding: 0.75rem 2rem;
+    cursor: pointer;
+    border-radius: 0.25rem;
+  }
+
+  .post-count {
+    font-size: 0.85rem;
+    opacity: 0.6;
+  }
+
+  .all-loaded {
+    text-align: center;
+    opacity: 0.5;
+    margin-top: 1rem;
+  }
+`;
+
 @Component({
   standalone: true,
-  imports: [RouterLink, NgOptimizedImage, DatePipe],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule, DatePipe, RouterLink, NgOptimizedImage],
+  styles: [BLOG_LOAD_MORE_STYLES],
   template: `
     <section class="text-gray-600 body-font p-5">
       <h2
@@ -16,9 +65,9 @@ import { normalizeSlug } from '../../utils/slug';
         <span class="text-yellow-500 dark:text-violet-700">/</span>blog
       </h2>
       <div
-        class="container px-1 py-2 mx-auto mb-24 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900 relative z-[1000]"
+        class="container px-1 py-2 mx-auto mb-24 rounded-2xl bg-slate-100 shadow-violet-950 border border-gray-200 dark:text-gray-300 dark:bg-gray-900 relative z-[1000]"
       >
-        <div class="flex flex-wrap w-full  flex-col  text-left p-5">
+        <div class="flex flex-wrap w-full flex-col text-left p-5">
           <p
             class="lg:w-1/2 w-full leading-relaxed text-gray-500 dark:text-gray-300 leading-loose"
           >
@@ -28,91 +77,227 @@ import { normalizeSlug } from '../../utils/slug';
           </p>
         </div>
         <div class="flex flex-wrap">
-          @for (post of posts(); track post.attributes.slug) {
-            <div class="w-full xl:w-1/3 md:w-1/2 p-4">
-              <div
-                class="animated-border card-card-layout rounded-lg dark:bg-white dark:bg-gray-800 overflow-hidden"
-              >
-                <!-- Full-width cover image -->
-                <a
-                  [routerLink]="['/blog/', normalizeSlug(post.attributes.slug)]"
-                  class="block"
+          @for (
+            post of visiblePosts();
+            track post.attributes.slug;
+            let i = $index
+          ) {
+            @if (i < 3) {
+              <div class="w-full xl:w-1/3 md:w-1/2 p-4">
+                <div
+                  class="animated-border card-card-layout rounded-lg dark:bg-white dark:bg-gray-800 overflow-hidden"
                 >
-                  <figure class="relative h-64 overflow-hidden">
-                    <img
-                      class="h-full w-full object-cover object-center"
-                      [ngSrc]="post.attributes.coverImage"
-                      alt="{{ post.attributes.title }}"
-                      width="500"
-                      height="210"
-                    />
-                  </figure>
-                </a>
-
-                <!-- Content area -->
-                <div class="p-3 card-content">
-                  <div class="flex-1">
-                    <h2
-                      class="two-lines text-lg text-gray-900 font-medium title-font mb-2 dark:text-gray-100"
-                    >
-                      {{ post.attributes.title }}
-                    </h2>
-                    <p
-                      class="three-lines mb-2 leading-relaxed text-base dark:text-gray-300"
-                    >
-                      {{ post.attributes.description }}
-                    </p>
-                  </div>
-                  <div
-                    class="flex items-center justify-between text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3"
+                  <a
+                    [routerLink]="[
+                      '/blog/',
+                      normalizeSlug(post.attributes.slug),
+                    ]"
+                    class="block"
                   >
-                    <div class="flex items-center gap-2">
-                      @if (post.attributes.date) {
-                        <span>Published</span>
-                        <span
-                          class="font-semibold text-gray-900 dark:text-gray-100"
-                        >
-                          {{ post.attributes.date | date: 'MMMM d, yyyy' }}
-                        </span>
-                      } @else {
-                        <span class="text-gray-400">Publication date TBD</span>
-                      }
+                    <figure class="relative h-64 overflow-hidden">
+                      <img
+                        class="h-full w-full object-cover object-center"
+                        [ngSrc]="post.attributes.coverImage"
+                        alt="{{ post.attributes.title }}"
+                        width="500"
+                        height="210"
+                      />
+                    </figure>
+                  </a>
+                  <div class="p-3 card-content">
+                    <div class="flex-1">
+                      <h2
+                        class="two-lines text-lg text-gray-900 font-medium title-font mb-2 dark:text-gray-100"
+                      >
+                        {{ post.attributes.title }}
+                      </h2>
+                      <p
+                        class="three-lines mb-2 leading-relaxed text-base dark:text-gray-300"
+                      >
+                        {{ post.attributes.description }}
+                      </p>
                     </div>
+                    <div
+                      class="flex items-center justify-between text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3"
+                    >
+                      <div class="flex items-center gap-2">
+                        @if (post.attributes.date) {
+                          <span>Published</span>
+                          <span
+                            class="font-semibold text-gray-900 dark:text-gray-100"
+                          >
+                            {{ post.attributes.date | date: 'MMMM d, yyyy' }}
+                          </span>
+                        } @else {
+                          <span class="text-gray-400"
+                            >Publication date TBD</span
+                          >
+                        }
+                      </div>
                       <span class="font-mono text-xs">
                         {{ normalizeSlug(post.attributes.slug) }}
                       </span>
-                  </div>
-                  <a
-                    [routerLink]="['/blog/', normalizeSlug(post.attributes.slug)]"
-                    class="flex justify-end items-center text-sm font-medium text-violet-700 dark:text-yellow-500"
-                  >
-                    Read more
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      class="w-4 h-4 ml-1"
+                    </div>
+                    <a
+                      [routerLink]="[
+                        '/blog/',
+                        normalizeSlug(post.attributes.slug),
+                      ]"
+                      class="flex justify-end items-center text-sm font-medium text-violet-700 dark:text-yellow-500"
                     >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </a>
+                      Read more
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        class="w-4 h-4 ml-1"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
+            } @else {
+              @defer (on idle) {
+                <div class="w-full xl:w-1/3 md:w-1/2 p-4">
+                  <div
+                    class="animated-border card-card-layout rounded-lg dark:bg-white dark:bg-gray-800 overflow-hidden"
+                  >
+                    <a
+                      [routerLink]="[
+                        '/blog/',
+                        normalizeSlug(post.attributes.slug),
+                      ]"
+                      class="block"
+                    >
+                      <figure class="relative h-64 overflow-hidden">
+                        <img
+                          class="h-full w-full object-cover object-center"
+                          [ngSrc]="post.attributes.coverImage"
+                          alt="{{ post.attributes.title }}"
+                          width="500"
+                          height="210"
+                        />
+                      </figure>
+                    </a>
+                    <div class="p-3 card-content">
+                      <div class="flex-1">
+                        <h2
+                          class="two-lines text-lg text-gray-900 font-medium title-font mb-2 dark:text-gray-100"
+                        >
+                          {{ post.attributes.title }}
+                        </h2>
+                        <p
+                          class="three-lines mb-2 leading-relaxed text-base dark:text-gray-300"
+                        >
+                          {{ post.attributes.description }}
+                        </p>
+                      </div>
+                      <div
+                        class="flex items-center justify-between text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3"
+                      >
+                        <div class="flex items-center gap-2">
+                          @if (post.attributes.date) {
+                            <span>Published</span>
+                            <span
+                              class="font-semibold text-gray-900 dark:text-gray-100"
+                            >
+                              {{ post.attributes.date | date: 'MMMM d, yyyy' }}
+                            </span>
+                          } @else {
+                            <span class="text-gray-400"
+                              >Publication date TBD</span
+                            >
+                          }
+                        </div>
+                        <span class="font-mono text-xs">
+                          {{ normalizeSlug(post.attributes.slug) }}
+                        </span>
+                      </div>
+                      <a
+                        [routerLink]="[
+                          '/blog/',
+                          normalizeSlug(post.attributes.slug),
+                        ]"
+                        class="flex justify-end items-center text-sm font-medium text-violet-700 dark:text-yellow-500"
+                      >
+                        Read more
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          class="w-4 h-4 ml-1"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              } @placeholder {
+                <div class="w-full xl:w-1/3 md:w-1/2 p-4">
+                  <div class="card-placeholder"></div>
+                </div>
+              }
+            }
           }
         </div>
+        @if (hasMore()) {
+          <div class="load-more-container">
+            <button
+              type="button"
+              class="load-more-btn animated text-white bg-violet-700 border-0 py-2 px-8 focus:outline-none hover:bg-violet-600 rounded text-lg"
+              (click)="loadMore()"
+              [attr.aria-label]="'Load ' + remainingCount() + ' more posts'"
+            >
+              Load {{ remainingCount() }} more
+            </button>
+            <span class="post-count">
+              Showing {{ visiblePosts().length }} of {{ allPosts().length }}
+            </span>
+          </div>
+        }
+        @if (!hasMore() && allPosts().length > 0) {
+          <p class="all-loaded">All posts loaded</p>
+        }
       </div>
     </section>
   `,
 })
 export default class BlogPage {
-  private contentService = inject(ContentService);
-  readonly posts = this.contentService.postsContentFn;
+  private readonly contentService = inject(ContentService);
+  readonly allPosts = this.contentService.postsContentFn;
+  private readonly visibleCount = signal(BLOG_PAGE_SIZE);
+
+  readonly visiblePosts = computed(() =>
+    this.allPosts().slice(0, this.visibleCount()),
+  );
+  readonly hasMore = computed(
+    () => this.visibleCount() < this.allPosts().length,
+  );
+  readonly remainingCount = computed(() => {
+    const remaining = this.allPosts().length - this.visibleCount();
+    return Math.max(0, Math.min(BLOG_PAGE_SIZE, remaining));
+  });
+
+  loadMore(): void {
+    this.visibleCount.update((count) =>
+      Math.min(count + BLOG_PAGE_SIZE, this.allPosts().length),
+    );
+  }
+
   readonly normalizeSlug = normalizeSlug;
 }

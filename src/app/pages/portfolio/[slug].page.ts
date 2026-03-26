@@ -49,7 +49,10 @@ export const routeMeta: RouteMeta = {
           <div class="w-28 text-left">
             @if (navigation().previous) {
               <button
-                [routerLink]="['/portfolio', normalizeSlug(navigation().previous)]"
+                [routerLink]="[
+                  '/portfolio',
+                  normalizeSlug(navigation().previous),
+                ]"
                 class="btn btn-accent w-28 flex items-center justify-start"
                 type="button"
               >

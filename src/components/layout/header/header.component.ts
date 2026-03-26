@@ -91,7 +91,7 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
                   class="dark-icon fill-violet-700 absolute transition-all duration-500 ease-out transform"
                   [ngClass]="{
                     'opacity-100 rotate-0 scale-1': !isDarkMode,
-                    'opacity-0 rotate-180 scale-0': isDarkMode
+                    'opacity-0 rotate-180 scale-0': isDarkMode,
                   }"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -106,7 +106,7 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
                   class="light-icon fill-yellow-500 absolute transition-all duration-500 ease-out transform"
                   [ngClass]="{
                     'opacity-100 rotate-0 scale-1': isDarkMode,
-                    'opacity-0 -rotate-180 scale-0': !isDarkMode
+                    'opacity-0 -rotate-180 scale-0': !isDarkMode,
                   }"
                   fill="currentColor"
                   viewBox="0 0 20 20"

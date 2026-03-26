@@ -202,7 +202,12 @@ export const routeMeta: RouteMeta = {
             >
               @for (post of posts(); track post.attributes.slug) {
                 <div class="w-full p-2">
-                  <a [routerLink]="['/portfolio/', normalizeSlug(post.attributes.slug)]">
+                  <a
+                    [routerLink]="[
+                      '/portfolio/',
+                      normalizeSlug(post.attributes.slug),
+                    ]"
+                  >
                     <div
                       class="flex flex-col md:flex-row border border-gray-200 p-2 rounded-lg dark:border-gray-700 bg-white dark:bg-gray-800 gap-6"
                     >
