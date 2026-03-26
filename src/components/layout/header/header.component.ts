@@ -1,12 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule, IMAGE_CONFIG, NgOptimizedImage } from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { DarkModeService } from '../../../app/services/dark-mode.service';
 import { SocialIconListComponent } from '../footer/social-icon-list.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, NgOptimizedImage, SocialIconListComponent],
+  imports: [CommonModule, NgOptimizedImage, SocialIconListComponent, RouterLink, RouterLinkActive],
   providers: [
     {
       provide: IMAGE_CONFIG,
@@ -65,7 +66,11 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
           class="container px-4 mx-auto flex flex-wrap items-center justify-between"
         >
           <div class="w-full relative flex justify-between lg:w-auto">
-            <a href="/home">
+            <a
+              routerLink="/home"
+              routerLinkActive="nav-link-active"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
               <picture>
                 <source srcset="/arminAvatarSmall.webp" type="image/webp" />
                 <img
@@ -150,36 +155,46 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
             >
               <li class="nav-item">
                 <a
-                  class="px-6 py-4 flex items-center justify-center text-center text-sm uppercase font-bold leading-snug text-black dark:text-white hover:opacity-75 transition-colors duration-500"
-                  href="/home"
+                  class="nav-link px-6 py-4 flex items-center justify-center text-center text-sm uppercase font-bold leading-snug text-black dark:text-white hover:opacity-75 transition-colors duration-500"
+                  routerLink="/home"
+                  routerLinkActive="nav-link-active"
+                  [routerLinkActiveOptions]="{ exact: true }"
                   >Home</a
                 >
               </li>
               <li class="nav-item">
                 <a
-                  class="px-6 py-4 flex items-center justify-center text-center text-sm uppercase font-bold leading-snug text-black dark:text-white hover:opacity-75 transition-colors duration-500"
-                  href="/about"
+                  class="nav-link px-6 py-4 flex items-center justify-center text-center text-sm uppercase font-bold leading-snug text-black dark:text-white hover:opacity-75 transition-colors duration-500"
+                  routerLink="/about"
+                  routerLinkActive="nav-link-active"
+                  [routerLinkActiveOptions]="{ exact: true }"
                   >About</a
                 >
               </li>
               <li class="nav-item">
                 <a
-                  class="px-6 py-4 flex items-center justify-center text-center text-sm uppercase font-bold leading-snug text-black dark:text-white hover:opacity-75 transition-colors duration-500"
-                  href="/blog"
+                  class="nav-link px-6 py-4 flex items-center justify-center text-center text-sm uppercase font-bold leading-snug text-black dark:text-white hover:opacity-75 transition-colors duration-500"
+                  routerLink="/blog"
+                  routerLinkActive="nav-link-active"
+                  [routerLinkActiveOptions]="{ exact: true }"
                   >Blog</a
                 >
               </li>
               <li class="nav-item">
                 <a
-                  class="px-6 py-4 flex items-center justify-center text-center text-sm uppercase font-bold leading-snug text-black dark:text-white hover:opacity-75 transition-colors duration-500"
-                  href="/portfolio"
+                  class="nav-link px-6 py-4 flex items-center justify-center text-center text-sm uppercase font-bold leading-snug text-black dark:text-white hover:opacity-75 transition-colors duration-500"
+                  routerLink="/portfolio"
+                  routerLinkActive="nav-link-active"
+                  [routerLinkActiveOptions]="{ exact: true }"
                   >Portfolio</a
                 >
               </li>
               <li class="nav-item">
                 <a
-                  class="px-6 py-4 flex items-center justify-center text-center text-sm uppercase font-bold leading-snug text-black dark:text-white hover:opacity-75 transition-colors duration-500"
-                  href="/contact"
+                  class="nav-link px-6 py-4 flex items-center justify-center text-center text-sm uppercase font-bold leading-snug text-black dark:text-white hover:opacity-75 transition-colors duration-500"
+                  routerLink="/contact"
+                  routerLinkActive="nav-link-active"
+                  [routerLinkActiveOptions]="{ exact: true }"
                   >Contact</a
                 >
               </li>

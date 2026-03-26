@@ -534,6 +534,27 @@ html.light .dark-mode-toggle .light-icon {
   }
 }
 
+.nav-link {
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    transform 0.3s ease;
+  border-radius: 999px;
+}
+
+.nav-link-active {
+  color: #a855f7 !important;
+  background-color: rgba(168, 85, 247, 0.12);
+  box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.35);
+  transform: translateY(-1px);
+}
+
+html.dark .nav-link-active {
+  color: #fcd34d !important;
+  background-color: rgba(252, 211, 77, 0.12);
+  box-shadow: 0 0 0 1px rgba(252, 211, 77, 0.35);
+}
+
 footer {
   height: 140px;
 }
