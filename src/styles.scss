@@ -9,6 +9,7 @@
   line-height: 24px;
   font-weight: 400;
   font-family: "Space Grotesk", sans-serif;
+  --card-radius: 1rem;
 }
 /* Base styles for all modes */
 html {
@@ -31,7 +32,7 @@ html {
 
 .impact-card {
   border: 1px solid rgba(148, 163, 184, 0.4);
-  border-radius: 0.5rem;
+  border-radius: var(--card-radius);
   padding: 1.25rem;
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(12px);
@@ -67,7 +68,7 @@ html.dark .impact-card {
   border-color: rgba(148, 163, 184, 0.35);
   background: rgba(15, 23, 42, 0.85);
   box-shadow: 0 20px 45px rgba(2, 6, 23, 0.6);
-  border-radius: 0.5rem;
+  border-radius: var(--card-radius);
 }
 
 html.dark .project-card {
@@ -646,7 +647,7 @@ dt {
 
 .impact-card {
   border: 1px solid rgba(148, 163, 184, 0.4);
-  border-radius: 1.25rem;
+  border-radius: var(--card-radius);
   padding: 1.25rem;
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(12px);
