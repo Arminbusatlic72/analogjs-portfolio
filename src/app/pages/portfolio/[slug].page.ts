@@ -17,6 +17,7 @@ import { ContentService } from '../../services/content.service';
 import { map } from 'rxjs/operators';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { normalizeSlug } from '../../utils/slug';
+import { projectStories } from '../../data/project-stories';
 
 export const routeMeta: RouteMeta = {
   title: projectTitleResolver,
@@ -123,6 +124,7 @@ export const routeMeta: RouteMeta = {
                 </p>
               }
 
+              @if (projectStories[post.attributes.slug]) {
               <div class="flex items-center space-x-4 mt-5">
                 @if (post.attributes.link) {
                   <a
@@ -154,6 +156,7 @@ export const routeMeta: RouteMeta = {
                   </a>
                 }
               </div>
+              }
             </div>
 
             <img
@@ -166,26 +169,41 @@ export const routeMeta: RouteMeta = {
               sizes="(max-width: 640px) 100vw, 50vw"
             />
 
-            @if (post.attributes.projectImageSec) {
-              <img
-                class="w-full h-auto mb-8"
-                [ngSrc]="post.attributes.projectImageSec"
-                alt="{{ post.attributes.title }}"
-                priority
-                width="1000"
-                height="460"
-                sizes="(max-width: 640px) 100vw, 50vw"
-              />
-            }
+              @if (post.attributes.projectImageSec) {
+                <img
+                  class="w-full h-auto mb-8"
+                  [ngSrc]="post.attributes.projectImageSec"
+                  alt="{{ post.attributes.title }}"
+                  priority
+                  width="1000"
+                  height="460"
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                />
+              }
 
-            <article
-              class="prose prose-sm sm:prose lg:prose-lg xl:prose-xl mx-auto"
-            >
-              <analog-markdown
-                [content]="post.content"
-                class="markdown-content text-gray-600 body-font"
-              />
-            </article>
+              @if (projectStories[post.attributes.slug]) {
+                <p class="text-md text-violet-700 dark:text-violet-300 mb-4">
+                  {{ projectStories[post.attributes.slug] }}
+                </p>
+              }
+
+              @if (post.content) {
+              <article
+                class="prose prose-sm sm:prose lg:prose-lg xl:prose-xl mx-auto"
+              >
+                <analog-markdown
+                  [content]="post.content"
+                  class="markdown-content text-gray-600 body-font"
+                />
+              </article>
+              } @else {
+              <article class="mx-auto text-gray-600 dark:text-gray-300">
+                <p class="text-center text-lg">
+                  Solving the story of this project is a work-in-progress –
+                  written notes will appear soon.
+                </p>
+              </article>
+              }
           </div>
         </div>
       </section>
@@ -217,6 +235,7 @@ export default class ProjectPage implements OnInit {
   totalProjects: number | null = null;
 
   readonly normalizeSlug = normalizeSlug;
+  readonly projectStories = projectStories;
 
   ngOnInit(): void {
     this.route.params
