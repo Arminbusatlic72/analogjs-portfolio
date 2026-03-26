@@ -209,7 +209,7 @@ export const routeMeta: RouteMeta = {
                     ]"
                   >
                     <div
-                      class="flex flex-col md:flex-row border border-gray-200 p-2 rounded-lg dark:border-gray-700 bg-white dark:bg-gray-800 gap-6"
+                      class="project-card flex flex-col md:flex-row gap-6"
                     >
                       <!-- Image -->
                       <div
@@ -245,7 +245,36 @@ export const routeMeta: RouteMeta = {
           </div>
           <div
             class="text-wrapper text-primary-content dark:text-white w-full lg:w-1/2"
-          ></div>
+          >
+            <div class="px-0 md:px-16">
+              <h3
+                class="text-2xl md:text-3xl text-violet-700 dark:text-yellow-500 lg:text-4xl font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 md:text-left transition-all duration-500 ease-out transform"
+              >
+                <span class="text-yellow-500 dark:text-violet-700">#</span
+                >client impact
+              </h3>
+              <p class="text-gray-500 dark:text-gray-300 mb-6">
+                Measurable wins delivered while collaborating with product and
+                engineering teams.
+              </p>
+              <div class="client-impact-grid">
+                @for (impact of clientImpacts; track impact.title) {
+                  <div class="impact-card">
+                    <div class="impact-header">
+                      <span class="impact-metric">{{ impact.metric }}</span>
+                      <span class="impact-label">{{ impact.label }}</span>
+                      <span class="impact-date">{{ impact.date }}</span>
+                    </div>
+                    <p
+                      class="impact-description text-gray-600 dark:text-gray-300"
+                    >
+                      {{ impact.description }}
+                    </p>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
@@ -273,22 +302,27 @@ export default class AboutPageComponent {
   }
 
   technologies = [
+    { name: 'Next.js App Router', stars: 5 },
+    { name: 'React 19 + server components', stars: 5 },
+    { name: 'TypeScript', stars: 5 },
+    { name: 'Vercel AI SDK & Convex', stars: 4 },
+    { name: 'Clerk + Stripe gating', stars: 4 },
+    { name: 'Sanity + GROQ', stars: 4 },
+    { name: 'next-intl localization', stars: 4 },
+    { name: 'Next/image & optimization', stars: 5 },
+    { name: 'Tailwind css', stars: 5 },
+    { name: 'Responsive layout systems', stars: 5 },
+    { name: 'Figma-driven UI', stars: 4 },
     { name: 'HTML/5', stars: 5 },
-    { name: 'css/3', stars: 5 },
-    { name: 'SASS, Less', stars: 5 },
+    { name: 'CSS/3', stars: 5 },
+    { name: 'SCSS/SASS', stars: 5 },
     { name: 'BEM', stars: 5 },
     { name: 'Bootstrap, React Bootstrap', stars: 5 },
-    { name: 'Tailwind css', stars: 5 },
     { name: 'Styled component', stars: 5 },
-    { name: 'Javascript', stars: 4 },
-    { name: 'Typescript', stars: 4 },
-    { name: 'JQuery', stars: 4 },
-    { name: 'Angular', stars: 4 },
-    { name: 'Spartacus', stars: 3 },
     { name: 'AnalogJS', stars: 4 },
-    { name: 'ReactJS', stars: 3 },
-    { name: 'GatsbyJS', stars: 4 },
+    { name: 'Angular', stars: 4 },
     { name: 'NextJS', stars: 3 },
+    { name: 'GatsbyJS', stars: 4 },
     { name: 'RxJS', stars: 3 },
     { name: 'NgRX', stars: 2 },
   ];
@@ -314,5 +348,32 @@ export default class AboutPageComponent {
     { name: 'Prismic', stars: 3 },
     { name: 'Contentful', stars: 3 },
     // Add more platforms here
+  ];
+
+  clientImpacts = [
+    {
+      title: 'Checkout velocity',
+      metric: '30% faster',
+      label: 'Checkout performance',
+      date: '2024',
+      description:
+        'Refined the cart + checkout flow with signal-driven renders to cut the time-to-order without compromising accessibility.',
+    },
+    {
+      title: 'Accessibility lift',
+      metric: 'WCAG 2.1 AA',
+      label: 'Accessibility initiative',
+      date: '2023',
+      description:
+        'Led a cross-functional accessibility sprint that tightened contrast ratios and keyboard flows across the Spartacus storefront.',
+    },
+    {
+      title: 'Kabinet brewery relaunch',
+      metric: '150+ SKUs',
+      label: 'WooCommerce migration',
+      date: '2022',
+      description:
+        'Redesigned and migrated Kabinet brewery store to WooCommerce with multilingual redirects, performance tuning, and SEO-safe product migrations.',
+    },
   ];
 }

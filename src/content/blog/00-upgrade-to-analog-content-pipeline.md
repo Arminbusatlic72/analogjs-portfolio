@@ -5,6 +5,7 @@ description: "How I modernized the AnalogJS portfolio—from the Angular 17-era 
 coverImage: "/blog/analog-angular-update.png"
 previousPost: building-a-saas-subscription-system
 nextPost: enhancing-a-jamstack-application
+date: 25 March 2026
 ---
 
 # Upgrading the Analog-Driven Portfolio: Angular 21, Vitest, and Signal-Ready Content

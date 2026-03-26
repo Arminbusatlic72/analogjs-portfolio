@@ -9,12 +9,13 @@ projectImageSec: "/projects/stribbo/stribbo2.png"
 
 link: "https://www.stribbo.com/"
 slug: "stribbo"
+order: 10
 description: "Conversion of designs to a Wordpress site.
 Migration of website to live environment.
 Maintenance and Performance optimization.
 Continuous development."
 tools: " Figma, Html5, CSS3, JS, Wordpress WP Bakery Page builder"
 company: Grumpy dev
-previousProject: dna-sandbox
-nextProject: neologic
+previousProject: kabinet
+nextProject: alcove
 ---

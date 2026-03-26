@@ -7,7 +7,13 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, NgOptimizedImage, SocialIconListComponent, RouterLink, RouterLinkActive],
+  imports: [
+    CommonModule,
+    NgOptimizedImage,
+    SocialIconListComponent,
+    RouterLink,
+    RouterLinkActive,
+  ],
   providers: [
     {
       provide: IMAGE_CONFIG,
@@ -66,11 +72,7 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
           class="container px-4 mx-auto flex flex-wrap items-center justify-between"
         >
           <div class="w-full relative flex justify-between lg:w-auto">
-            <a
-              routerLink="/home"
-              routerLinkActive="nav-link-active"
-              [routerLinkActiveOptions]="{ exact: true }"
-            >
+            <a routerLink="/home">
               <picture>
                 <source srcset="/arminAvatarSmall.webp" type="image/webp" />
                 <img

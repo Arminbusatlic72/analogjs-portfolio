@@ -17,90 +17,103 @@ html {
   scrollbar-color: #eab308 rgb(31, 41, 55); /* Firefox thumb and track */
 }
 
-/* Chrome, Safari, etc. */
-::-webkit-scrollbar {
-  width: 12px;
+.menu-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s ease-out;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #eab308;
-  border-radius: 10px;
-}
-.markdown-content h1 {
-  @apply text-4xl font-extrabold text-gray-900 mb-4 dark:text-gray-100;
+.client-impact-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
-.markdown-content h2 {
-  @apply text-3xl font-semibold text-gray-800 mt-8 mb-4 dark:text-gray-200;
+.impact-card {
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 40px rgba(79, 70, 229, 0.08);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-.markdown-content h3 {
-  @apply text-2xl font-medium text-gray-800 mt-6 mb-3 dark:text-gray-200;
+.impact-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 50px rgba(79, 70, 229, 0.15);
 }
 
-.markdown-content p {
-  @apply text-base leading-relaxed text-gray-700 mb-4 dark:text-gray-400;
+.project-card {
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.08);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-.markdown-content a {
-  @apply text-blue-600 hover:text-blue-800 hover:underline dark:text-blue-400 dark:hover:text-blue-600;
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 45px rgba(15, 23, 42, 0.18);
 }
 
-.markdown-content ul,
-.markdown-content ol {
-  @apply ml-6 mb-4;
+html.dark .impact-card {
+  border-color: rgba(148, 163, 184, 0.35);
+  background: rgba(15, 23, 42, 0.85);
+  box-shadow: 0 20px 45px rgba(2, 6, 23, 0.6);
+  border-radius: 0.5rem;
 }
 
-.markdown-content ul {
-  @apply list-disc;
+html.dark .project-card {
+  border-color: rgba(148, 163, 184, 0.35);
+  background: rgba(15, 23, 42, 0.85);
+  box-shadow: 0 20px 45px rgba(2, 6, 23, 0.6);
+  border-radius: 0.5rem;
 }
 
-.markdown-content pre {
+html.dark .impact-card:hover {
+  box-shadow: 0 28px 55px rgba(2, 6, 23, 0.7);
+}
+
+html.dark .project-card:hover {
+  box-shadow: 0 28px 55px rgba(2, 6, 23, 0.7);
+}
+
+.impact-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.impact-metric {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #a855f7;
+}
+
+.impact-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.75;
+}
+
+.impact-date {
   font-size: 0.8rem;
-  background: #2d2d2d;
-  padding: 1em;
-  margin: 0.5em 0;
-  overflow: auto;
-  color: #ccc;
-  text-align: left;
-  white-space: pre-wrap; /* Allow wrapping */
-  word-break: break-word; /* Break long words */
+  color: #4b5563;
+}
+
+.impact-description {
+  font-size: 0.95rem;
   line-height: 1.5;
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
-  tab-size: 4;
-  -webkit-hyphens: none;
-  hyphens: none;
-  max-width: 100%; /* Ensure it doesn't overflow */
-  box-sizing: border-box; /* Include padding in width calculations */
-}
-
-.markdown-content pre.code {
-  margin: 20px 25px;
-  border-radius: 4px;
-  border: 1px solid #292929;
-  position: relative;
-}
-/* Syntax highlighting */
-.markdown-content pre .keyword {
-  color: #c5a5c5; /* Keywords like 'function', 'return' */
-}
-
-.markdown-content pre .string {
-  color: #8dc891; /* Strings */
-}
-
-.markdown-content pre .comment {
-  color: #7a7a7a; /* Comments */
-  font-style: italic;
-}
-
-.markdown-content pre .number {
-  color: #dcdcaa; /* Numbers */
-}
-
-.markdown-content pre .operator {
-  color: #e5e5e5; /* Operators like '=', '+' */
 }
 
 .markdown-content pre .function {
@@ -146,6 +159,10 @@ html {
 
 .markdown-content tbody tr:nth-child(even) {
   @apply bg-white dark:bg-gray-800;
+}
+
+html.dark .markdown-content.text-gray-600.body-font {
+  color: #e5e7eb;
 }
 @media (max-width: 768px) {
   .markdown-content table {
@@ -213,8 +230,8 @@ html {
   background-size: cover; /* Adjust to cover or contain based on your needs */
   background-position: center;
   background-repeat: no-repeat;
-  /* Adjust opacity as needed */
-  z-index: -1; /* Ensure it's behind other content */
+
+  z-index: -1;
 }
 .animated {
   background-size: 2rem 2rem;
@@ -241,8 +258,9 @@ html {
     transparent 75%,
     transparent
   );
-  background-position: right center;
-  animation: animation-15lk19q 2.8s linear 0s infinite normal none running;
+  background-repeat: repeat;
+  background-position: 0 0;
+  animation: animation-15lk19q 2.8s linear 0s infinite normal both running;
 }
 
 .dark-mode-toggle svg {
@@ -617,6 +635,61 @@ dt {
 .menu-exit-active {
   opacity: 0;
   transform: translateY(-20px);
+  transition: all 0.3s ease-out;
+}
+
+.client-impact-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.impact-card {
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 40px rgba(79, 70, 229, 0.08);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.impact-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 50px rgba(79, 70, 229, 0.15);
+}
+
+.impact-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.impact-metric {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #a855f7;
+}
+
+.impact-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.75;
+}
+
+.impact-date {
+  font-size: 0.8rem;
+  color: #4b5563;
+}
+
+.impact-description {
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 .animated-heading span {
   animation: fadeIn 2s ease-in-out;
@@ -658,27 +731,28 @@ dt {
   animation: spin 2.5s infinite linear paused;
 
   /**
-   * Using `background-origin` we can create a “border” using two gradients. And to
-   * make the gradients better-looking, we use OKLCH.
+   * Create a border effect with two gradients while keeping the animated glow
+   * compatible with browsers that might not yet support newer color syntaxes.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-origin
-   * @see https://evilmartians.com/chronicles/oklch-in-css-why-quit-rgb-hsl
    */
   background:
       /* Background colors don’t work with `background-origin`, so use a gradient. */
     linear-gradient(
         to bottom,
-        oklch(100% 3.5594404384177905e-8 106.37411429114086),
-        oklch(100% 3.5594404384177905e-8 106.37411429114086)
+        rgba(255, 255, 255, 0.95),
+        rgba(255, 255, 255, 0.95)
       )
       padding-box,
     /* ends at inner border edges */
     conic-gradient(
         from var(--bg-angle),
-        oklch(95% 0 0) 0%,
-        oklch(95% 0 0 / 0.3) 100%
+        rgba(168, 85, 247, 0.55) 0%,
+        rgba(168, 85, 247, 0) 100%
       )
       border-box; /* extends to outer border edges */
+  background-origin: padding-box, border-box;
+  background-clip: padding-box, border-box;
 
   /* a clear border lets the background gradient shine through */
   border: 1px solid transparent;
@@ -695,15 +769,12 @@ dt {
   }
   .dark & {
     background:
-      linear-gradient(
-          to bottom,
-          oklch(27.81% 0.03 256.85),
-          oklch(27.81% 0.03 256.85)
-        )
+      linear-gradient(to bottom, rgba(45, 45, 45, 0.85), rgba(45, 45, 45, 0.85))
         padding-box,
       conic-gradient(
-          from var(--bg-angle) in oklch longer hue,
-          oklch(0.85 0.37 0) 0 0
+          from var(--bg-angle),
+          rgba(252, 211, 77, 0.6) 0%,
+          rgba(252, 211, 77, 0) 100%
         )
         border-box;
   }

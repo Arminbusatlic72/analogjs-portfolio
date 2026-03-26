@@ -5,6 +5,7 @@ description: "A comparison of Next.js and Gatsby to help you choose the right fr
 coverImage: https://images.ctfassets.net/9ynx8gh7pmzk/eX9edLJoi2lexVG9fqHYe/6f39167a13d5cb61000eed1a7fc01497/Banner_Next-VS-Gatsby_1200x800.png?w=808&h=541&q=100&fm=png
 previousPost: "signals-vs-behaviorsubjects"
 nextPost: "exploring-angular-signals"
+date: 10 August 2024
 ---
 
 # Next.js vs Gatsby: Choosing the Right Framework for Your Web App

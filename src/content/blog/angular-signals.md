@@ -5,6 +5,7 @@ description: An in-depth look at Angular signals, their advantages, when they be
 coverImage: "https://miro.medium.com/v2/resize:fit:1198/1*q1XAzZg4xyw4qVUDGHO06A.png"
 previousPost: "building-a-saas-subscription-system"
 nextPost: ""
+date: 10 May 2025
 ---
 
 # Exploring Angular Signals: A New Approach to State Management

@@ -78,25 +78,15 @@ const BLOG_PAGE_SIZE = 6;
                         {{ post.attributes.description }}
                       </p>
                     </div>
-                    <div
-                      class="flex items-center justify-between text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3"
-                    >
-                      <div class="flex items-center gap-2">
+                    <div class="text-xs text-gray-500 dark:text-gray-400 mb-3">
+                      <span
+                        class="font-semibold text-sm text-gray-900 dark:text-gray-100"
+                      >
                         @if (post.attributes.date) {
-                          <span>Published</span>
-                          <span
-                            class="font-semibold text-gray-900 dark:text-gray-100"
-                          >
-                            {{ post.attributes.date | date: 'MMMM d, yyyy' }}
-                          </span>
+                          {{ post.attributes.date | date: 'MMMM d, yyyy' }}
                         } @else {
-                          <span class="text-gray-400"
-                            >Publication date TBD</span
-                          >
+                          Publication date TBD
                         }
-                      </div>
-                      <span class="font-mono text-xs">
-                        {{ normalizeSlug(post.attributes.slug) }}
                       </span>
                     </div>
                     <a
@@ -162,24 +152,16 @@ const BLOG_PAGE_SIZE = 6;
                         </p>
                       </div>
                       <div
-                        class="flex items-center justify-between text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3"
+                        class="text-xs text-gray-500 dark:text-gray-400 mb-3"
                       >
-                        <div class="flex items-center gap-2">
+                        <span
+                          class="font-semibold text-sm text-gray-900 dark:text-gray-100"
+                        >
                           @if (post.attributes.date) {
-                            <span>Published</span>
-                            <span
-                              class="font-semibold text-gray-900 dark:text-gray-100"
-                            >
-                              {{ post.attributes.date | date: 'MMMM d, yyyy' }}
-                            </span>
+                            {{ post.attributes.date | date: 'MMMM d, yyyy' }}
                           } @else {
-                            <span class="text-gray-400"
-                              >Publication date TBD</span
-                            >
+                            Publication date TBD
                           }
-                        </div>
-                        <span class="font-mono text-xs">
-                          {{ normalizeSlug(post.attributes.slug) }}
                         </span>
                       </div>
                       <a

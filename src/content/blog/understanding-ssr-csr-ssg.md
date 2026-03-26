@@ -5,6 +5,7 @@ description: A comprehensive look at Server-Side Rendering (SSR), Client-Side Re
 coverImage: https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80
 previousPost: "game-changer-with-ngrx-signal-state"
 nextPost: "signals-vs-behaviorsubjects"
+date: 10 September 2024
 ---
 
 # Understanding SSR, CSR, SSG, and ISR: Pros, Cons, and Use Cases

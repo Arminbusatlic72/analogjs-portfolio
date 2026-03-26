@@ -5,6 +5,7 @@ description: In this blog post, we’ll dive deep into Angular Signals, explore 
 coverImage: /blog/angularSignalStore.webp
 previousPost: ""
 nextPost: "understanding-ssr-csr-ssg-isr-pros-cons"
+date: 6 January 2025
 ---
 
 # Angular Signals: Angular Signal State Management with NgRx

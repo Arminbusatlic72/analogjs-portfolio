@@ -1,4 +1,4 @@
-import { effect, Injectable, signal } from '@angular/core';
+import { computed, effect, Injectable, signal } from '@angular/core';
 import { ContentFile } from '@analogjs/content';
 import { contentFilesResource } from '@analogjs/content/resources';
 
@@ -16,22 +16,17 @@ export class ContentService {
     (contentFile) => contentFile.filename.includes('src/content/blog/'),
   );
 
-  private readonly projectsContentSignal = signal<ContentFile<Project>[]>([]);
   private readonly postsContentSignal = signal<ContentFile<BlogPost>[]>([]);
 
-  readonly projectsContentFn = this.projectsContentSignal.asReadonly();
+  readonly allProjects = computed(() =>
+    [...(this.projectsContentResource.value() ?? [])].sort(
+      (a, b) => (a.attributes.order ?? 99) - (b.attributes.order ?? 99),
+    ),
+  );
+  readonly projectsContentFn = this.allProjects;
   readonly postsContentFn = this.postsContentSignal.asReadonly();
 
   constructor() {
-    effect(() => {
-      this.projectsContentSignal.set(
-        prioritizeProject(
-          this.projectsContentResource.value() ?? [],
-          'dna-sandbox',
-        ),
-      );
-    });
-
     effect(() => {
       this.postsContentSignal.set(this.postsContentResource.value() ?? []);
     });
@@ -42,7 +37,7 @@ export class ContentService {
   }
 
   getProjectNeighbors(slug: string) {
-    return this.findNeighbors(this.projectsContentSignal(), slug);
+    return this.findNeighbors(this.projectsContentFn(), slug);
   }
 
   private findNeighbors(
@@ -63,21 +58,6 @@ export class ContentService {
         index < items.length - 1 ? items[index + 1].attributes.slug : undefined,
     };
   }
-}
-
-function prioritizeProject(
-  projects: ContentFile<Project>[],
-  slug: string,
-): ContentFile<Project>[] {
-  const ordered = [...projects];
-  const targetIndex = ordered.findIndex(
-    (project) => project.attributes.slug === slug,
-  );
-  if (targetIndex > 0) {
-    const [match] = ordered.splice(targetIndex, 1);
-    ordered.unshift(match);
-  }
-  return ordered;
 }
 
 interface NeighborNavigation {

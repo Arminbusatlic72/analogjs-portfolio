@@ -129,7 +129,7 @@ const PORTFOLIO_PAGE_SIZE = 6;
                         <div class="flex flex-wrap gap-2 mt-3">
                           @for (tool of toolChips; track tool) {
                             <span
-                              class="text-[11px] font-semibold px-3 py-1 rounded-full border border-violet-200 text-violet-700 dark:border-violet-700 dark:text-violet-300"
+                              class="text-[11px] font-semibold px-3 py-1 rounded-full border border-violet-100 text-violet-800 dark:border-amber-300 dark:text-amber-100"
                             >
                               {{ tool }}
                             </span>
@@ -206,7 +206,7 @@ const PORTFOLIO_PAGE_SIZE = 6;
                           <div class="flex flex-wrap gap-2 mt-3">
                             @for (tool of toolChipsDeferred; track tool) {
                               <span
-                                class="text-[11px] font-semibold px-3 py-1 rounded-full border border-violet-200 text-violet-700 dark:border-violet-700 dark:text-violet-300"
+                                class="text-[11px] font-semibold px-3 py-1 rounded-full border border-violet-100 text-violet-800 dark:border-amber-300 dark:text-amber-100"
                               >
                                 {{ tool }}
                               </span>

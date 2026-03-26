@@ -8,6 +8,7 @@ export interface Project {
   projectImage: string;
   projectImageSec?: string;
   slug: string;
+  order?: number;
   link: string;
   description: string;
   tools?: string;

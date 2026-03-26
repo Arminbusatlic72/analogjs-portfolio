@@ -5,6 +5,7 @@ description: "A practical guide to wiring up Stripe subscriptions, Clerk authent
 coverImage: "/blog/PaaS-For-Your-SaaS.png"
 previousPost: "exploring-angular-signals"
 nextPost: "enhancing-a-jamstack-application"
+date: 10 March 2026
 ---
 
 # Building a SaaS Subscription System with Stripe, Clerk, and Convex

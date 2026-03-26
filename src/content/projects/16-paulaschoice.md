@@ -7,11 +7,12 @@ featuredImage: "/projects/paulaschoice.png"
 projectImage: "/projects/paulaschoice/paulaschoice1.png"
 projectImageSec: "/projects/paulaschoice/paulaschoice2.png"
 slug: paulaschoice
+order: 20
 link: ""
 description: "I developed marketing and transactional emails, reusable email blocks for marketing campaigns using HTML, CSS, and Emarsys scripting language, as well as countdown timers announcing campaign launches and various other popups, all integrated within the Emarsys CRM platform. Integrated multilingual plugins to enhance user experience. Implementation of styles for dark-mode."
 tools: "Emarsys"
 company: Elision
 
-previousProject: master-finish
+previousProject: waterbear
 nextProject: kue-tech
 ---

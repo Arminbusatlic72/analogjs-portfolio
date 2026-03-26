@@ -5,6 +5,7 @@ description: In this guide, we explore adding robust navigation and custom order
 coverImage: /blog/wpgatsby.webp
 previousPost: "building-a-saas-subscription-system"
 nextPost: "nextjs-vs-gatsby"
+date: 10 June 2024
 ---
 
 # Angular Signals: Enhancing a JAMstack Application: Next/Previous Navigation and Dynamic Ordering for WordPress Custom Post Types in Gatsby

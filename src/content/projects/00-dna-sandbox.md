@@ -9,11 +9,11 @@ projectImageSec: "/projects/dna-sandbox/scenariodna2.png"
 link: "https://storyengine.scenariodna.com/"
 githublink: https://github.com/Arminbusatlic72/vercel-ai-sdke-ai-elements-convex-clerk
 slug: "dna-sandbox"
+order: 1
 description: "Guided AI research studio that pairs streaming multi-model chat with curated DNA knowledge sources, premium access controls, and real-time instrumentation."
 tools: "Figma, Next.js, React, TypeScript, Vercel AI SDK, Convex, Clerk, Stripe"
 company: Scenario DNA
-previousProject: ""
-nextProject: stribbo
+nextProject: kriz-winery-next-sanity
 ---
 
 # DNA Sandbox — Project Overview

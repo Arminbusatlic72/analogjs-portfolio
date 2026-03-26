@@ -8,11 +8,12 @@ projectImage: "/projects/skillsdivision/skillsdivision1.png"
 projectImageSec: "/projects/skillsdivision/skillsdivision2.png"
 link: https://skillsdivision.com/
 slug: skillsdivision
+order: 12
 
-description: "Customization of Wordpress theme using HTML5, CSS, JS, and WP Bakery Page builder"
+description: "Customization of Wordpress theme using HTML5, CSS3, JS, and WP Bakery Page builder"
 tools: "Figma, Html5, CSS3, JS, Wordpress WP Bakery Page builder"
 company: Grumpy dev
 
-previousProject: ewentive
-nextProject: kojan
+previousProject: alcove
+nextProject: vladimirmaletic
 ---
