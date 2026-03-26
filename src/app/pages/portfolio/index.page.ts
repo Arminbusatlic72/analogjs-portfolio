@@ -13,51 +13,12 @@ import { ContentService } from '../../services/content.service';
 import { normalizeSlug } from '../../utils/slug';
 
 const PORTFOLIO_PAGE_SIZE = 6;
-const PORTFOLIO_LOAD_MORE_STYLES = `
-  .card-placeholder {
-    width: 100%;
-    height: 320px;
-    border-radius: 1rem;
-    background: var(--placeholder-bg, #f0f0f0);
-    animation: pulse 1.5s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-  }
-
-  .load-more-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 2rem;
-  }
-
-  .load-more-btn {
-    padding: 0.75rem 2rem;
-    cursor: pointer;
-    border-radius: 0.25rem;
-  }
-
-  .post-count {
-    font-size: 0.85rem;
-    opacity: 0.6;
-  }
-
-  .all-loaded {
-    text-align: center;
-    opacity: 0.5;
-    margin-top: 1rem;
-  }
-`;
 
 @Component({
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink, FormsModule],
-  styles: [PORTFOLIO_LOAD_MORE_STYLES],
+  styleUrls: ['./portfolio-load-more.styles.scss'],
   template: `
     <section class="text-gray-600 body-font p-5 context">
       <h2
