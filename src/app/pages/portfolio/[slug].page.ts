@@ -2,19 +2,21 @@ import { MarkdownComponent, injectContent } from '@analogjs/content';
 import { RouteMeta } from '@analogjs/router';
 import {
   AsyncPipe,
-  NgOptimizedImage,
-  IMAGE_CONFIG,
   DatePipe,
+  IMAGE_CONFIG,
+  NgOptimizedImage,
 } from '@angular/common';
-import { Component, DestroyRef, inject, OnInit } from '@angular/core';
-import { RouterLink, ActivatedRoute } from '@angular/router';
+import { Component, DestroyRef, computed, inject, OnInit } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Project } from 'src/app/models/project';
 import {
   projectTitleResolver,
   projectMetaResolver,
 } from '../../resolvers/resolver';
 import { ContentService } from '../../services/content.service';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { map } from 'rxjs/operators';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
+import { normalizeSlug } from '../../utils/slug';
 
 export const routeMeta: RouteMeta = {
   title: projectTitleResolver,
@@ -45,14 +47,13 @@ export const routeMeta: RouteMeta = {
       >
         <div class="flex items-center justify-between w-full px-6">
           <div class="w-28 text-left">
-            @if (post.attributes.previousProject) {
+            @if (navigation().previous) {
               <button
-                [routerLink]="['/portfolio', post.attributes.previousProject]"
+                [routerLink]="['/portfolio', normalizeSlug(navigation().previous)]"
                 class="btn btn-accent w-28 flex items-center justify-start"
                 type="button"
               >
                 &#8592;
-                <!-- Left arrow -->
                 <span class="ml-2 arrow-left">Previous</span>
               </button>
             }
@@ -68,15 +69,14 @@ export const routeMeta: RouteMeta = {
           </div>
 
           <div class="w-28 text-left">
-            @if (post.attributes.nextProject) {
+            @if (navigation().next) {
               <button
-                [routerLink]="['/portfolio', post.attributes.nextProject]"
+                [routerLink]="['/portfolio', normalizeSlug(navigation().next)]"
                 class="btn btn-accent w-28 flex items-center justify-end"
                 type="button"
               >
                 <span class="mr-2 arrow-right">Next</span>
                 &#8594;
-                <!-- Right arrow -->
               </button>
             }
           </div>
@@ -144,8 +144,8 @@ export const routeMeta: RouteMeta = {
                     >
                       <path
                         fill-rule="evenodd"
-                        d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.205 11.385.6.11.82-.26.82-.577v-2.234c-3.338.724-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.082-.729.082-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.835 2.807 1.305 3.492.998.107-.774.419-1.305.762-1.605-2.665-.305-5.466-1.332-5.466-5.93 0-1.31.468-2.382 1.235-3.22-.123-.304-.535-1.524.117-3.176 0 0 1.008-.322 3.3 1.23.957-.266 1.983-.398 3.003-.404 1.02.006 2.046.138 3.005.404 2.29-1.552 3.296-1.23 3.296-1.23.653 1.652.241 2.872.118 3.176.77.838 1.233 1.91 1.233 3.22 0 4.61-2.805 5.623-5.475 5.92.43.37.814 1.102.814 2.222v3.293c0 .32.218.694.824.576C20.565 21.796 24 17.298 24 12c0-6.627-5.373-12-12-12z"
                         clip-rule="evenodd"
+                        d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.205 11.385.6.11.82-.26.82-.577v-2.234c-3.338.724-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.082-.729.082-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.835 2.807 1.305 3.492.998.107-.774.419-1.305.762-1.605-2.665-.305-5.466-1.332-5.466-5.93 0-1.31.468-2.382 1.235-3.22-.123-.304-.535-1.524.117-3.176 0 0 1.008-.322 3.3 1.23.957-.266 1.983-.398 3.003-.404 1.02.006 2.046.138 3.005.404 2.29-1.552 3.296-1.23 3.296-1.23.653 1.652.241 2.872.118 3.176.77.838 1.233 1.91 1.233 3.22 0 4.61-2.805 5.623-5.475 5.92.43.37.814 1.102.814 2.222v3.293c0 .32.218.694.824.576C20.565 21.796 24 17.298 24 12c0-6.627-5.373-12-12-12z"
                       />
                     </svg>
                   </a>
@@ -189,58 +189,31 @@ export const routeMeta: RouteMeta = {
     }
   `,
 })
-// export default class ProjectPage {
-//   private contentService = inject(ContentService);
-
-//   readonly posts = this.contentService.projectsContentFn;
-
-//   post$ = injectContent<Project>({
-//     param: 'slug',
-//     subdirectory: 'projects',
-//   });
-//   projectPosition: number | null = null; // Position of the current project
-//   totalProjects: number | null = null; // Total number of projects
-
-//   constructor(private route: ActivatedRoute) {
-//     this.calculateProjectPosition();
-//   }
-//   calculateProjectPosition() {
-//     const projects = this.posts; // Assume this is an array of ContentFile<Project>
-//     console.log(projects);
-//     // Get the current project slug from the route
-//     const currentSlug = this.route.snapshot.paramMap.get('slug');
-
-//     console.log(currentSlug);
-//     // If we have projects and a current slug
-//     if (projects && currentSlug) {
-//       // Find the total number of projects
-//       this.totalProjects = projects.length;
-
-//       // Find the index of the current project by its slug
-//       const currentIndex = projects.findIndex(
-//         (project) => project.attributes.slug === currentSlug
-//       );
-
-//       if (currentIndex !== -1) {
-//         // Update the current project position (1-based index)
-//         this.projectPosition = currentIndex + 1;
-//       }
-//     }
-//   }
-// }
 export default class ProjectPage implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
   private readonly route = inject(ActivatedRoute);
-  private contentService = inject(ContentService);
+  private readonly slug = toSignal(
+    this.route.paramMap.pipe(map((params) => params.get('slug') ?? '')),
+    { requireSync: true },
+  );
+  private readonly contentService = inject(ContentService);
   readonly posts = this.contentService.projectsContentFn;
+  readonly navigation = computed(() => {
+    const currentSlug = this.slug();
+    return currentSlug
+      ? this.contentService.getProjectNeighbors(currentSlug)
+      : {};
+  });
 
   post$ = injectContent<Project>({
     param: 'slug',
     subdirectory: 'projects',
   });
 
-  projectPosition: number | null = null; // Position of the current project
-  totalProjects: number | null = null; // Total number of projects
+  projectPosition: number | null = null;
+  totalProjects: number | null = null;
+
+  readonly normalizeSlug = normalizeSlug;
 
   ngOnInit(): void {
     this.route.params
@@ -249,23 +222,16 @@ export default class ProjectPage implements OnInit {
   }
 
   calculateProjectPosition() {
-    const projects = this.posts; // Assume this is an array of ContentFile<Project>
-
-    // Get the current project slug from the route
+    const projects = this.posts();
     const currentSlug = this.route.snapshot.paramMap.get('slug');
 
-    // If we have projects and a current slug
     if (projects && currentSlug) {
-      // Find the total number of projects
       this.totalProjects = projects.length;
-
-      // Find the index of the current project by its slug
       const currentIndex = projects.findIndex(
         (project) => project.attributes.slug === currentSlug,
       );
 
       if (currentIndex !== -1) {
-        // Update the current project position (1-based index)
         this.projectPosition = currentIndex + 1;
       }
     }

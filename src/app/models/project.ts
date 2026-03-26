@@ -10,7 +10,7 @@ export interface Project {
   slug: string;
   link: string;
   description: string;
-  tools: string;
+  tools?: string;
   githublink?: string;
   previousProject?: string;
   nextProject?: string;

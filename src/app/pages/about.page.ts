@@ -5,6 +5,7 @@ import { RouteMeta } from '@analogjs/router';
 
 import { ContentService } from '../services/content.service';
 import { TechnologyItemComponent } from '../../components/layout/tech-item/tech-item';
+import { normalizeSlug } from '../utils/slug';
 export const routeMeta: RouteMeta = {
   title: 'About | Armin Busatlic Portfolio',
 };
@@ -82,8 +83,8 @@ export const routeMeta: RouteMeta = {
                   />
                 </svg>
               </h3>
-                <div [class.open]="isCodingOpen" class="accordion-content pl-4">
-                  @for (tech of technologies; track tech.name) {
+              <div [class.open]="isCodingOpen" class="accordion-content pl-4">
+                @for (tech of technologies; track tech.name) {
                   <app-tech-item [name]="tech.name" [stars]="tech.stars">
                   </app-tech-item>
                 }
@@ -110,11 +111,11 @@ export const routeMeta: RouteMeta = {
                   />
                 </svg>
               </h3>
-                <div
-                  [class.open]="isPlatformsOpen"
-                  class="accordion-content pl-4"
-                >
-                  @for (platform of platforms; track platform.name) {
+              <div
+                [class.open]="isPlatformsOpen"
+                class="accordion-content pl-4"
+              >
+                @for (platform of platforms; track platform.name) {
                   <app-tech-item
                     [name]="platform.name"
                     [stars]="platform.stars"
@@ -170,11 +171,11 @@ export const routeMeta: RouteMeta = {
                   />
                 </svg>
               </h3>
-                <div
-                  [class.open]="isLanguagesOpen"
-                  class="accordion-content pl-4"
-                >
-                  @for (language of languages; track language.name) {
+              <div
+                [class.open]="isLanguagesOpen"
+                class="accordion-content pl-4"
+              >
+                @for (language of languages; track language.name) {
                   <app-tech-item
                     [name]="language.name"
                     [stars]="language.stars"
@@ -199,41 +200,41 @@ export const routeMeta: RouteMeta = {
             <div
               class="flex flex-wrap max-h-[400px] overflow-y-auto border-gray-200"
             >
-              @for (post of posts; track post.attributes.slug) {
-              <div class="w-full p-2">
-                <a [routerLink]="['/portfolio/', post.attributes.slug]">
-                  <div
-                    class="flex flex-col md:flex-row border border-gray-200 p-2 rounded-lg dark:border-gray-700 bg-white dark:bg-gray-800 gap-6"
-                  >
-                    <!-- Image -->
+              @for (post of posts(); track post.attributes.slug) {
+                <div class="w-full p-2">
+                  <a [routerLink]="['/portfolio/', normalizeSlug(post.attributes.slug)]">
                     <div
-                      class="w-full md:w-1/3 h-48 md:h-auto md:aspect-[4/3] overflow-hidden bg-gray-100 dark:bg-gray-700"
+                      class="flex flex-col md:flex-row border border-gray-200 p-2 rounded-lg dark:border-gray-700 bg-white dark:bg-gray-800 gap-6"
                     >
-                      <img
-                        class="h-full w-full object-cover object-center"
-                        [ngSrc]="post.attributes.featuredImage"
-                        alt="{{ post.attributes.title }}"
-                        width="400"
-                        height="260"
-                      />
-                    </div>
+                      <!-- Image -->
+                      <div
+                        class="w-full md:w-1/3 h-48 md:h-auto md:aspect-[4/3] overflow-hidden bg-gray-100 dark:bg-gray-700"
+                      >
+                        <img
+                          class="h-full w-full object-cover object-center"
+                          [ngSrc]="post.attributes.featuredImage"
+                          alt="{{ post.attributes.title }}"
+                          width="400"
+                          height="260"
+                        />
+                      </div>
 
-                    <!-- Text -->
-                    <div class="flex flex-col justify-center w-full md:w-2/3">
-                      <h2
-                        class="text-lg text-gray-900 font-medium title-font mb-2 dark:text-gray-100"
-                      >
-                        {{ post.attributes.title }}
-                      </h2>
-                      <p
-                        class="post__desc leading-relaxed text-base dark:text-gray-300"
-                      >
-                        {{ post.attributes.technology }}
-                      </p>
+                      <!-- Text -->
+                      <div class="flex flex-col justify-center w-full md:w-2/3">
+                        <h2
+                          class="text-lg text-gray-900 font-medium title-font mb-2 dark:text-gray-100"
+                        >
+                          {{ post.attributes.title }}
+                        </h2>
+                        <p
+                          class="post__desc leading-relaxed text-base dark:text-gray-300"
+                        >
+                          {{ post.attributes.technology }}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </a>
-              </div>
+                  </a>
+                </div>
               }
             </div>
           </div>
@@ -248,6 +249,7 @@ export const routeMeta: RouteMeta = {
 export default class AboutPageComponent {
   private contentService = inject(ContentService);
   readonly posts = this.contentService.projectsContentFn;
+  readonly normalizeSlug = normalizeSlug;
   isCodingOpen = false;
   isPlatformsOpen = false;
   isLanguagesOpen = false;

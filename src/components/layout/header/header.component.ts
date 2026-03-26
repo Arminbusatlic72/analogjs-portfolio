@@ -1,4 +1,4 @@
-import { Component, inject, OnChanges, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule, IMAGE_CONFIG, NgOptimizedImage } from '@angular/common';
 import { DarkModeService } from '../../../app/services/dark-mode.service';
 import { SocialIconListComponent } from '../footer/social-icon-list.component';
@@ -82,13 +82,13 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
             <div class="flex justify-center items-center lg:ml-6 mt-4 lg:mt-0">
               <!-- Dark Mode Toggle -->
               <button
-                class="h-8 w-8 rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-gray-700 relative flex items-center justify-center transition-transform"
+                class="dark-mode-toggle h-8 w-8 rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-gray-700 relative flex items-center justify-center transition-transform"
                 (click)="toggleDarkMode()"
                 aria-label="Toggle dark mode"
               >
                 <!-- Dark mode SVG -->
                 <svg
-                  class="fill-violet-700 absolute transition-all duration-500 ease-out transform"
+                  class="dark-icon fill-violet-700 absolute transition-all duration-500 ease-out transform"
                   [ngClass]="{
                     'opacity-100 rotate-0 scale-1': !isDarkMode,
                     'opacity-0 rotate-180 scale-0': isDarkMode
@@ -103,7 +103,7 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
 
                 <!-- Light mode SVG -->
                 <svg
-                  class="fill-yellow-500 absolute transition-all duration-500 ease-out transform"
+                  class="light-icon fill-yellow-500 absolute transition-all duration-500 ease-out transform"
                   [ngClass]="{
                     'opacity-100 rotate-0 scale-1': isDarkMode,
                     'opacity-0 -rotate-180 scale-0': !isDarkMode
@@ -190,19 +190,17 @@ import { SocialIconListComponent } from '../footer/social-icon-list.component';
     </header>
   `,
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   darkModeService: DarkModeService = inject(DarkModeService);
-  isDarkMode = false;
+  get isDarkMode() {
+    return this.darkModeService.darkModeSignal() === 'dark';
+  }
   showMenu = false;
   toggleNavbar() {
     this.showMenu = !this.showMenu;
   }
 
   toggleDarkMode() {
-    this.isDarkMode = !this.isDarkMode;
     this.darkModeService.updateDarkMode();
-  }
-  ngOnInit() {
-    this.isDarkMode = this.darkModeService.darkModeSignal() === 'dark';
   }
 }

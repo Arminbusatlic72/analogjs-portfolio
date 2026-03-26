@@ -13,7 +13,7 @@ import { SocialIconListComponent } from './social-icon-list.component';
     >
       <p class="border-t text-black  pt-10 pb-8 text-sm dark:text-white">
         <span class="text-black dark:text-white">©</span>
-        {{ date | date : 'YYYY' }} {{ name }}. All rights reserved.
+        {{ date | date: 'yyyy' }} {{ name }}. All rights reserved.
       </p>
 
       <app-social-icon-list />

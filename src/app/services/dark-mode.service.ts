@@ -58,17 +58,17 @@
 //   }
 // }
 
-import { effect, Injectable, signal } from '@angular/core';
+import { effect, Injectable, inject, signal, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { Inject, PLATFORM_ID } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DarkModeService {
+  platformId = inject(PLATFORM_ID);
   darkModeSignal = signal<string>(this.getInitialDarkMode());
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+  constructor() {
     if (isPlatformBrowser(this.platformId)) {
       effect(() => {
         const isDarkMode = this.darkModeSignal() === 'dark';
@@ -85,6 +85,7 @@ export class DarkModeService {
           document.documentElement.classList.remove('dark');
           document.documentElement.classList.add('light');
         }
+        document.documentElement.dataset['darkModeAnimated'] = 'true';
       });
     }
   }

@@ -7,7 +7,6 @@ technology: "Next.js and Sanity CMS"
 featuredImage: "/projects/krizwine.png"
 projectImage: "/projects/kriz/kriz1.png"
 projectImageSec: "/projects/kriz/kriz2.png"
-# projectImageSec: "/projects/kriz/kriz2.png"
 
 link: "https://krizwine.com"
 githublink: "https://github.com/Arminbusatlic72/kriz-winery-sanity-next-cms"

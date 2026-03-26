@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  effect,
   inject,
   signal,
 } from '@angular/core';
@@ -9,6 +10,7 @@ import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 import { ContentService } from '../../services/content.service';
+import { normalizeSlug } from '../../utils/slug';
 
 @Component({
   standalone: true,
@@ -59,13 +61,14 @@ import { ContentService } from '../../services/content.service';
         <div class="flex flex-wrap  lg:w-[900px] xl:w-[1250px]">
           @for (post of filteredPosts(); track post.attributes.slug) {
             <div class="w-full xl:w-1/3 md:w-1/2 p-4">
-              <a [routerLink]="['/portfolio/', post.attributes.slug]">
+              <a
+                [routerLink]="['/portfolio/', normalizeSlug(post.attributes.slug)]"
+                class="block h-full"
+              >
                 <div
-                  class="animated-border p-6 rounded-lg dark:bg-white dark:bg-gray-800"
+                  class="animated-border card-card-layout rounded-lg dark:bg-white dark:bg-gray-800"
                 >
-                  <div
-                    class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-violet-100 text-violet-700 mb-4 dark:bg-violet-700 dark:text-violet-400"
-                  >
+                  <div class="card-icon">
                     <svg
                       fill="none"
                       stroke="currentColor"
@@ -79,16 +82,46 @@ import { ContentService } from '../../services/content.service';
                     </svg>
                   </div>
 
-                  <h2
-                    class="two-lines text-lg text-gray-900 font-medium title-font mb-2 dark:text-gray-100"
-                  >
-                    {{ post.attributes.title }}
-                  </h2>
-                  <p
-                    class="tree-lines leading-relaxed text-base dark:text-gray-300"
-                  >
-                    {{ post.attributes.technology }}
-                  </p>
+                  <div class="card-content">
+                    <h2
+                      class="two-lines text-lg text-gray-900 font-medium title-font mb-2 dark:text-gray-100"
+                    >
+                      {{ post.attributes.title }}
+                    </h2>
+                    <p
+                      class="three-lines leading-relaxed text-base dark:text-gray-300"
+                    >
+                      {{ post.attributes.technology }}
+                    </p>
+                    @if (post.attributes.company || post.attributes.timePeriod) {
+                      <div
+                        class="flex flex-wrap items-center gap-3 mt-3 text-xs font-semibold text-gray-500 dark:text-gray-400"
+                      >
+                        @if (post.attributes.company) {
+                          <span>Company: {{ post.attributes.company }}</span>
+                        }
+                        @if (post.attributes.timePeriod) {
+                          <span>Timeframe: {{ post.attributes.timePeriod }}</span>
+                        }
+                      </div>
+                    }
+                    @let toolChips =
+                      (post.attributes.tools ?? '')
+                      .split(',')
+                      .map((tool) => tool.trim())
+                      .filter((tool) => tool);
+                    @if (toolChips.length) {
+                      <div class="flex flex-wrap gap-2 mt-3">
+                        @for (tool of toolChips; track tool) {
+                          <span
+                            class="text-[11px] font-semibold px-3 py-1 rounded-full border border-violet-200 text-violet-700 dark:border-violet-700 dark:text-violet-300"
+                          >
+                            {{ tool }}
+                          </span>
+                        }
+                      </div>
+                    }
+                  </div>
                 </div>
               </a>
             </div>
@@ -181,15 +214,17 @@ import { ContentService } from '../../services/content.service';
 export default class ProjectsPage {
   private contentService = inject(ContentService);
   readonly posts = this.contentService.projectsContentFn;
+  readonly normalizeSlug = normalizeSlug;
 
   readonly selectedTool = signal<string>('All');
   availableTools: string[] = [];
   readonly filteredPosts = computed(() => {
     const tool = this.selectedTool();
+    const projects = this.posts();
     if (tool === 'All') {
-      return this.posts;
+      return projects;
     }
-    return this.posts.filter((project) => {
+    return projects.filter((project) => {
       const tools = project.attributes.tools
         ?.split(',')
         .map((toolName) => toolName.trim());
@@ -198,19 +233,17 @@ export default class ProjectsPage {
   });
 
   constructor() {
-    this.initAvailableTools();
-  }
-
-  initAvailableTools() {
-    const toolsSet = new Set<string>();
-    this.posts.forEach((project) => {
-      if (project.attributes.tools) {
-        project.attributes.tools.split(',').forEach((tool) => {
-          toolsSet.add(tool.trim());
-        });
-      }
+    effect(() => {
+      const toolsSet = new Set<string>();
+      this.posts().forEach((project) => {
+        if (project.attributes.tools) {
+          project.attributes.tools.split(',').forEach((tool) => {
+            toolsSet.add(tool.trim());
+          });
+        }
+      });
+      this.availableTools = Array.from(toolsSet);
     });
-    this.availableTools = Array.from(toolsSet);
   }
 
   filterProjects(tool: string): void {

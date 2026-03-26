@@ -8,14 +8,14 @@ import { CommonModule } from '@angular/common';
   template: `
     <dl class="group flex block justify-between">
       <dt class="group-hover:font-semibold">{{ name }}</dt>
-        <dd class="flex">
-          @for (star of starsArray; track $index) {
+      <dd class="flex">
+        @for (star of starsArray; track $index) {
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-6 w-6"
             [ngClass]="{
-                'text-yellow-500 group-hover:text-yellow-600': $index < stars,
-                'text-gray-300': $index >= stars
+              'text-yellow-500 group-hover:text-yellow-600': $index < stars,
+              'text-gray-300': $index >= stars,
             }"
             fill="currentColor"
             viewBox="0 0 24 24"

@@ -2,12 +2,21 @@ import { MarkdownComponent, injectContent } from '@analogjs/content';
 import { RouteMeta } from '@analogjs/router';
 // import { LikeDislikeComponent } from '../../../components/like-dislike/like-dislike.component';
 
-import { AsyncPipe, NgOptimizedImage, IMAGE_CONFIG, CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import {
+  AsyncPipe,
+  NgOptimizedImage,
+  IMAGE_CONFIG,
+  CommonModule,
+} from '@angular/common';
+import { Component, computed, inject } from '@angular/core';
+import { RouterLink, ActivatedRoute } from '@angular/router';
 
 import { BlogPost } from 'src/app/models/post';
 import { blogTitleResolver, blogMetaResolver } from '../../resolvers/resolver';
+import { ContentService } from '../../services/content.service';
+import { normalizeSlug } from '../../utils/slug';
+import { map } from 'rxjs/operators';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 export const routeMeta: RouteMeta = {
   title: blogTitleResolver,
@@ -39,9 +48,9 @@ export const routeMeta: RouteMeta = {
       >
         <div class="flex items-center justify-between w-full px-6">
           <div class="w-28 text-left">
-            @if (post.attributes.previousPost) {
+            @if (navigation().previous) {
               <button
-                [routerLink]="['/blog', post.attributes.previousPost]"
+                [routerLink]="['/blog', normalizeSlug(navigation().previous)]"
                 class="btn btn-accent w-28 flex items-center justify-start"
                 type="button"
               >
@@ -58,9 +67,9 @@ export const routeMeta: RouteMeta = {
           </div>
 
           <div class="w-28 text-left">
-            @if (post.attributes.nextPost) {
+            @if (navigation().next) {
               <button
-                [routerLink]="['/blog', post.attributes.nextPost]"
+                [routerLink]="['/blog', normalizeSlug(navigation().next)]"
                 class="btn btn-accent w-28 flex items-center justify-end"
                 type="button"
               >
@@ -127,4 +136,16 @@ export default class BlogPostPage {
     param: 'slug',
     subdirectory: 'blog',
   });
+  private readonly contentService = inject(ContentService);
+  private readonly route = inject(ActivatedRoute);
+  private readonly slug = toSignal(
+    this.route.paramMap.pipe(map((params) => params.get('slug') ?? '')),
+    { requireSync: true },
+  );
+
+  readonly navigation = computed(() => {
+    const currentSlug = this.slug();
+    return currentSlug ? this.contentService.getBlogNeighbors(currentSlug) : {};
+  });
+  readonly normalizeSlug = normalizeSlug;
 }

@@ -1,16 +1,19 @@
-import { injectContentFiles } from '@analogjs/content';
 import { MetaTag } from '@analogjs/router';
 
-import { ActivatedRouteSnapshot, ResolveFn } from '@angular/router';
+import { ResolveFn } from '@angular/router';
+import { inject } from '@angular/core';
 import { Project } from 'src/app/models/project';
 import { BlogPost } from 'src/app/models/post';
+import { ContentService } from '../services/content.service';
 
-function injectActiveBlogMetadata(route: ActivatedRouteSnapshot): BlogPost {
-  const file = injectContentFiles<BlogPost>().find((contentFile) => {
-    return contentFile.slug === route.params['slug'];
-  });
+function injectActiveBlogMetadata(route: { params: Record<string, string> }) {
+  const contentService = inject(ContentService);
+  const posts = contentService.postsContentFn();
+  const file = posts.find(
+    (contentFile) => contentFile.attributes.slug === route.params['slug'],
+  );
 
-  return file!.attributes;
+  return file?.attributes;
 }
 
 export const blogTitleResolver: ResolveFn<string> = (route) => {
@@ -69,19 +72,49 @@ export const blogMetaResolver: ResolveFn<MetaTag[]> = (route) => {
   ];
 };
 
-function injectActiveProjectMetadata(route: ActivatedRouteSnapshot): Project {
-  const file = injectContentFiles<Project>().find((contentFile) => {
-    return contentFile.slug === route.params['slug'];
-  });
+function injectActiveProjectMetadata(route: {
+  params: Record<string, string>;
+}) {
+  const contentService = inject(ContentService);
+  const projects = contentService.projectsContentFn();
+  const file = projects.find(
+    (contentFile) => contentFile.attributes.slug === route.params['slug'],
+  );
 
-  return file!.attributes;
+  return file?.attributes;
 }
 
-export const projectTitleResolver: ResolveFn<string> = (route) =>
-  injectActiveProjectMetadata(route).title;
+export const projectTitleResolver: ResolveFn<string> = (route) => {
+  const projectMetadata = injectActiveProjectMetadata(route);
+  return projectMetadata ? projectMetadata.title : 'Project';
+};
 
 export const projectMetaResolver: ResolveFn<MetaTag[]> = (route) => {
   const projectMetadata = injectActiveProjectMetadata(route);
+  if (!projectMetadata) {
+    return [
+      {
+        name: 'description',
+        content: 'Default description',
+      },
+      {
+        name: 'author',
+        content: 'Armin Busatlic',
+      },
+      {
+        property: 'og:title',
+        content: 'Project',
+      },
+      {
+        property: 'og:description',
+        content: 'Some catchy description',
+      },
+      {
+        property: 'og:image',
+        content: 'https://somepage.com/defaultimage.png',
+      },
+    ];
+  }
 
   return [
     {
