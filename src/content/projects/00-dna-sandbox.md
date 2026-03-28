@@ -1,7 +1,7 @@
 ---
 title: "DNA Sandbox research platform"
-timePeriod: "January 2025 ‑ March 2025"
-date: "03-25-2025"
+timePeriod: "January 2026 ‑ March 2026"
+date: "03-25-2026"
 technology: "Next.js 16, React 19, TypeScript, Vercel AI SDK, Convex, Clerk, Stripe"
 featuredImage: "/projects/dna-sandbox/featured.svg"
 projectImage: "/projects/dna-sandbox/scenariodna1.png"
