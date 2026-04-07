@@ -11,7 +11,9 @@ export const routeMeta: RouteMeta = {
   imports: [NgOptimizedImage],
   host: { class: 'flex-1 flex flex-col' },
   template: `
-    <main class="min-w-full text-black bg-white dark:bg-gray-800 flex-1 flex flex-col">
+    <main
+      class="min-w-full text-black bg-white dark:bg-gray-800 flex-1 flex flex-col"
+    >
       <section
         class="text-gray-600 body-font z-10 flex w-full flex-1 flex-col justify-center relative main-section"
       >
