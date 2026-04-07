@@ -13,4 +13,5 @@ description: "This website is developed at the end of 2019 using a boilerplate t
 tools: "Bootstrap 4, Pug/Jade, SCSS, Webpack, Vanila JS, PHP Mailer"
 company: Freelance project
 previousProject: paulaschoice
+nextProject: liberation-sanctum
 ---

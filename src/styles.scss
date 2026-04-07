@@ -607,12 +607,8 @@ html.dark .nav-link-active {
   box-shadow: 0 0 0 1px rgba(252, 211, 77, 0.35);
 }
 
-footer {
-  height: 140px;
-}
-
 .mobile-min-height {
-  min-height: calc(100vh - 140px - 130px);
+  flex: 1;
 }
 
 dl {

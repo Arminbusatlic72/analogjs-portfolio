@@ -9,13 +9,13 @@ export const routeMeta: RouteMeta = {
   selector: 'contact',
   standalone: true,
   imports: [ContactFormComponent],
-
+  host: { class: 'flex-1 flex flex-col' },
   template: `
     <div
-      class="text-black bg-white flex flex-col items-center justify-center dark:bg-gray-800 text-gray-100"
+      class="text-black bg-white flex flex-col flex-1 items-center justify-center dark:bg-gray-800 text-gray-100"
     >
-      <section class="text-gray-600 body-font">
-        <div class="container px-5 pb-24 mx-auto flex flex-wrap">
+      <section class="text-gray-600 body-font flex-1 flex items-center">
+        <div class="container px-5 py-8 mx-auto flex flex-wrap">
           <div
             class="flex flex-col w-full mb-12 text-primary-content dark:text-white lg:w-1/2"
           >
@@ -102,7 +102,7 @@ export const routeMeta: RouteMeta = {
           <div
             class="lg:w-1/2 md:w-2/3 relative z-[1000] text-primary-content dark:text-white w-full lg:w-1/2"
           >
-            <div class="px-5 md:px-10 mt-18 md:pt-32">
+            <div class="px-5 md:px-10 pt-6 md:pt-12">
               <app-contact-form></app-contact-form>
             </div>
           </div>

@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 
   imports: [RouterOutlet, HeaderComponent, FooterComponent, CommonModule],
   template: `
-    <div [ngClass]="darkModeService.darkModeSignal()">
+    <div [ngClass]="darkModeService.darkModeSignal()" class="flex flex-col min-h-screen">
       <app-header></app-header>
 
       <router-outlet> </router-outlet>

@@ -9,10 +9,11 @@ export const routeMeta: RouteMeta = {
   selector: 'home',
   standalone: true,
   imports: [NgOptimizedImage],
+  host: { class: 'flex-1 flex flex-col' },
   template: `
-    <main class="min-w-full text-black bg-white dark:bg-gray-800">
+    <main class="min-w-full text-black bg-white dark:bg-gray-800 flex-1 flex flex-col">
       <section
-        class="text-gray-600 body-font z-10 flex w-full flex-1 flex-col relative main-section"
+        class="text-gray-600 body-font z-10 flex w-full flex-1 flex-col justify-center relative main-section"
       >
         <div class="container px-5 py-16 mx-auto">
           <div class="flex flex-col-reverse lg:flex-row lg:items-center">
