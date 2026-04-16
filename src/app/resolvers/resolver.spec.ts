@@ -55,7 +55,11 @@ describe('blogTitleResolver', () => {
 
   it('returns the post title when the slug matches', () => {
     const service = { postsContentFn: () => [blogFile] } as any;
-    const title = runResolver(blogTitleResolver, makeRoute('my-blog-post'), service);
+    const title = runResolver(
+      blogTitleResolver,
+      makeRoute('my-blog-post'),
+      service,
+    );
     expect(title).toBe('My Blog Post');
   });
 
@@ -71,7 +75,11 @@ describe('blogMetaResolver', () => {
 
   it('uses frontmatter description when present', () => {
     const service = { postsContentFn: () => [blogFile] } as any;
-    const tags = runResolver(blogMetaResolver, makeRoute('my-blog-post'), service) as any[];
+    const tags = runResolver(
+      blogMetaResolver,
+      makeRoute('my-blog-post'),
+      service,
+    ) as any[];
     const desc = tags.find((t) => t.name === 'description');
     expect(desc?.content).toBe('A great post about Angular signals.');
   });
@@ -82,7 +90,11 @@ describe('blogMetaResolver', () => {
       content: '<p>Extracted from the body.</p>',
     };
     const service = { postsContentFn: () => [noDesc] } as any;
-    const tags = runResolver(blogMetaResolver, makeRoute('no-desc'), service) as any[];
+    const tags = runResolver(
+      blogMetaResolver,
+      makeRoute('no-desc'),
+      service,
+    ) as any[];
     const desc = tags.find((t) => t.name === 'description');
     expect(desc?.content).toBe('Extracted from the body.');
   });
@@ -93,7 +105,11 @@ describe('blogMetaResolver', () => {
       content: '<p>' + 'x'.repeat(200) + '</p>',
     };
     const service = { postsContentFn: () => [longBody] } as any;
-    const tags = runResolver(blogMetaResolver, makeRoute('long'), service) as any[];
+    const tags = runResolver(
+      blogMetaResolver,
+      makeRoute('long'),
+      service,
+    ) as any[];
     const desc = tags.find((t) => t.name === 'description');
     expect(desc?.content.length).toBeLessThanOrEqual(156); // 155 + ellipsis char
     expect(desc?.content).toMatch(/…$/);
@@ -101,14 +117,22 @@ describe('blogMetaResolver', () => {
 
   it('returns default tags when slug is not found', () => {
     const service = { postsContentFn: () => [] } as any;
-    const tags = runResolver(blogMetaResolver, makeRoute('missing'), service) as any[];
+    const tags = runResolver(
+      blogMetaResolver,
+      makeRoute('missing'),
+      service,
+    ) as any[];
     const ogTitle = tags.find((t) => t.property === 'og:title');
     expect(ogTitle?.content).toBe('Blog Post');
   });
 
   it('sets og:image from coverImage', () => {
     const service = { postsContentFn: () => [blogFile] } as any;
-    const tags = runResolver(blogMetaResolver, makeRoute('my-blog-post'), service) as any[];
+    const tags = runResolver(
+      blogMetaResolver,
+      makeRoute('my-blog-post'),
+      service,
+    ) as any[];
     const ogImage = tags.find((t) => t.property === 'og:image');
     expect(ogImage?.content).toBe('/blog/cover.png');
   });
@@ -121,13 +145,21 @@ describe('projectTitleResolver', () => {
 
   it('returns the project title when the slug matches', () => {
     const service = { projectsContentFn: () => [projectFile] } as any;
-    const title = runResolver(projectTitleResolver, makeRoute('dna-sandbox'), service);
+    const title = runResolver(
+      projectTitleResolver,
+      makeRoute('dna-sandbox'),
+      service,
+    );
     expect(title).toBe('DNA Sandbox');
   });
 
   it('falls back to "Project" when slug is not found', () => {
     const service = { projectsContentFn: () => [] } as any;
-    const title = runResolver(projectTitleResolver, makeRoute('missing'), service);
+    const title = runResolver(
+      projectTitleResolver,
+      makeRoute('missing'),
+      service,
+    );
     expect(title).toBe('Project');
   });
 });
@@ -137,7 +169,11 @@ describe('projectMetaResolver', () => {
 
   it('uses frontmatter description when present', () => {
     const service = { projectsContentFn: () => [projectFile] } as any;
-    const tags = runResolver(projectMetaResolver, makeRoute('dna-sandbox'), service) as any[];
+    const tags = runResolver(
+      projectMetaResolver,
+      makeRoute('dna-sandbox'),
+      service,
+    ) as any[];
     const desc = tags.find((t) => t.name === 'description');
     expect(desc?.content).toBe('An AI-driven research studio.');
   });
@@ -148,21 +184,33 @@ describe('projectMetaResolver', () => {
       content: '<p>Body content for project.</p>',
     };
     const service = { projectsContentFn: () => [noDesc] } as any;
-    const tags = runResolver(projectMetaResolver, makeRoute('no-desc'), service) as any[];
+    const tags = runResolver(
+      projectMetaResolver,
+      makeRoute('no-desc'),
+      service,
+    ) as any[];
     const desc = tags.find((t) => t.name === 'description');
     expect(desc?.content).toBe('Body content for project.');
   });
 
   it('sets og:image from projectImage', () => {
     const service = { projectsContentFn: () => [projectFile] } as any;
-    const tags = runResolver(projectMetaResolver, makeRoute('dna-sandbox'), service) as any[];
+    const tags = runResolver(
+      projectMetaResolver,
+      makeRoute('dna-sandbox'),
+      service,
+    ) as any[];
     const ogImage = tags.find((t) => t.property === 'og:image');
     expect(ogImage?.content).toBe('/projects/dna-sandbox/featured.png');
   });
 
   it('returns default tags when slug is not found', () => {
     const service = { projectsContentFn: () => [] } as any;
-    const tags = runResolver(projectMetaResolver, makeRoute('missing'), service) as any[];
+    const tags = runResolver(
+      projectMetaResolver,
+      makeRoute('missing'),
+      service,
+    ) as any[];
     const ogTitle = tags.find((t) => t.property === 'og:title');
     expect(ogTitle?.content).toBe('Project');
   });
