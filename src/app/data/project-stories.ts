@@ -40,4 +40,6 @@ export const projectStories: Record<string, string> = {
     "Contract Analyzer's custom WordPress plugin routes PDFs through a Python server and the OpenAI API so document insights and configurable prompts appear straight inside the dashboard.",
   'kriz-winery-next-sanity':
     "Kriz Winery's multilingual Next.js App Router experience ties Sanity CMS, next-intl, and image optimization into a hospitality-focused story with winery, accommodation, product, and blog routes.",
+  'liberation-sanctum':
+    "Liberation Sanctum's WordPress platform combines WooCommerce for digital books and online lessons with Amelia's booking system for professional sessions, all built on a heavily customised Woodmart theme with performance-first delivery.",
 };

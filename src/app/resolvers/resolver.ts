@@ -1,33 +1,48 @@
 import { MetaTag } from '@analogjs/router';
-
+import { ContentFile } from '@analogjs/content';
 import { ResolveFn } from '@angular/router';
 import { inject } from '@angular/core';
 import { Project } from 'src/app/models/project';
 import { BlogPost } from 'src/app/models/post';
 import { ContentService } from '../services/content.service';
 
-function injectActiveBlogMetadata(route: { params: Record<string, string> }) {
-  const contentService = inject(ContentService);
-  const posts = contentService.postsContentFn();
-  const file = posts.find(
-    (contentFile) => contentFile.attributes.slug === route.params['slug'],
-  );
+/** Strips HTML tags and collapses whitespace, then truncates to maxLength chars. */
+function extractDescription(
+  content: string | object | undefined,
+  maxLength = 155,
+): string {
+  if (!content || typeof content !== 'string') return '';
+  const text = content
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return text.length > maxLength
+    ? text.slice(0, maxLength).trimEnd() + '…'
+    : text;
+}
 
-  return file?.attributes;
+function injectActiveBlogFile(route: {
+  params: Record<string, string>;
+}): ContentFile<BlogPost> | undefined {
+  const contentService = inject(ContentService);
+  return contentService
+    .postsContentFn()
+    .find((f) => f.attributes.slug === route.params['slug']);
 }
 
 export const blogTitleResolver: ResolveFn<string> = (route) => {
-  const blogMetadata = injectActiveBlogMetadata(route);
-  return blogMetadata ? blogMetadata.title : 'Blog Post';
+  const file = injectActiveBlogFile(route);
+  return file?.attributes.title ?? 'Blog Post';
 };
 
 export const blogMetaResolver: ResolveFn<MetaTag[]> = (route) => {
-  const blogMetadata = injectActiveBlogMetadata(route);
-  if (!blogMetadata) {
+  const file = injectActiveBlogFile(route);
+  if (!file) {
     return [
       {
         name: 'description',
-        content: 'Default description',
+        content:
+          'Insights on web development, Angular, and modern frontend technologies by Armin Busatlic.',
       },
       {
         name: 'author',
@@ -39,7 +54,8 @@ export const blogMetaResolver: ResolveFn<MetaTag[]> = (route) => {
       },
       {
         property: 'og:description',
-        content: 'Some catchy description',
+        content:
+          'Insights on web development, Angular, and modern frontend technologies by Armin Busatlic.',
       },
       {
         property: 'og:image',
@@ -47,10 +63,14 @@ export const blogMetaResolver: ResolveFn<MetaTag[]> = (route) => {
       },
     ];
   }
+
+  const description =
+    file.attributes.description || extractDescription(file.content);
+
   return [
     {
       name: 'description',
-      content: blogMetadata.description || 'Default description',
+      content: description,
     },
     {
       name: 'author',
@@ -58,44 +78,42 @@ export const blogMetaResolver: ResolveFn<MetaTag[]> = (route) => {
     },
     {
       property: 'og:title',
-      content: blogMetadata.title,
+      content: file.attributes.title,
     },
     {
       property: 'og:description',
-      content: blogMetadata.description || 'Some catchy description',
+      content: description,
     },
     {
       property: 'og:image',
       content:
-        blogMetadata.coverImage || 'https://somepage.com/defaultimage.png',
+        file.attributes.coverImage || 'https://somepage.com/defaultimage.png',
     },
   ];
 };
 
-function injectActiveProjectMetadata(route: {
+function injectActiveProjectFile(route: {
   params: Record<string, string>;
-}) {
+}): ContentFile<Project> | undefined {
   const contentService = inject(ContentService);
-  const projects = contentService.projectsContentFn();
-  const file = projects.find(
-    (contentFile) => contentFile.attributes.slug === route.params['slug'],
-  );
-
-  return file?.attributes;
+  return contentService
+    .projectsContentFn()
+    .find((f) => f.attributes.slug === route.params['slug']);
 }
 
 export const projectTitleResolver: ResolveFn<string> = (route) => {
-  const projectMetadata = injectActiveProjectMetadata(route);
-  return projectMetadata ? projectMetadata.title : 'Project';
+  const file = injectActiveProjectFile(route);
+  return file?.attributes.title ?? 'Project';
 };
 
 export const projectMetaResolver: ResolveFn<MetaTag[]> = (route) => {
-  const projectMetadata = injectActiveProjectMetadata(route);
-  if (!projectMetadata) {
+  const file = injectActiveProjectFile(route);
+  if (!file) {
     return [
       {
         name: 'description',
-        content: 'Default description',
+        content:
+          'Explore web development projects by Armin Busatlic — Angular apps, full-stack solutions, and creative digital experiences.',
       },
       {
         name: 'author',
@@ -107,7 +125,8 @@ export const projectMetaResolver: ResolveFn<MetaTag[]> = (route) => {
       },
       {
         property: 'og:description',
-        content: 'Some catchy description',
+        content:
+          'Explore web development projects by Armin Busatlic — Angular apps, full-stack solutions, and creative digital experiences.',
       },
       {
         property: 'og:image',
@@ -116,10 +135,13 @@ export const projectMetaResolver: ResolveFn<MetaTag[]> = (route) => {
     ];
   }
 
+  const description =
+    file.attributes.description || extractDescription(file.content);
+
   return [
     {
       name: 'description',
-      content: projectMetadata.description || 'Default description',
+      content: description,
     },
     {
       name: 'author',
@@ -127,16 +149,16 @@ export const projectMetaResolver: ResolveFn<MetaTag[]> = (route) => {
     },
     {
       property: 'og:title',
-      content: projectMetadata.title,
+      content: file.attributes.title,
     },
     {
       property: 'og:description',
-      content: projectMetadata.description || 'Some catchy description',
+      content: description,
     },
     {
       property: 'og:image',
       content:
-        projectMetadata.projectImage || 'https://somepage.com/defaultimage.png',
+        file.attributes.projectImage || 'https://somepage.com/defaultimage.png',
     },
   ];
 };
