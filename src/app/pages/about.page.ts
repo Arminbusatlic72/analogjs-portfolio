@@ -16,8 +16,21 @@ export const routeMeta: RouteMeta = { title: 'About | Armin Busatlic Portfolio' 
         <h1>Frontend depth.<br /><em>Product perspective.</em></h1>
         <div class="about-intro">
           <p class="about-lead">I turn product requirements and design systems into reliable interfaces—across AI tools, enterprise commerce, and headless content platforms.</p>
-          <p>I'm Armin Bušatlić, a frontend developer with more than seven years of experience. I work across React, Next.js, Angular, and TypeScript, with a practical focus on maintainability, performance, and clear collaboration.</p>
+          <div class="about-bio">
+            <img src="/arminAvatarSmall.webp" alt="" width="80" height="80" />
+            <p>I'm Armin Bušatlić, a frontend developer with more than seven years of experience. I work across React, Next.js, Angular, and TypeScript, with a practical focus on maintainability, performance, and clear collaboration.</p>
+          </div>
         </div>
+      </section>
+
+      <section class="about-current page-frame" aria-labelledby="currently-heading">
+        <div class="about-current-label">
+          <i aria-hidden="true"></i>
+          <p><span>Now</span><strong id="currently-heading">Currently</strong></p>
+        </div>
+        <div class="about-current-item"><span>Building</span><p>AI-assisted product experiences and dependable frontend systems.</p></div>
+        <div class="about-current-item"><span>Exploring</span><p>RAG pipelines, tool calling, and multi-model product workflows.</p></div>
+        <div class="about-current-item"><span>Open to</span><p>Frontend and full-stack roles with thoughtful product teams.</p></div>
       </section>
 
       <section class="about-stats" aria-label="Experience summary">

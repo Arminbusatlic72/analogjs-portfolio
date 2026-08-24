@@ -10,7 +10,10 @@ import { SocialIconListComponent } from './social-icon-list.component';
   template: `
     <footer class="site-footer">
       <div class="page-frame footer-grid">
-        <p><span>AB / {{ date | date: 'yyyy' }}</span>{{ name }} — Frontend & AI product engineer.</p>
+        <p class="footer-identity">
+          <span class="footer-signature" aria-hidden="true">AB</span>
+          <span class="footer-copy"><small>© {{ date | date: 'yyyy' }}</small>{{ name }} — Frontend & AI product engineer.</span>
+        </p>
         <app-social-icon-list />
         <a href="mailto:dzarma.busatlic@gmail.com">Start a conversation <span>↗</span></a>
       </div>

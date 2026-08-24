@@ -19,7 +19,10 @@ const BLOG_PAGE_SIZE = 6;
         <h1>Ideas tested in<br /><em>working software.</em></h1>
         <div class="blog-archive-intro">
           <p>Practical notes on Angular, React, rendering, state, AI product integration, and the decisions behind maintainable frontend systems.</p>
-          <span>{{ allPosts().length }} published notes</span>
+          <div class="blog-author">
+            <img src="/arminAvatarSmall.webp" alt="" width="80" height="80" />
+            <div><strong>Written by Armin</strong><span>{{ allPosts().length }} published notes</span></div>
+          </div>
         </div>
       </header>
 

@@ -114,7 +114,7 @@ export const routeMeta: RouteMeta = {
                       target="_blank"
                       class="button button-primary"
                     >
-                      Visit website
+                      Visit website <span>↗</span>
                     </a>
                   }
                   @if (post.attributes.githublink) {

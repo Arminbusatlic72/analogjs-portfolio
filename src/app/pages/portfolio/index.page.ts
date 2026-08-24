@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { ContentService } from '../../services/content.service';
 import { normalizeSlug } from '../../utils/slug';
+import { projectContributions } from '../../data/project-contributions';
 
 const PORTFOLIO_PAGE_SIZE = 6;
 const FEATURED_PROJECT_SLUGS = new Set([
@@ -45,6 +46,14 @@ const FEATURED_PROJECT_SLUGS = new Set([
                 <article class="featured-card" [class.featured-card-lead]="i === 0">
                   <a [routerLink]="['/portfolio/', normalizeSlug(post.attributes.slug)]">
                     <div class="featured-card-index">0{{ i + 1 }} / Case study <span>Read ↗</span></div>
+                    <figure class="featured-card-media">
+                      <img
+                        [src]="post.attributes.featuredImage"
+                        [alt]="post.attributes.title + ' project preview'"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </figure>
                     <div class="featured-card-body">
                       <div>
                         <p class="featured-company">{{ post.attributes.company }} · {{ post.attributes.timePeriod }}</p>
@@ -71,8 +80,16 @@ const FEATURED_PROJECT_SLUGS = new Set([
                 <article class="more-work-card">
                   <a [routerLink]="['/portfolio/', normalizeSlug(post.attributes.slug)]">
                     <div class="more-work-top"><span>{{ post.attributes.company }}</span><span>{{ post.attributes.timePeriod }}</span></div>
+                    <figure class="more-work-media">
+                      <img
+                        [src]="post.attributes.featuredImage"
+                        [alt]="post.attributes.title + ' project preview'"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </figure>
                     <h4>{{ post.attributes.title }}</h4>
-                    <p>{{ post.attributes.description }}</p>
+                    <p class="more-work-contribution"><span>My contribution</span>{{ projectContributions[post.attributes.slug] }}</p>
                     <div class="more-work-stack"><span>{{ post.attributes.technology }}</span><b aria-hidden="true">↗</b></div>
                   </a>
                 </article>
@@ -98,6 +115,7 @@ export default class ProjectsPage {
   private readonly contentService = inject(ContentService);
   readonly allProjects = this.contentService.projectsContentFn;
   readonly normalizeSlug = normalizeSlug;
+  readonly projectContributions = projectContributions;
   readonly selectedTool = signal('All');
   private readonly visibleCount = signal(PORTFOLIO_PAGE_SIZE);
   availableTools: string[] = [];

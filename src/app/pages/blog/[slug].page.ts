@@ -123,6 +123,16 @@ export const routeMeta: RouteMeta = {
                 class="markdown-content text-gray-600 body-font"
               />
             </article>
+
+            <aside class="blog-signoff" aria-label="About the author">
+              <img src="/arminAvatarSmall.webp" alt="" width="80" height="80" />
+              <div>
+                <p>Written by Armin Bušatlić</p>
+                <h3>Building thoughtful interfaces for complex products.</h3>
+                <span>Have a similar challenge or want to compare notes?</span>
+              </div>
+              <a class="button button-primary" routerLink="/contact">Get in touch <span>↗</span></a>
+            </aside>
           </div>
         </div>
       </section>
