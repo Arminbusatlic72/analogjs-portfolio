@@ -44,9 +44,9 @@ export const routeMeta: RouteMeta = {
     @let post = post$ | async;
     @if (post) {
       <section
-        class="mb-4 flex w-full flex-auto flex-row justify-between gap-4 text-gray-600 dark:text-gray-300"
+        class="detail-nav page-frame"
       >
-        <div class="flex items-center justify-between w-full px-6">
+        <div class="detail-nav-grid">
           <div class="w-28 text-left">
             @if (navigation().previous) {
               <button
@@ -54,7 +54,7 @@ export const routeMeta: RouteMeta = {
                   '/portfolio',
                   normalizeSlug(navigation().previous),
                 ]"
-                class="btn btn-accent w-28 flex items-center justify-start"
+                class="detail-nav-link"
                 type="button"
               >
                 &#8592;
@@ -64,11 +64,8 @@ export const routeMeta: RouteMeta = {
           </div>
 
           <div class="flex-1 text-center">
-            <p
-              class="text-lg text-black dark:text-white"
-              aria-label="Project position"
-            >
-              <strong> {{ projectPosition }} of {{ totalProjects }} </strong>
+            <p class="detail-position" aria-label="Project position">
+              <strong>Case study {{ projectPosition }} / {{ totalProjects }}</strong>
             </p>
           </div>
 
@@ -76,7 +73,7 @@ export const routeMeta: RouteMeta = {
             @if (navigation().next) {
               <button
                 [routerLink]="['/portfolio', normalizeSlug(navigation().next)]"
-                class="btn btn-accent w-28 flex items-center justify-end"
+                class="detail-nav-link detail-nav-next"
                 type="button"
               >
                 <span class="mr-2 arrow-right">Next</span>
@@ -86,51 +83,36 @@ export const routeMeta: RouteMeta = {
           </div>
         </div>
       </section>
-      <section class="text-gray-600 body-font p-5">
+      <section class="detail-page project-detail">
         <div
-          class="container px-5 sm:px-24 pb-24 mx-auto  rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900 relative z-[1000]"
+          class="detail-shell page-frame"
         >
-          <div class="max-w-3xl mx-auto">
-            <div class="py-4">
+          <div>
+            <header class="detail-header">
+              <p class="detail-kicker">Client project / {{ post.attributes.company }}</p>
               <h2
-                class="text-4xl md:text-4xl lg:text-6xl font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-left dark:text-gray-300"
+                class="detail-title"
               >
                 {{ post.attributes.title }}
               </h2>
 
-              <p class="text-md mb-4">
+              <p class="detail-dek">
                 {{ post.attributes.description }}
               </p>
-              <p class="text-md">
-                <strong>Company:</strong>
-                {{ post.attributes.company }}
-              </p>
-              <p class="text-md">
-                <strong>Tech stack:</strong>
-                {{ post.attributes.tools }}
-              </p>
-              <p class="text-md">
-                <strong>Project Duration:</strong>
-                {{ post.attributes.timePeriod }}
-              </p>
-              @if (post.attributes.date) {
-                <p class="text-md">
-                  <strong>Release day:</strong>
-                  <time
-                    [attr.datetime]="post.attributes.date | date: 'yyyy-MM-dd'"
-                  >
-                    {{ post.attributes.date | date: 'MMMM d, yyyy' }}</time
-                  >
-                </p>
-              }
+              <div class="detail-meta">
+                <p><strong>Company</strong><span>{{ post.attributes.company }}</span></p>
+                <p><strong>Duration</strong><span>{{ post.attributes.timePeriod }}</span></p>
+                @if (post.attributes.date) { <p><strong>Released</strong><time [attr.datetime]="post.attributes.date | date: 'yyyy-MM-dd'">{{ post.attributes.date | date: 'MMMM d, yyyy' }}</time></p> }
+              </div>
+              <div class="detail-stack"><strong>Stack</strong><span>{{ post.attributes.tools }}</span></div>
 
               @if (projectStories[post.attributes.slug]) {
-                <div class="flex items-center space-x-4 mt-5">
+                <div class="detail-actions">
                   @if (post.attributes.link) {
                     <a
                       href="{{ post.attributes.link }}"
                       target="_blank"
-                      class="animated inline-block mb-4 text-white bg-violet-700 border-0 py-2 px-8 focus:outline-none hover:bg-violet-600 rounded text-lg"
+                      class="button button-primary"
                     >
                       Visit website
                     </a>
@@ -157,10 +139,10 @@ export const routeMeta: RouteMeta = {
                   }
                 </div>
               }
-            </div>
+            </header>
 
+            <div class="detail-media">
             <img
-              class="w-full h-auto mb-8"
               [ngSrc]="post.attributes.projectImage"
               alt="{{ post.attributes.title }}"
               priority
@@ -180,28 +162,20 @@ export const routeMeta: RouteMeta = {
                 sizes="(max-width: 640px) 100vw, 50vw"
               />
             }
+            </div>
 
             @if (projectStories[post.attributes.slug]) {
-              <p class="text-md text-violet-700 dark:text-violet-300 mb-4">
+              <p class="project-story">
                 {{ projectStories[post.attributes.slug] }}
               </p>
             }
 
             @if (post.content) {
-              <article
-                class="prose prose-sm sm:prose lg:prose-lg xl:prose-xl mx-auto"
-              >
+              <article class="detail-article">
                 <analog-markdown
                   [content]="post.content"
                   class="markdown-content text-gray-600 body-font"
                 />
-              </article>
-            } @else {
-              <article class="mx-auto text-gray-600 dark:text-gray-300">
-                <p class="text-center text-lg">
-                  Solving the story of this project is a work-in-progress –
-                  written notes will appear soon.
-                </p>
               </article>
             }
           </div>

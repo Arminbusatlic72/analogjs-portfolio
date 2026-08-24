@@ -11,29 +11,12 @@ import { CommonModule } from '@angular/common';
 
   imports: [RouterOutlet, HeaderComponent, FooterComponent, CommonModule],
   template: `
-    <div
-      [ngClass]="darkModeService.darkModeSignal()"
-      class="flex flex-col min-h-screen"
-    >
+    <div [ngClass]="darkModeService.darkModeSignal()" class="site-shell">
       <app-header></app-header>
 
       <router-outlet> </router-outlet>
 
       <app-footer name="Armin Busatlic"></app-footer>
-      <div class="area fixed">
-        <ul class="circles">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </div>
     </div>
   `,
 })

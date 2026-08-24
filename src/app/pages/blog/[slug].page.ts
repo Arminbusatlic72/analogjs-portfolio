@@ -44,16 +44,16 @@ export const routeMeta: RouteMeta = {
     @let post = post$ | async;
     @if (post) {
       <section
-        class="mb-6 flex w-full flex-auto flex-col gap-3 text-gray-600 dark:text-gray-300"
+        class="detail-nav page-frame"
       >
         <div
-          class="container px-4 py-2 mx-auto flex flex-col gap-3 sm:flex-row sm:items-center"
+          class="detail-nav-grid"
         >
           <div class="w-full sm:w-auto text-left">
             @if (navigation().previous) {
               <button
                 [routerLink]="['/blog', normalizeSlug(navigation().previous)]"
-                class="btn btn-accent w-full sm:w-32 flex items-center justify-center sm:justify-start"
+                class="detail-nav-link"
                 type="button"
               >
                 &#8592;
@@ -63,8 +63,8 @@ export const routeMeta: RouteMeta = {
           </div>
 
           <div class="flex-1 text-center">
-            <p class="text-lg text-black dark:text-white">
-              <strong>Blog post</strong>
+            <p class="detail-position">
+              <strong>Engineering note</strong>
             </p>
           </div>
 
@@ -72,7 +72,7 @@ export const routeMeta: RouteMeta = {
             @if (navigation().next) {
               <button
                 [routerLink]="['/blog', normalizeSlug(navigation().next)]"
-                class="btn btn-accent w-full sm:w-32 flex items-center justify-center sm:justify-end"
+                class="detail-nav-link detail-nav-next"
                 type="button"
               >
                 <span class="mr-2 arrow-right">Next</span>
@@ -82,23 +82,23 @@ export const routeMeta: RouteMeta = {
           </div>
         </div>
       </section>
-      <section class="text-gray-600 body-font p-4">
+      <section class="detail-page blog-detail">
         <div
-          class="w-full px-5 max-w-3xl mx-auto pb-24 rounded-2xl bg-slate-100 shadow-violet-950 border-gray-200 dark:text-gray-300 dark:bg-gray-900 relative z-[1000]"
+          class="detail-shell page-frame"
         >
           <div>
-            <div class="py-4">
+            <header class="detail-header blog-header">
+              <p class="detail-kicker">Notes / Frontend engineering</p>
               <h2
-                class="text-4xl md:text-4xl lg:text-6xl font-bold tracking-tighter leading-tight md:leading-none my-6 md:my-12 text-left dark:text-gray-300"
+                class="detail-title"
               >
                 {{ post.attributes.title }}
               </h2>
-              <p class="text-md mb-4 text-gray-600 dark:text-gray-200">
+              <p class="detail-dek">
                 {{ post.attributes.description || '' }}
               </p>
               @if (post.attributes.date) {
-                <p class="text-md text-gray-500">
-                  Published on
+                <p class="blog-date"><span>Published</span>
                   <time
                     [attr.datetime]="post.attributes.date | date: 'yyyy-MM-dd'"
                   >
@@ -106,21 +106,18 @@ export const routeMeta: RouteMeta = {
                   </time>
                 </p>
               }
-            </div>
+            </header>
 
-            <img
-              class="w-full h-auto mb-8 rounded-2xl"
+            <div class="detail-media blog-media"><img
               [ngSrc]="post.attributes.coverImage || '/blog/default-image.png'"
               alt="{{ post.attributes.title }}"
               loading="lazy"
               width="1000"
               height="460"
               sizes="(max-width: 640px) 100vw, 50vw"
-            />
+            /></div>
 
-            <article
-              class="prose prose-sm sm:prose lg:prose-lg xl:prose-xl mx-auto"
-            >
+            <article class="detail-article">
               <analog-markdown
                 [content]="post.content"
                 class="markdown-content text-gray-600 body-font"

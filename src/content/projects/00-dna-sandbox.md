@@ -16,44 +16,54 @@ company: Scenario DNA
 nextProject: kriz-winery-next-sanity
 ---
 
-# DNA Sandbox — Project Overview
+# Challenge
 
-DNA Sandbox is a guided AI research environment that pairs streaming multi-model conversations with curated genomic knowledge sources and premium gating so that data scientists can explore hypothetical sequences, validate outcomes, and log decisions without leaving the browser.
+Scenario DNA needed a browser-based research environment where data scientists could explore hypothetical sequences, review curated genomic sources, and record decisions without moving between disconnected tools.
 
-## Key Functionalities
+The platform also needed streamed AI conversations, configurable research personas, private knowledge sources, subscription-controlled access, and reliable synchronization between billing and application entitlements.
 
-- **Streaming AI chat** with configurable GPT personas and dataset connectors that let researchers ask questions about FASTA samples, variant calls, and clinical annotations as if they were discussing with an expert partner.
-- **Knowledge-backed responses** created by ingesting curated sequence data, annotation metadata, and private lab notes so the model can reference the exact context, lineage, and instrument settings behind each answer.
-- **Optional research tools** that spin up live dataset queries or visualizations, ship AI-generated imagery of structures, and compare in-flight simulations to previously validated experiments when enabled.
-- **Admin-managed GPTs and prompts** that allow domain leads to expose specific personas (e.g., diagnostic reviewer, simulation coach, policy guardrail) without redeploying the application.
-- **Stripe + Clerk access gating** that enforces tiered compute limits, free trials, and grace periods while surfacing project health via a reactive `useSubscriptionStatus` hook in the dashboard.
-- **Robust webhook tracking** to keep ingestion, billing, and entitlement state synchronized even when upstream services retry the same event.
+## Role and responsibilities
 
-## Research Control Highlights
+I built the product interface and supporting application flows with Next.js, React, and TypeScript. My responsibilities included:
 
-- Handles every standard subscription scenario (new access, plan changes, cancellations, trial expiration, payment failures, and recoveries) so labs always know who can spin up compute budgets.
-- Tracks extra state such as `trialEndDate`, `paymentFailureGracePeriodEnd`, `lastPaymentFailedAt`, and `canceledAt` on Convex documents so the UI can show precise messaging (grace period, trial, cancel countdown, etc.).
-- Stores each webhook event in a dedicated `webhookEvents` table to prevent duplicate processing, guaranteeing that datasets keep advancing even when partners resend the same payload.
-- Frontend components react instantly to Convex queries so every badge, CTA, and card reflects the project state (experiment active, trialing, paused, past due, suspended, or unlocked).
+- Implementing streamed, multi-model research conversations with the Vercel AI SDK.
+- Connecting AI responses to curated sequence data, annotation metadata, and private research notes.
+- Building reactive experiment, subscription, and access states with Convex.
+- Integrating Clerk authentication and Stripe subscription controls.
+- Building administrative interfaces for prompts, research personas, subscriptions, and dataset health.
+- Handling upload, webhook, and entitlement states across the frontend and application routes.
 
-## Architecture Overview
+## Technical decisions
 
-1. **Secure ingestion path** — Vercel API routes such as `/api/research/ingest/route.ts` verify signatures, confirm tokens, and delegate uploads to handlers dedicated to FASTA, metadata, or simulation payloads.
-2. **Convex mutations** such as `syncDatasetFromUpload` ensure documents exist for every lab, create users automatically if needed, and mirror billing metadata alongside experiment threads.
-3. **Reactive health queries** like `getExperimentHealth` feed `useSubscriptionStatus` and other hooks so the dashboard refreshes instantly when Convex data changes.
-4. **Separation of concerns** — Clerk controls authentication, Convex stores structured genomic and billing data, and Stripe enforces subscription entitlements so the platform scales reliably.
+### Vercel AI SDK for streamed model interaction
 
-## Tech Stack
+The application needed conversations to render incrementally while supporting configurable research personas and optional tools. The Vercel AI SDK provided the streaming and tool-invocation layer without requiring a custom chat transport.
 
-- **Frameworks & Languages:** Next.js 16, React 19, TypeScript
-- **AI Middleware:** Vercel AI SDK for orchestrating multi-model chat, streaming responses, and instrumentation hooks
-- **Backend & Database:** Convex for realtime documents, distributed queries, and webhook-driven mutations
-- **Auth & Billing:** Clerk handles sessions, Stripe manages subscriptions, checkout sessions, and webhook events
-- **Testing & Tooling:** Vitest for unit/UI tests, ESLint/Prettier via shared configs, and Convex Dev for local schema synchronization
-- **Deployment:** Optimized for Vercel, with scripts for dev, build, lint, and test baked into `package.json`
+### Convex for reactive application state
 
-## Developer Experience
+Experiment state, subscription status, dataset metadata, and billing events needed to update the interface as they changed. Convex queries and mutations allowed badges, calls to action, and access states to react to those updates without a separate synchronization layer.
 
-- `npm run dev` launches the Next.js client alongside Convex Dev so schema changes stay synced and mutations stay safe.
-- Documentation covers deployment (`docs/DEPLOYMENT_CHECKLIST.md`), research-pipeline implementation, and webhook wiring for ingesting new datasets.
-- Admin consoles live inside `app/` so operators can inspect GPTs, subscriptions, and dataset health from a single cohesive UI.
+### Separate authentication, application data, and billing responsibilities
+
+Clerk manages authenticated sessions, Convex stores structured research and subscription state, and Stripe controls checkout and subscription events. This kept access concerns separated instead of concentrating them in one custom backend.
+
+### Idempotent webhook processing
+
+Stripe and upstream services can retry events. Each processed webhook is recorded in a dedicated table so repeated delivery does not apply the same subscription or entitlement change more than once.
+
+## Result or measurable impact
+
+A working research platform shipped with streamed, knowledge-backed AI conversations; configurable research personas and prompts; authenticated, subscription-controlled access; dataset ingestion and experiment-health tracking; and administrative controls for research and billing state.
+
+The subscription flow handles trials, plan changes, cancellations, payment failures, grace periods, and recovery. No numerical adoption, performance, revenue, or research-outcome metrics are currently available, so none are claimed here.
+
+## Screenshots
+
+![DNA Sandbox research workspace](/projects/dna-sandbox/scenariodna3.png)
+
+![DNA Sandbox research and configuration interface](/projects/dna-sandbox/scenariodna4.png)
+
+## Links
+
+- [Open the live DNA Sandbox product](https://storyengine.scenariodna.com/)
+- [Review the public GitHub repository](https://github.com/Arminbusatlic72/vercel-ai-sdke-ai-elements-convex-clerk)

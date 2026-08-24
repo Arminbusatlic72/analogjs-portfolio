@@ -1,59 +1,42 @@
 import { Component } from '@angular/core';
-import { NgOptimizedImage } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { RouteMeta } from '@analogjs/router';
-export const routeMeta: RouteMeta = {
-  title: 'Home | Armin Busatlic Portfolio',
-};
+
+export const routeMeta: RouteMeta = { title: 'Armin Busatlic | Frontend & AI Product Engineer' };
 
 @Component({
-  selector: 'home',
-  standalone: true,
-  imports: [NgOptimizedImage],
-  host: { class: 'flex-1 flex flex-col' },
+  selector: 'home', standalone: true, imports: [RouterLink], host: { class: 'page-host' },
   template: `
-    <main
-      class="min-w-full text-black bg-white dark:bg-gray-800 flex-1 flex flex-col"
-    >
-      <section
-        class="text-gray-600 body-font z-10 flex w-full flex-1 flex-col justify-center relative main-section"
-      >
-        <div class="container px-5 py-16 mx-auto">
-          <div class="flex flex-col-reverse lg:flex-row lg:items-center">
-            <div
-              class="w-full lg:w-7/12 max-w-full lg:pr-12 flex flex-col justify-center mobile-min-height"
-            >
-              <p class="text-violet-700 dark:text-yellow-500">Hello!</p>
-              <h1
-                class="animated-heading text-4xl md:text-4xl lg:text-8xl font-bold relative transition-all duration-500 ease-out transform"
-              >
-                I am
-                <span class="main-heading text-violet-700 dark:text-yellow-500">
-                  Armin Bušatlić
-                </span>
-              </h1>
-              <p
-                class="mb-5 text-lg md:text-2xl md:leading-8 lg:leading-[3rem]"
-              >
-                a Frontend Developer
-              </p>
-              <div class="flex flex-wrap gap-4">
-                <a
-                  title="Download my CV"
-                  href="/pdf/ArminBusatlicCV.pdf"
-                  class="animated text-white bg-violet-700 border-0 py-2 px-8 focus:outline-none hover:bg-violet-600 rounded text-lg"
-                >
-                  Download CV
-                </a>
-                <a
-                  title="See my projects"
-                  href="/portfolio"
-                  class="animated text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-200 rounded text-lg"
-                >
-                  Projects
-                </a>
-              </div>
-            </div>
+    <main class="home-page">
+      <section class="hero page-frame">
+        <div class="hero-copy hero-reveal">
+          <p class="eyebrow">Frontend systems / AI products / Belgrade</p>
+          <h1>I build the interface between <em>ambitious ideas</em> and working software.</h1>
+          <p class="hero-summary">Seven-plus years shipping product interfaces—from multi-model AI research tools to enterprise commerce and headless content platforms.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" routerLink="/portfolio">View selected work <span>↗</span></a>
+            <a class="text-link" href="/pdf/Armin%20CV%20Jun%202026.pdf">Download résumé <span>↓</span></a>
           </div>
+          <p class="hero-availability"><i></i> Available for frontend and full-stack roles <span>Remote / Belgrade</span></p>
+        </div>
+        <div class="console-stage hero-reveal">
+          <aside class="systems-console" aria-label="Shipped systems summary">
+            <div class="console-head"><span>shipped.systems</span><span class="live-state"><i></i> online</span></div>
+            <div class="console-intro"><span class="console-prompt">$</span><span>inspect --capabilities</span></div>
+            <a routerLink="/portfolio/dna-sandbox" class="system-row"><span class="system-index">01</span><span><strong>AI product integration</strong><small>Vercel AI SDK · Claude · Gemini · RAG</small></span><b>LIVE</b></a>
+            <a routerLink="/portfolio/basiqdental" class="system-row"><span class="system-index">02</span><span><strong>Enterprise commerce</strong><small>Angular · SAP Spartacus · Hybris</small></span><b>3 BUILDS</b></a>
+            <a routerLink="/portfolio/kriz-winery-next-sanity" class="system-row"><span class="system-index">03</span><span><strong>Headless platforms</strong><small>Next.js · Sanity · WordPress · Contentful</small></span><b>SHIPPED</b></a>
+            <a routerLink="/portfolio" class="system-row"><span class="system-index">04</span><span><strong>Frontend systems</strong><small>Angular · React · TypeScript · Design systems</small></span><b>7+ YRS</b></a>
+            <div class="console-foot"><span>22 case studies indexed</span><span>2026.08</span></div>
+          </aside>
+        </div>
+      </section>
+      <section class="proof-strip" aria-label="Core experience">
+        <div class="page-frame proof-grid">
+          <p><strong>7+</strong><span>years building<br />for the web</span></p>
+          <p><strong>22</strong><span>documented<br />client projects</span></p>
+          <p><strong>3</strong><span>deep product lanes:<br />AI, commerce, content</span></p>
+          <a routerLink="/about">How I work <span>→</span></a>
         </div>
       </section>
     </main>

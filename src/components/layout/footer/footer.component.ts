@@ -8,22 +8,17 @@ import { SocialIconListComponent } from './social-icon-list.component';
   imports: [DatePipe, SocialIconListComponent],
 
   template: `
-    <footer
-      class="relative z-[1000] p-2  bg-white text-center text-black border-gray-200 sm:px-8 lg:px-16 dark:bg-gray-800 border-gray-700"
-    >
-      <p class="border-t text-black  pt-10 pb-8 text-sm dark:text-white">
-        <span class="text-black dark:text-white">©</span>
-        {{ date | date: 'yyyy' }} {{ name }}. All rights reserved.
-      </p>
-
-      <app-social-icon-list />
+    <footer class="site-footer">
+      <div class="page-frame footer-grid">
+        <p><span>AB / {{ date | date: 'yyyy' }}</span>{{ name }} — Frontend & AI product engineer.</p>
+        <app-social-icon-list />
+        <a href="mailto:dzarma.busatlic@gmail.com">Start a conversation <span>↗</span></a>
+      </div>
     </footer>
   `,
   styles: [
     `
-      footer {
-        z-index: 1000;
-      }
+      footer { z-index: 1000; }
       img {
         display: inline-block;
       }

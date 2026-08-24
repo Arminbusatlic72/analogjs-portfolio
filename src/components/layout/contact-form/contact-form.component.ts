@@ -1,130 +1,44 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NgClass } from '@angular/common';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-contact-form',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass],
-
+  imports: [ReactiveFormsModule],
   template: `
-    <form
-      [formGroup]="contactForm"
-      (ngSubmit)="onSubmit($event)"
-      name="contact-form"
-      method="POST"
-      data-netlify="true"
-      data-netlify-recaptcha="true"
-      class="flex flex-wrap -m-2"
-    >
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit($event)" name="contact-form" method="POST" data-netlify="true" class="contact-form" novalidate>
       <input type="hidden" name="form-name" value="contact-form" />
-      <div class="p-2 w-1/2">
-        <div class="relative">
-          <label
-            for="name"
-            class="leading-7 text-sm text-gray-600 dark:text-gray-400"
-            >Name</label
-          >
-          <input
-            type="text"
-            id="name"
-            name="name"
-            formControlName="name"
-            [ngClass]="applyValidationStyles('name')"
-            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-          />
-            @if (shouldShowError('name')) {
-              <div class="text-red-700 text-sm mt-1">
-                @if (contactForm.get('name')?.hasError?.('required')) {
-                  <p>Name is required.</p>
-                }
-              </div>
-            }
-        </div>
+      <div class="contact-field contact-field-half">
+        <label for="name">Your name <span>Required</span></label>
+        <input type="text" id="name" name="name" formControlName="name" autocomplete="name" [class.field-invalid]="shouldShowError('name')" placeholder="How should I address you?" />
+        @if (shouldShowError('name')) { <p class="field-error">Please enter your name.</p> }
       </div>
-      <div class="p-2 w-1/2">
-        <div class="relative">
-          <label
-            for="email"
-            class="leading-7 text-sm text-gray-600 dark:text-gray-400"
-            >Email</label
-          >
-          <input
-            type="email"
-            id="email"
-            name="email"
-            formControlName="email"
-            [ngClass]="applyValidationStyles('email')"
-            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-700"
-          />
-            @if (shouldShowError('email')) {
-              <div class="text-red-700 text-sm mt-1">
-                @if (contactForm.get('email')?.hasError('required')) {
-                  <p>Email is required.</p>
-                }
-                @if (
-                  contactForm.get('email')?.hasError('email') &&
-                  !contactForm.get('email')?.hasError('required')
-                ) {
-                  <p>Please enter a valid email address.</p>
-                }
-              </div>
-            }
-        </div>
+      <div class="contact-field contact-field-half">
+        <label for="email">Email address <span>Required</span></label>
+        <input type="email" id="email" name="email" formControlName="email" autocomplete="email" [class.field-invalid]="shouldShowError('email')" placeholder="you@company.com" />
+        @if (shouldShowError('email')) {
+          <p class="field-error">{{ contactForm.get('email')?.hasError('required') ? 'Please enter your email.' : 'Please enter a valid email address.' }}</p>
+        }
       </div>
-      <div class="p-2 w-full">
-        <div class="relative">
-          <label
-            for="message"
-            class="leading-7 text-sm text-gray-600 dark:text-gray-400"
-            >Message</label
-          >
-          <textarea
-            id="message"
-            name="message"
-            formControlName="message"
-            [ngClass]="applyValidationStyles('message')"
-            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
-          ></textarea>
-            @if (shouldShowError('message')) {
-              <div class="text-red-700 text-sm mt-1">
-                @if (contactForm.get('message')?.hasError?.('required')) {
-                  <p>Message is required.</p>
-                }
-              </div>
-            }
-        </div>
+      <div class="contact-field contact-field-full">
+        <label for="message">What are you building? <span>Required</span></label>
+        <textarea id="message" name="message" formControlName="message" [class.field-invalid]="shouldShowError('message')" placeholder="A short description of the product, role, or problem is enough."></textarea>
+        @if (shouldShowError('message')) { <p class="field-error">Please include a short message.</p> }
       </div>
-      <div class="p-2 w-full">
-        <button
-          type="submit"
-          class="animated flex mx-auto mb-2 md:mx-0 text-white bg-violet-700 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-        >
-          Submit message
-        </button>
-        <div data-netlify-recaptcha="true"></div>
+      <div class="contact-submit">
+        <button type="submit" class="button button-primary">Send message <span>↗</span></button>
+        <p>Your details are used only to reply to this message.</p>
       </div>
     </form>
-    <!-- Hidden Netlify form -->
-    <form
-      #hiddenForm
-      name="contact-form1"
-      method="POST"
-      data-netlify="true"
-      style="display:none"
-    >
+
+    <form #hiddenForm name="contact-form1" method="POST" data-netlify="true" hidden>
       <input type="hidden" name="form-name" value="contact-form1" />
-      <input type="text" name="name" />
-      <input type="email" name="email" />
-      <textarea name="message"></textarea>
-      <button type="submit">Submit</button>
+      <input type="text" name="name" /><input type="email" name="email" /><textarea name="message"></textarea>
     </form>
   `,
 })
 export class ContactFormComponent {
-  constructor(private fb: FormBuilder) {}
-  @ViewChild('hiddenForm', { static: true })
-  hiddenForm!: ElementRef<HTMLFormElement>;
-
+  @ViewChild('hiddenForm', { static: true }) hiddenForm!: ElementRef<HTMLFormElement>;
   isSubmitted = false;
   contactForm = this.fb.group({
     name: ['', Validators.required],
@@ -132,38 +46,25 @@ export class ContactFormComponent {
     message: ['', Validators.required],
   });
 
+  constructor(private fb: FormBuilder) {}
+
   onSubmit(event: Event): void {
     event.preventDefault();
-
-    if (this.contactForm.valid) {
-      this.isSubmitted = true;
-
-      const formValues = this.contactForm.value;
-
-      const hiddenForm = this.hiddenForm.nativeElement;
-      const formElements = hiddenForm.elements as any;
-
-      formElements['name'].value = formValues.name;
-      formElements['email'].value = formValues.email;
-      formElements['message'].value = formValues.message;
-
-      hiddenForm.submit();
+    this.isSubmitted = true;
+    if (this.contactForm.invalid) {
+      this.contactForm.markAllAsTouched();
+      return;
     }
+    const values = this.contactForm.value;
+    const elements = this.hiddenForm.nativeElement.elements as any;
+    elements['name'].value = values.name;
+    elements['email'].value = values.email;
+    elements['message'].value = values.message;
+    this.hiddenForm.nativeElement.submit();
   }
 
-  applyValidationStyles(inputName: string) {
-    const control = this.contactForm.get(inputName);
-    return {
-      'border-red-700':
-        control?.invalid &&
-        (control?.touched || control?.dirty || this.isSubmitted),
-    };
-  }
-  shouldShowError(controlName: string) {
+  shouldShowError(controlName: string): boolean {
     const control = this.contactForm.get(controlName);
-    return (
-      control?.invalid &&
-      (control?.touched || control?.dirty || this.isSubmitted)
-    );
+    return !!(control?.invalid && (control.touched || control.dirty || this.isSubmitted));
   }
 }
