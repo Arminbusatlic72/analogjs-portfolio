@@ -279,7 +279,7 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
 .work-card .rounded-full { border-radius: 0; border-color: var(--rule); color: var(--ink); font-family: var(--mono); font-weight: 500; }
 .work-card:hover .rounded-full { border-color: rgba(255,255,255,.45); color: white; }
 .work-index .load-more-container { padding-top: 38px; }
-.work-index .load-more-btn { border-radius: 0; background: var(--signal); font: 600 11px var(--mono); text-transform: uppercase; }
+.work-index .load-more-btn { border-radius: 0; background: var(--signal); color: white; font: 600 11px var(--mono); text-transform: uppercase; }
 .work-toolbar { display: grid; grid-template-columns: 1.3fr .7fr; gap: 40px; padding: 32px 0; border-block: 1px solid var(--rule); }
 .work-toolbar > div:last-child { align-self: end; justify-self: end; }
 .work-toolbar p { max-width: 590px; margin: 18px 0 0; color: var(--graphite); line-height: 1.7; }

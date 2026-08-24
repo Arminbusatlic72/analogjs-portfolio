@@ -85,7 +85,7 @@ export default class AboutPageComponent {
 
   readonly skillGroups = [
     { title: 'Use regularly', skills: ['TypeScript', 'React', 'Next.js', 'Angular', 'HTML & CSS', 'SCSS', 'Tailwind CSS', 'Git & GitHub', 'Figma'] },
-    { title: 'Production experience', skills: ['Vercel AI SDK', 'Convex', 'Clerk', 'Stripe', 'SAP Spartacus', 'Hybris CMS', 'Sanity & GROQ', 'WordPress & WooCommerce', 'Gatsby', 'GraphQL', 'Cypress'] },
+    { title: 'Production experience', skills: ['Vercel AI SDK', 'Convex', 'Clerk', 'Stripe', 'SAP Spartacus', 'Hybris CMS', 'Sanity & GROQ', 'WordPress & WooCommerce', 'Woodmart customization', 'Gatsby', 'GraphQL', 'Cypress'] },
     { title: 'Currently exploring', skills: ['RAG pipelines', 'Multi-model AI workflows', 'AI tool calling', 'Advanced Angular signals', 'Agent-oriented product patterns'] },
   ];
 }

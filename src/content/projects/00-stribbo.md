@@ -2,7 +2,7 @@
 title: "Stribbo official website"
 timePeriod: "May 2022 ‑ July 2022"
 date: "07-28-2022"
-technology: "Wordpress"
+technology: "WordPress"
 featuredImage: "/projects/stribbo.png"
 projectImage: "/projects/stribbo/stribbo1.png"
 projectImageSec: "/projects/stribbo/stribbo2.png"
@@ -10,11 +10,11 @@ projectImageSec: "/projects/stribbo/stribbo2.png"
 link: "https://www.stribbo.com/"
 slug: "stribbo"
 order: 10
-description: "Conversion of designs to a Wordpress site.
+description: "Conversion of designs to a WordPress site.
 Migration of website to live environment.
 Maintenance and Performance optimization.
 Continuous development."
-tools: " Figma, Html5, CSS3, JS, Wordpress WP Bakery Page builder"
+tools: " Figma, Html5, CSS3, JS, WordPress, WP Bakery Page builder"
 company: Grumpy dev
 previousProject: kabinet
 nextProject: alcove
