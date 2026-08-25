@@ -1,5 +1,4 @@
 import { Component, ElementRef, HostListener, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { DarkModeService } from '../../../app/services/dark-mode.service';
 
@@ -7,7 +6,6 @@ import { DarkModeService } from '../../../app/services/dark-mode.service';
   selector: 'app-header',
   standalone: true,
   imports: [
-    CommonModule,
     RouterLink,
     RouterLinkActive,
   ],

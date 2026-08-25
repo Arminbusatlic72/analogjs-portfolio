@@ -20,10 +20,8 @@ function runResolver<T>(
   route: ActivatedRouteSnapshot,
   contentServiceMock: Partial<ContentService>,
 ): T {
-  return TestBed.runInInjectionContext(() => {
-    TestBed.overrideProvider(ContentService, { useValue: contentServiceMock });
-    return resolver(route, {} as any);
-  });
+  TestBed.overrideProvider(ContentService, { useValue: contentServiceMock });
+  return TestBed.runInInjectionContext(() => resolver(route, {} as any));
 }
 
 // ── shared fixtures ───────────────────────────────────────────────────────────
