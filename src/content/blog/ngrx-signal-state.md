@@ -2,7 +2,7 @@
 title: "Angular Signal State Management with NgRx"
 slug: game-changer-with-ngrx-signal-state
 description: In this blog post, we’ll dive deep into Angular Signals, explore how NgRx Signal State works, and why this combination is being hailed as a game changer.
-coverImage: /blog/angularSignalStore.webp
+coverImage: /blog/angular-signal-store-optimized.webp
 previousPost: ""
 nextPost: "understanding-ssr-csr-ssg-isr-pros-cons"
 date: 6 January 2025

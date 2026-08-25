@@ -111,7 +111,7 @@ Every detail component uses `injectContent<T>` for the slug-specific markdown (i
 
 ## Visual Recap and Next Moves
 
-![Analog Upgrade Flow](/blog/analog-upgrade-flow.png)
+![Analog Upgrade Flow](/blog/analog-upgrade-flow.webp)
 
 This diagram shows how the new content resource feeds signals, how detail pages subscribe to neighbors, and how index previews derive metadata from the same source of truth.
 
