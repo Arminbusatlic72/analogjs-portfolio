@@ -2,7 +2,7 @@
 title: "Upgrading the Analog-Driven Portfolio: Angular 21, Vitest, and Signal-Ready Content"
 slug: upgrade-to-analog-content-pipeline
 description: "How I modernized the AnalogJS portfolio—from the Angular 17-era watering hole to a signals-first, Vitest-ready build with automated navigation, richer previews, and a stage-ready upgrade roadmap."
-coverImage: "/blog/analog-angular-update.png"
+coverImage: "/blog/analog-angular-update.webp"
 previousPost: building-a-saas-subscription-system
 nextPost: enhancing-a-jamstack-application
 date: 25 March 2026
