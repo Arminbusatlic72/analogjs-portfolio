@@ -141,28 +141,30 @@ export const routeMeta: RouteMeta = {
               }
             </header>
 
-            <div class="detail-media">
-            <img
-              [ngSrc]="post.attributes.projectImage"
-              alt="{{ post.attributes.title }}"
-              priority
-              width="1000"
-              height="460"
-              sizes="(max-width: 640px) 100vw, 50vw"
-            />
-
-            @if (post.attributes.projectImageSec) {
-              <img
-                class="w-full h-auto mb-8"
-                [ngSrc]="post.attributes.projectImageSec"
-                alt="{{ post.attributes.title }}"
-                priority
-                width="1000"
+            @if (post.attributes.projectImage) {
+              <div class="detail-media">
+                <img
+                  [ngSrc]="post.attributes.projectImage"
+                  alt="{{ post.attributes.title }}"
+                  priority
+                  width="1000"
                 height="460"
                 sizes="(max-width: 640px) 100vw, 50vw"
-              />
+                />
+
+                @if (post.attributes.projectImageSec) {
+                  <img
+                    class="w-full h-auto mb-8"
+                    [ngSrc]="post.attributes.projectImageSec"
+                    alt="{{ post.attributes.title }}"
+                    priority
+                    width="1000"
+                    height="460"
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                  />
+                }
+              </div>
             }
-            </div>
 
             @if (projectStories[post.attributes.slug]) {
               <p class="project-story">

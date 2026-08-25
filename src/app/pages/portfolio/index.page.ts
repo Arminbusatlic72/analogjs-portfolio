@@ -46,14 +46,16 @@ const FEATURED_PROJECT_SLUGS = new Set([
                 <article class="featured-card" [class.featured-card-lead]="i === 0">
                   <a [routerLink]="['/portfolio/', normalizeSlug(post.attributes.slug)]">
                     <div class="featured-card-index">0{{ i + 1 }} / Case study <span>Read ↗</span></div>
-                    <figure class="featured-card-media">
-                      <img
-                        [src]="post.attributes.featuredImage"
-                        [alt]="post.attributes.title + ' project preview'"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </figure>
+                    @if (post.attributes.featuredImage) {
+                      <figure class="featured-card-media">
+                        <img
+                          [src]="post.attributes.featuredImage"
+                          [alt]="post.attributes.title + ' project preview'"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </figure>
+                    }
                     <div class="featured-card-body">
                       <div>
                         <p class="featured-company">{{ post.attributes.company }} · {{ post.attributes.timePeriod }}</p>
@@ -80,14 +82,16 @@ const FEATURED_PROJECT_SLUGS = new Set([
                 <article class="more-work-card">
                   <a [routerLink]="['/portfolio/', normalizeSlug(post.attributes.slug)]">
                     <div class="more-work-top"><span>{{ post.attributes.company }}</span><span>{{ post.attributes.timePeriod }}</span></div>
-                    <figure class="more-work-media">
-                      <img
-                        [src]="post.attributes.featuredImage"
-                        [alt]="post.attributes.title + ' project preview'"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </figure>
+                    @if (post.attributes.featuredImage) {
+                      <figure class="more-work-media">
+                        <img
+                          [src]="post.attributes.featuredImage"
+                          [alt]="post.attributes.title + ' project preview'"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </figure>
+                    }
                     <h4>{{ post.attributes.title }}</h4>
                     <p class="more-work-contribution"><span>My contribution</span>{{ projectContributions[post.attributes.slug] }}</p>
                     <div class="more-work-stack"><span>{{ post.attributes.technology }}</span><b aria-hidden="true">↗</b></div>

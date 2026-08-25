@@ -16,5 +16,5 @@ description: "Advanced customization of the Woodmart theme to create a comprehen
 tools: "Visual Studio Code, PHP, WordPress, WooCommerce, Elementor, Amelia, Woodmart, CSS3, JavaScript, Performance Optimization"
 company: Digital Habitat
 previousProject: master-finish
-nextProject:
+nextProject: moj-prvi-zalogaj
 ---

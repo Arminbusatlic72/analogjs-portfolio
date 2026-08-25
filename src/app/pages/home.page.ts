@@ -27,14 +27,14 @@ export const routeMeta: RouteMeta = { title: 'Armin Busatlic | Frontend & AI Pro
             <a routerLink="/portfolio/basiqdental" class="system-row"><span class="system-index">02</span><span><strong>Enterprise commerce</strong><small>Angular · SAP Spartacus · Hybris</small></span><b>3 BUILDS</b></a>
             <a routerLink="/portfolio/kriz-winery-next-sanity" class="system-row"><span class="system-index">03</span><span><strong>Headless platforms</strong><small>Next.js · Sanity · WordPress · Contentful</small></span><b>SHIPPED</b></a>
             <a routerLink="/portfolio" class="system-row"><span class="system-index">04</span><span><strong>Frontend systems</strong><small>Angular · React · TypeScript · Design systems</small></span><b>7+ YRS</b></a>
-            <div class="console-foot"><span>22 case studies indexed</span><span>2026.08</span></div>
+            <div class="console-foot"><span>25 projects indexed</span><span>2026.08</span></div>
           </aside>
         </div>
       </section>
       <section class="proof-strip" aria-label="Core experience">
         <div class="page-frame proof-grid">
           <p><strong>7+</strong><span>years building<br />for the web</span></p>
-          <p><strong>22</strong><span>documented<br />client projects</span></p>
+          <p><strong>25</strong><span>documented<br />client projects</span></p>
           <p><strong>3</strong><span>deep product lanes:<br />AI, commerce, content</span></p>
           <a routerLink="/about">How I work <span>→</span></a>
         </div>

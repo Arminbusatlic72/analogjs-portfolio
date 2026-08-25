@@ -36,7 +36,7 @@ export const routeMeta: RouteMeta = { title: 'About | Armin Busatlic Portfolio' 
       <section class="about-stats" aria-label="Experience summary">
         <div class="page-frame about-stats-grid">
           <p><strong>7+</strong><span>Years building<br />for the web</span></p>
-          <p><strong>22</strong><span>Documented<br />client projects</span></p>
+          <p><strong>25</strong><span>Documented<br />client projects</span></p>
           <p><strong>6</strong><span>Commerce markets<br />delivered</span></p>
           <p><strong>3</strong><span>Core lanes: AI,<br />commerce, content</span></p>
         </div>

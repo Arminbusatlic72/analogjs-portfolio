@@ -16,4 +16,7 @@ export const projectContributions: Record<string, string> = {
   paulaschoice: 'I developed reusable marketing and transactional email components, campaign timers, localization, and dark-mode styles in Emarsys.',
   'kue-tech': 'I converted the Figma designs into a responsive Next.js website with maintainable components, dynamic features, and SEO-conscious delivery.',
   'liberation-sanctum': 'I customized Woodmart and Elementor, integrated WooCommerce with Amelia bookings, and optimized the digital-product experience.',
+  'moj-prvi-zalogaj': 'I maintain and optimize the Astra Pro and Elementor storefront and integrated custom promotion and cart-recovery tooling into its WooCommerce workflows.',
+  'abandoned-cart-recovery-plugin': 'I built the end-to-end recovery system, including checkout capture, MailerLite synchronization, secure restoration, coupons, attribution, reporting, and GDPR controls.',
+  'portikla-bogo-plugin': 'I built the configurable BOGO pricing engine and its cart messaging, product badges, campaign popup, tax handling, and responsive storefront behavior.',
 };

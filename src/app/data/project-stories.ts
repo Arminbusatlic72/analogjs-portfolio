@@ -42,4 +42,10 @@ export const projectStories: Record<string, string> = {
     "Kriz Winery's multilingual Next.js App Router experience ties Sanity CMS, next-intl, and image optimization into a hospitality-focused story with winery, accommodation, product, and blog routes.",
   'liberation-sanctum':
     "Liberation Sanctum's WordPress platform combines WooCommerce for digital books and online lessons with Amelia's booking system for professional sessions, all built on a heavily customised Woodmart theme with performance-first delivery.",
+  'moj-prvi-zalogaj':
+    'Moj prvi zalogaj combines an Astra Pro and Elementor content experience with WooCommerce commerce flows, ongoing maintenance, performance optimization, and two custom promotion and recovery plugins.',
+  'abandoned-cart-recovery-plugin':
+    'The company-level abandoned-cart plugin connects WooCommerce recovery journeys to MailerLite with secure cart restoration, customer-specific coupons, asynchronous retries, attribution reporting, and privacy controls.',
+  'portikla-bogo-plugin':
+    'The Portikla BOGO plugin turns a configurable product selection into a mix-and-match Buy Two, Pay for One campaign with accurate cart pricing, promotional messaging, badges, and session-limited popups.',
 };
