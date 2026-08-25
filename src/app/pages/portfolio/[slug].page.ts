@@ -3,8 +3,6 @@ import { RouteMeta } from '@analogjs/router';
 import {
   AsyncPipe,
   DatePipe,
-  IMAGE_CONFIG,
-  NgOptimizedImage,
 } from '@angular/common';
 import { Component, DestroyRef, computed, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -18,6 +16,7 @@ import { map } from 'rxjs/operators';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { normalizeSlug } from '../../utils/slug';
 import { projectStories } from '../../data/project-stories';
+import { responsiveImageSrcset, responsiveImageUrl } from '../../utils/responsive-image';
 
 export const routeMeta: RouteMeta = {
   title: projectTitleResolver,
@@ -30,15 +29,6 @@ export const routeMeta: RouteMeta = {
     DatePipe,
     AsyncPipe,
     RouterLink,
-    NgOptimizedImage,
-  ],
-  providers: [
-    {
-      provide: IMAGE_CONFIG,
-      useValue: {
-        breakpoints: [16, 48, 96, 128, 384, 640, 750, 828, 1080, 1200, 1920],
-      },
-    },
   ],
   template: `
     @let post = post$ | async;
@@ -143,25 +133,40 @@ export const routeMeta: RouteMeta = {
 
             @if (post.attributes.projectImage) {
               <div class="detail-media">
-                <img
-                  [ngSrc]="post.attributes.projectImage"
-                  alt="{{ post.attributes.title }}"
-                  priority
-                  width="1000"
-                height="460"
-                sizes="(max-width: 640px) 100vw, 50vw"
-                />
-
-                @if (post.attributes.projectImageSec) {
+                <picture>
+                  <source
+                    type="image/webp"
+                    [attr.srcset]="responsiveImageSrcset(post.attributes.projectImage, heroWidths)"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                  />
                   <img
-                    class="w-full h-auto mb-8"
-                    [ngSrc]="post.attributes.projectImageSec"
+                    [src]="responsiveImageUrl(post.attributes.projectImage, 1200)"
                     alt="{{ post.attributes.title }}"
-                    priority
+                    loading="eager"
+                    fetchpriority="high"
+                    decoding="async"
                     width="1000"
                     height="460"
-                    sizes="(max-width: 640px) 100vw, 50vw"
                   />
+                </picture>
+
+                @if (post.attributes.projectImageSec) {
+                  <picture>
+                    <source
+                      type="image/webp"
+                      [attr.srcset]="responsiveImageSrcset(post.attributes.projectImageSec, galleryWidths)"
+                      sizes="(max-width: 640px) 100vw, 800px"
+                    />
+                    <img
+                      class="w-full h-auto mb-8"
+                      [src]="responsiveImageUrl(post.attributes.projectImageSec, 800)"
+                      alt="{{ post.attributes.title }} secondary project view"
+                      loading="lazy"
+                      decoding="async"
+                      width="1000"
+                      height="460"
+                    />
+                  </picture>
                 }
               </div>
             }
@@ -187,6 +192,10 @@ export const routeMeta: RouteMeta = {
   `,
 })
 export default class ProjectPage implements OnInit {
+  readonly responsiveImageSrcset = responsiveImageSrcset;
+  readonly responsiveImageUrl = responsiveImageUrl;
+  readonly heroWidths = [400, 800, 1200] as const;
+  readonly galleryWidths = [400, 800] as const;
   private readonly destroyRef = inject(DestroyRef);
   private readonly route = inject(ActivatedRoute);
   private readonly slug = toSignal(

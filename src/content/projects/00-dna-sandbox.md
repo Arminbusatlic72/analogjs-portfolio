@@ -59,9 +59,15 @@ The subscription flow handles trials, plan changes, cancellations, payment failu
 
 ## Screenshots
 
-![DNA Sandbox research workspace](/projects/dna-sandbox/scenariodna3.png)
+<picture>
+  <source type="image/webp" srcset="/projects/dna-sandbox/scenariodna3-400w.webp 400w, /projects/dna-sandbox/scenariodna3-800w.webp 800w" sizes="(max-width: 640px) 100vw, 800px">
+  <img src="/projects/dna-sandbox/scenariodna3-800w.webp" alt="DNA Sandbox research workspace" loading="lazy" decoding="async" width="800" height="478">
+</picture>
 
-![DNA Sandbox research and configuration interface](/projects/dna-sandbox/scenariodna4.png)
+<picture>
+  <source type="image/webp" srcset="/projects/dna-sandbox/scenariodna4-400w.webp 400w, /projects/dna-sandbox/scenariodna4-800w.webp 800w" sizes="(max-width: 640px) 100vw, 800px">
+  <img src="/projects/dna-sandbox/scenariodna4-800w.webp" alt="DNA Sandbox research and configuration interface" loading="lazy" decoding="async" width="800" height="478">
+</picture>
 
 ## Links
 

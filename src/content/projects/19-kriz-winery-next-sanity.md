@@ -62,7 +62,10 @@ The available project material does not include traffic, conversion, performance
 
 ## Screenshots
 
-![Križ Winery responsive website interface](/projects/kriz/kriz3.png)
+<picture>
+  <source type="image/webp" srcset="/projects/kriz/kriz3-400w.webp 400w, /projects/kriz/kriz3-800w.webp 800w" sizes="(max-width: 640px) 100vw, 800px">
+  <img src="/projects/kriz/kriz3-800w.webp" alt="Križ Winery responsive website interface" loading="lazy" decoding="async" width="800" height="476">
+</picture>
 
 ## Links
 

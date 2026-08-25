@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ContentService } from '../../services/content.service';
 import { normalizeSlug } from '../../utils/slug';
 import { projectContributions } from '../../data/project-contributions';
+import { responsiveImageSrcset, responsiveImageUrl } from '../../utils/responsive-image';
 
 const PORTFOLIO_PAGE_SIZE = 6;
 const FEATURED_PROJECT_SLUGS = new Set([
@@ -48,12 +49,20 @@ const FEATURED_PROJECT_SLUGS = new Set([
                     <div class="featured-card-index">0{{ i + 1 }} / Case study <span>Read ↗</span></div>
                     @if (post.attributes.featuredImage) {
                       <figure class="featured-card-media">
-                        <img
-                          [src]="post.attributes.featuredImage"
-                          [alt]="post.attributes.title + ' project preview'"
-                          loading="lazy"
-                          decoding="async"
-                        />
+                        <picture>
+                          <source
+                            type="image/webp"
+                            [attr.srcset]="responsiveImageSrcset(post.attributes.featuredImage, thumbnailWidths)"
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+                          />
+                          <img
+                            [src]="responsiveImageUrl(post.attributes.featuredImage, 300)"
+                            [alt]="post.attributes.title + ' project preview'"
+                            [attr.loading]="i === 0 ? 'eager' : 'lazy'"
+                            [attr.fetchpriority]="i === 0 ? 'high' : 'auto'"
+                            decoding="async"
+                          />
+                        </picture>
                       </figure>
                     }
                     <div class="featured-card-body">
@@ -84,12 +93,19 @@ const FEATURED_PROJECT_SLUGS = new Set([
                     <div class="more-work-top"><span>{{ post.attributes.company }}</span><span>{{ post.attributes.timePeriod }}</span></div>
                     @if (post.attributes.featuredImage) {
                       <figure class="more-work-media">
-                        <img
-                          [src]="post.attributes.featuredImage"
-                          [alt]="post.attributes.title + ' project preview'"
-                          loading="lazy"
-                          decoding="async"
-                        />
+                        <picture>
+                          <source
+                            type="image/webp"
+                            [attr.srcset]="responsiveImageSrcset(post.attributes.featuredImage, thumbnailWidths)"
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px"
+                          />
+                          <img
+                            [src]="responsiveImageUrl(post.attributes.featuredImage, 300)"
+                            [alt]="post.attributes.title + ' project preview'"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </picture>
                       </figure>
                     }
                     <h4>{{ post.attributes.title }}</h4>
@@ -120,6 +136,9 @@ export default class ProjectsPage {
   readonly allProjects = this.contentService.projectsContentFn;
   readonly normalizeSlug = normalizeSlug;
   readonly projectContributions = projectContributions;
+  readonly responsiveImageSrcset = responsiveImageSrcset;
+  readonly responsiveImageUrl = responsiveImageUrl;
+  readonly thumbnailWidths = [150, 300, 400] as const;
   readonly selectedTool = signal('All');
   private readonly visibleCount = signal(PORTFOLIO_PAGE_SIZE);
   availableTools: string[] = [];
