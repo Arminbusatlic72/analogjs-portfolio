@@ -21,6 +21,7 @@ const generateContentRoutes = (pathPrefix: string, contentDir: string) => {
 export default defineConfig(({ mode }) => ({
   build: {
     target: ['es2020'],
+    chunkSizeWarningLimit: 550,
   },
   resolve: {
     mainFields: ['module'],
