@@ -4,7 +4,7 @@ import {
   AsyncPipe,
   DatePipe,
 } from '@angular/common';
-import { Component, DestroyRef, computed, inject, OnInit } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Project } from 'src/app/models/project';
 import {
@@ -13,7 +13,7 @@ import {
 } from '../../resolvers/resolver';
 import { ContentService } from '../../services/content.service';
 import { map } from 'rxjs/operators';
-import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { normalizeSlug } from '../../utils/slug';
 import { projectStories } from '../../data/project-stories';
 import { responsiveImageSrcset, responsiveImageUrl } from '../../utils/responsive-image';
@@ -55,7 +55,7 @@ export const routeMeta: RouteMeta = {
 
           <div class="flex-1 text-center">
             <p class="detail-position" aria-label="Project position">
-              <strong>Case study {{ projectPosition }} / {{ totalProjects }}</strong>
+              <strong>Case study {{ projectPosition() }} / {{ totalProjects() }}</strong>
             </p>
           </div>
 
@@ -79,7 +79,7 @@ export const routeMeta: RouteMeta = {
         >
           <div>
             <header class="detail-header">
-              <p class="detail-kicker">Client project / {{ post.attributes.company }}</p>
+              <p class="detail-kicker">{{ post.attributes.projectType ?? 'Client project' }} / {{ post.attributes.company }}</p>
               <h2
                 class="detail-title"
               >
@@ -191,12 +191,11 @@ export const routeMeta: RouteMeta = {
     }
   `,
 })
-export default class ProjectPage implements OnInit {
+export default class ProjectPage {
   readonly responsiveImageSrcset = responsiveImageSrcset;
   readonly responsiveImageUrl = responsiveImageUrl;
   readonly heroWidths = [400, 800, 1200] as const;
   readonly galleryWidths = [400, 800] as const;
-  private readonly destroyRef = inject(DestroyRef);
   private readonly route = inject(ActivatedRoute);
   private readonly slug = toSignal(
     this.route.paramMap.pipe(map((params) => params.get('slug') ?? '')),
@@ -216,31 +215,17 @@ export default class ProjectPage implements OnInit {
     subdirectory: 'projects',
   });
 
-  projectPosition: number | null = null;
-  totalProjects: number | null = null;
+  readonly totalProjects = computed(() => this.posts().length);
+  readonly projectPosition = computed(() => {
+    const currentSlug = this.slug();
+    const currentIndex = this.posts().findIndex(
+      (project) => project.attributes.slug === currentSlug,
+    );
+
+    return currentIndex >= 0 ? currentIndex + 1 : null;
+  });
 
   readonly normalizeSlug = normalizeSlug;
   readonly projectStories = projectStories;
 
-  ngOnInit(): void {
-    this.route.params
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(() => this.calculateProjectPosition());
-  }
-
-  calculateProjectPosition() {
-    const projects = this.posts();
-    const currentSlug = this.route.snapshot.paramMap.get('slug');
-
-    if (projects && currentSlug) {
-      this.totalProjects = projects.length;
-      const currentIndex = projects.findIndex(
-        (project) => project.attributes.slug === currentSlug,
-      );
-
-      if (currentIndex !== -1) {
-        this.projectPosition = currentIndex + 1;
-      }
-    }
-  }
 }

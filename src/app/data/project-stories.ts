@@ -1,4 +1,6 @@
 export const projectStories: Record<string, string> = {
+  'analogjs-performance-optimization':
+    'This portfolio became a production performance case study: Angular 21 and zoneless rendering reduced framework overhead, while responsive images, self-hosted fonts, and deferred third-party JavaScript raised the blog mobile PageSpeed score from 82 to 98.',
   'dna-sandbox':
     'Scenario DNA research studio pairs streaming multi-model chat with curated genomic sources by wiring Next.js 16, React 19, and TypeScript to the Vercel AI SDK, Convex, Clerk, and Stripe instrumentation stack.',
   stribbo:

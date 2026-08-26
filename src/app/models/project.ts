@@ -4,6 +4,7 @@ export interface Project {
   timePeriod: string;
   technology: string;
   company: string;
+  projectType?: string;
   featuredImage?: string;
   projectImage?: string;
   projectImageSec?: string;

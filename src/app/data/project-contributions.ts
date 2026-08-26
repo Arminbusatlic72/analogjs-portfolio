@@ -1,4 +1,5 @@
 export const projectContributions: Record<string, string> = {
+  'analogjs-performance-optimization': 'I established route-level baselines, modernized the Angular and AnalogJS stack, and optimized images, fonts, and third-party delivery to improve measured mobile performance.',
   stribbo: 'I converted the supplied designs into a WordPress storefront, handled its production migration, and continued performance and feature maintenance.',
   neologic: 'I built the dual-language Gatsby frontend and adapted WordPress with custom post types, ACF, and GraphQL for headless content delivery.',
   alcove: 'I designed and implemented a custom Squarespace theme around the company’s presentation and brand requirements.',
