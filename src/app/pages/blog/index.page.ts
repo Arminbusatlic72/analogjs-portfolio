@@ -12,6 +12,7 @@ const RESPONSIVE_BLOG_COVERS = new Set([
   '/blog/analog-angular-update.webp',
   '/blog/analog-zoneless-bundle-optimization.webp',
   '/blog/PaaS-For-Your-SaaS.png',
+  '/blog/analogjs-performance-after-zoneless.webp',
 ]);
 
 @Component({

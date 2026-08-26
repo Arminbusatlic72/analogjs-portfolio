@@ -4,7 +4,7 @@ slug: optimizing-analogjs-angular-zoneless
 description: "A practical account of updating an AnalogJS portfolio, repairing its Angular test setup, moving to zoneless change detection, and cutting about 40 kB from the main bundle without fragile chunk tricks."
 coverImage: "/blog/analog-zoneless-bundle-optimization.webp"
 previousPost: upgrade-to-analog-content-pipeline
-nextPost: ""
+nextPost: optimizing-analogjs-after-zoneless
 date: 25 August 2026
 ---
 

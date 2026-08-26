@@ -6,6 +6,7 @@ const images = [
   'public/blog/analog-angular-update.webp',
   'public/blog/analog-zoneless-bundle-optimization.webp',
   'public/blog/PaaS-For-Your-SaaS.png',
+  'public/blog/analogjs-performance-after-zoneless.webp',
 ];
 
 let generatedBytes = 0;
