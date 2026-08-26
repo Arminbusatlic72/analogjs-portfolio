@@ -10,6 +10,7 @@ const widthsByField = {
   projectImageSec: [400, 800],
 };
 const markdownGalleryImages = [
+  '/projects/miloshaisandbox/dashboard.png',
   '/projects/dna-sandbox/scenariodna3.png',
   '/projects/dna-sandbox/scenariodna4.png',
   '/projects/kriz/kriz3.png',

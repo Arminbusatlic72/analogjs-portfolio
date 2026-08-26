@@ -10,6 +10,7 @@ import { responsiveImageSrcset, responsiveImageUrl } from '../../utils/responsiv
 const PORTFOLIO_PAGE_SIZE = 6;
 const FEATURED_PROJECT_SLUGS = new Set([
   'analogjs-performance-optimization',
+  'ai-document-sandbox',
   'dna-sandbox',
   'kriz-winery-next-sanity',
   'basiqdental',
@@ -29,7 +30,7 @@ const FEATURED_PROJECT_SLUGS = new Set([
         <div class="work-toolbar">
           <div>
             <h3 class="work-intro-title">Real work across product interfaces, AI integration, commerce, and content.</h3>
-            <p>Six detailed case studies lead the collection. The full archive remains available below.</p>
+            <p>Seven detailed case studies lead the collection. The full archive remains available below.</p>
           </div>
           <div>
             <label for="tool-select">Filter by technology</label>

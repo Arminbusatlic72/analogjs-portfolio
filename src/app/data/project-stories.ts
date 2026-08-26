@@ -1,4 +1,6 @@
 export const projectStories: Record<string, string> = {
+  'ai-document-sandbox':
+    'This secure document-analysis workspace combines streamed Claude and Gemini conversations with private files, configurable agents, retrieval telemetry, summarized memory, and preflight cost controls for invited users.',
   'analogjs-performance-optimization':
     'This portfolio became a production performance case study: Angular 21 and zoneless rendering reduced framework overhead, while responsive images, self-hosted fonts, and deferred third-party JavaScript raised the blog mobile PageSpeed score from 82 to 98.',
   'dna-sandbox':

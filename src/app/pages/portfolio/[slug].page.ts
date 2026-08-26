@@ -92,6 +92,7 @@ export const routeMeta: RouteMeta = {
               <div class="detail-meta">
                 <p><strong>Company</strong><span>{{ post.attributes.company }}</span></p>
                 <p><strong>Duration</strong><span>{{ post.attributes.timePeriod }}</span></p>
+                @if (post.attributes.status) { <p><strong>Status</strong><span>{{ post.attributes.status }}</span></p> }
                 @if (post.attributes.date) { <p><strong>Released</strong><time [attr.datetime]="post.attributes.date | date: 'yyyy-MM-dd'">{{ post.attributes.date | date: 'MMMM d, yyyy' }}</time></p> }
               </div>
               <div class="detail-stack"><strong>Stack</strong><span>{{ post.attributes.tools }}</span></div>
@@ -104,7 +105,7 @@ export const routeMeta: RouteMeta = {
                       target="_blank"
                       class="button button-primary"
                     >
-                      Visit website <span>↗</span>
+                      {{ post.attributes.linkLabel ?? 'Visit website' }} <span>↗</span>
                     </a>
                   }
                   @if (post.attributes.githublink) {
