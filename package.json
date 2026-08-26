@@ -10,6 +10,7 @@
     "dev": "ng serve",
     "start": "npm run dev",
     "build": "ng build",
+    "optimize:blog-card-images": "node scripts/optimize-blog-card-images.mjs",
     "optimize:portfolio-images": "node scripts/optimize-portfolio-images.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "vitest run"

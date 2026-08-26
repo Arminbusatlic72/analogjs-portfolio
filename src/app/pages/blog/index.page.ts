@@ -4,8 +4,15 @@ import { RouterLink } from '@angular/router';
 
 import { ContentService } from '../../services/content.service';
 import { normalizeSlug } from '../../utils/slug';
+import { responsiveImageSrcset, responsiveImageUrl } from '../../utils/responsive-image';
 
 const BLOG_PAGE_SIZE = 6;
+const BLOG_CARD_WIDTHS = [400, 700, 900] as const;
+const RESPONSIVE_BLOG_COVERS = new Set([
+  '/blog/analog-angular-update.webp',
+  '/blog/analog-zoneless-bundle-optimization.webp',
+  '/blog/PaaS-For-Your-SaaS.png',
+]);
 
 @Component({
   standalone: true,
@@ -33,7 +40,22 @@ const BLOG_PAGE_SIZE = 6;
             <article class="article-card" [class.article-card-lead]="i === 0">
               <a [routerLink]="['/blog/', normalizeSlug(post.attributes.slug)]">
                 <figure>
-                  <img [ngSrc]="post.attributes.coverImage" alt="{{ post.attributes.title }}" width="900" height="520" [priority]="i === 0" />
+                  <picture>
+                    @if (responsiveBlogImageSrcset(post.attributes.coverImage); as srcset) {
+                      <source
+                        type="image/webp"
+                        [attr.srcset]="srcset"
+                        sizes="(max-width: 760px) calc(100vw - 28px), (max-width: 1440px) 45vw, 650px"
+                      />
+                    }
+                    <img
+                      [ngSrc]="blogCardImageUrl(post.attributes.coverImage)"
+                      alt="{{ post.attributes.title }}"
+                      width="900"
+                      height="520"
+                      [priority]="i === 0"
+                    />
+                  </picture>
                   <span>Read note ↗</span>
                 </figure>
                 <div class="article-card-content">
@@ -63,6 +85,18 @@ export default class BlogPage {
   readonly hasMore = computed(() => this.visibleCount() < this.allPosts().length);
   readonly remainingCount = computed(() => Math.max(0, Math.min(BLOG_PAGE_SIZE, this.allPosts().length - this.visibleCount())));
   readonly normalizeSlug = normalizeSlug;
+
+  responsiveBlogImageSrcset(source: string): string | null {
+    return RESPONSIVE_BLOG_COVERS.has(source)
+      ? responsiveImageSrcset(source, BLOG_CARD_WIDTHS)
+      : null;
+  }
+
+  blogCardImageUrl(source: string): string {
+    return RESPONSIVE_BLOG_COVERS.has(source)
+      ? responsiveImageUrl(source, 700)
+      : source;
+  }
 
   loadMore(): void { this.visibleCount.update((count) => Math.min(count + BLOG_PAGE_SIZE, this.allPosts().length)); }
 }
